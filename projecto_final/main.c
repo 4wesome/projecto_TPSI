@@ -6,31 +6,52 @@
 
 
 
-//este vai ser o menu principal, que será apresentado ao utilizador
-void menu_principal () {
+
+void menu_principal () { // este vai ser o menu principal, que será apresentado ao utilizador quando ele abre o programa
 	
 int escolha;
+
+do 
+{
 	
 printf("======================================\n");
-
 printf("bem vindo: \n");
 printf("escolha uma das seguintes opções: \n");
-printf("Gestao -> prima tecla 1 \n");
-printf("consultar base de dados -> prima tecla 2 \n");
-printf("alterar base de dados -> prima tecla 3 \n");
-printf("Sair -> prima tecla 4 \n");
+printf("Gestao clientes -> prima tecla 1 \n");
+printf("Gestao consumos -> prima tecla 2 \n");
+printf("consultar base de dados -> prima tecla 3 \n");
+printf("alterar base de dados -> prima tecla 4 \n");
+printf("Sair -> prima tecla 5 \n");
 scanf("%d", &escolha);
 
-switch escolha {
+switch (escolha) {
 	case 1:
-		
-		
-} 
+		menu_gestao_clientes();
+		break;
+	case 2:
+		menu_gestao_consumos();
+		break;
+	case 3:
+		menu_consultas_bd();
+		break;
+	case 4:
+		menu_ficheiros();
+		break;
+	default:
+		printf("o valor introduzido não é válido!");
+		break;
+}
+}
+
+while (escolha <0 || escolha >=4);
+
 
 	
 	
 }
 int main(int argc, char *argv[]) {
+	
+	menu_principal();
 	return 0;
 }
 
