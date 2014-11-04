@@ -13,37 +13,47 @@ int escolha;
 
 do 
 {
-	
-printf("======================================\n");
-printf("bem vindo: \n");
-printf("escolha uma das seguintes opções: \n");
-printf("Gestao clientes -> prima tecla 1 \n");
-printf("Gestao consumos -> prima tecla 2 \n");
-printf("consultar base de dados -> prima tecla 3 \n");
-printf("alterar base de dados -> prima tecla 4 \n");
-printf("Sair -> prima tecla 5 \n");
-scanf("%d", &escolha);
+	system("cls");
+	printf("======================================\n");
+	printf("bem vindo: \n");
+	printf("escolha uma das seguintes opcoes: \n");
+	printf("Gestao clientes -> prima tecla 1 \n");
+	printf("Gestao consumos -> prima tecla 2 \n");
+	printf("consultar base de dados -> prima tecla 3 \n");
+	printf("alterar base de dados -> prima tecla 4 \n");
+	printf("Sair -> prima tecla 5 \n");
+	printf("======================================\n");
+	do {
 
-switch (escolha) {
+			scanf("%d", &escolha);
+		}
+	while (escolha<0 || escolha>4);
+	
+	switch (escolha) {
 	case 1:
-		menu_gestao_clientes();
+		system("cls");
+		//menu_gestao_clientes();
 		break;
 	case 2:
-		menu_gestao_consumos();
+		system("cls");
+		//menu_gestao_consumos();
 		break;
 	case 3:
-		menu_consultas_bd();
+		system("cls");
+		//menu_consultas_bd();
 		break;
 	case 4:
-		menu_ficheiros();
+		system("cls");
+		//menu_ficheiros();
 		break;
 	default:
+		system("cls");
 		printf("o valor introduzido não é válido!");
 		break;
-}
+	}
 }
 
-while (escolha <0 || escolha >=4);
+while (escolha != 5);
 
 
 	
