@@ -34,8 +34,37 @@
 	cliente lista_clientes[30]; 
 	int indice_cliente=0;
 
-/* run this program using the console pauser or add your own getch, system("pause") or input loop */
-void clientes(){
+int pesquisar_clientes(codigo_cliente) {
+	int l,u,i;
+      l = 0;
+      u = indice_cliente - 1;
+      i = (l + u) / 2;
+
+      while ((l <= u) && (cliente[i].codigo_cliente != codigo_cliente))
+      {
+            if(codigo_cliente < cliente[i].codigo_cliente)
+            {
+                  u = i - 1;
+            }
+            else
+            {
+                  l = i + 1;
+            }
+            i = (l + u) / 2;
+      }
+
+      if(l <= u)
+      {
+            return i;
+      }
+      else
+      {
+            return -1;
+      }
+	
+	
+}
+void inserir_clientes(){
 
 	int op, i;
 	
@@ -44,7 +73,7 @@ void clientes(){
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o codigo do cliente: ");
           scanf("%d", &lista_clientes[indice_cliente].codigo);
-          i = pesquisarCliente(cliente[indice_cliente].codigo);
+          i = pesquisar_cliente(cliente[indice_cliente].codigo);
 
           if (i != -1) // Verifico se o código do cliente já existe
           {
@@ -94,7 +123,7 @@ void clientes(){
 }
 int main(int argc, char *argv[]) {
 	
-clientes();
+inserir_clientes();
 
 return 0;
 
