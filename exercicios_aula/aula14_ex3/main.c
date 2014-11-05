@@ -11,7 +11,7 @@ int main(int argc, char *argv[])
 	char nome[100];
 	int i;
 
-	fp = fopen("clientes.bin", "a");
+	fp = fopen("clientes.txt", "a");
 	if(!fp)
 	{
 		printf("Erro na abertura do ficheiro.\n");
