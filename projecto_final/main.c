@@ -14,17 +14,17 @@ do
 {
 	system("cls");
 	printf("======================================\n");
-	printf("Menu Consultas da Base de Dados\n");
+	printf(" Menu Consultas da Base de Dados\n");
 	printf("\n");
-	printf("Escolha uma das seguintes opcoes: \n");
+	printf(" Escolha uma das seguintes opcoes: \n");
 	printf("\n");
-	printf("1 - Ler Base de Dados \n");
-	printf("2 - Gravar Alteracoes \n");
-	printf("3 - Voltar Atras \n");
+	printf(" 1 - Ler Base de Dados \n");
+	printf(" 2 - Gravar Alteracoes \n");
+	printf(" 3 - Voltar Atras \n");
 	printf("\n");
 	printf("======================================\n");
 	do {
-			printf("Opcao escolhida: ");
+			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
 		}
 	while (escolha<0 || escolha>3);
@@ -44,7 +44,7 @@ do
 		break;
 	default:
 		system("cls");
-		printf("O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 3");
+		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 3");
 		break;
 	}
 }
@@ -60,19 +60,19 @@ do
 {
 	system("cls");
 	printf("======================================\n");
-	printf("Menu Consultas\n");
+	printf(" Menu Consultas\n");
 	printf("\n");
-	printf("Escolha uma das seguintes opcoes: \n");
+	printf(" Escolha uma das seguintes opcoes: \n");
 	printf("\n");
-	printf("1 - Pesquisar Cliente por Codigo \n");
-	printf("2 - Pesquisar Cliente por Nome \n");
-	printf("3 - Pesquisar Consumo por Codigo \n");
-	printf("4 - Pesquisar Consumo por Codifo de Cliente \n");
-	printf("5 - Voltar Atras \n");
+	printf(" 1 - Pesquisar Cliente por Codigo \n");
+	printf(" 2 - Pesquisar Cliente por Nome \n");
+	printf(" 3 - Pesquisar Consumo por Codigo \n");
+	printf(" 4 - Pesquisar Consumo por Codigo de Cliente \n");
+	printf(" 5 - Voltar Atras \n");
 	printf("\n");
 	printf("======================================\n");
 	do {
-			printf("Opcao escolhida: ");
+			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
 		}
 	while (escolha<0 || escolha>5);
@@ -100,7 +100,7 @@ do
 		break;
 	default:
 		system("cls");
-		printf("O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
+		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
 		break;
 	}
 }
@@ -116,17 +116,17 @@ do
 {
 	system("cls");
 	printf("======================================\n");
-	printf("Menu Consultas\n");
+	printf(" Menu Consultas\n");
 	printf("\n");
-	printf("Escolha uma das seguintes opcoes: \n");
+	printf(" Escolha uma das seguintes opcoes: \n");
 	printf("\n");
-	printf("1 - Listar Clientes por Consumo \n");
-	printf("2 - Listar Clientes que nao pagaram \n");
-	printf("3 - Voltar Atras \n");
+	printf(" 1 - Listar Clientes por Consumo \n");
+	printf(" 2 - Listar Clientes que nao pagaram \n");
+	printf(" 3 - Voltar Atras \n");
 	printf("\n");
 	printf("======================================\n");
 	do {
-			printf("Opcao escolhida: ");
+			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
 		}
 	while (escolha<0 || escolha>3);
@@ -146,7 +146,7 @@ do
 		break;
 	default:
 		system("cls");
-		printf("O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 3");
+		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 3");
 		break;
 	}
 }
@@ -162,17 +162,17 @@ do
 {
 	system("cls");
 	printf("======================================\n");
-	printf("Menu Consultas da Base de Dados\n");
+	printf(" Menu Consultas da Base de Dados\n");
 	printf("\n");
-	printf("Escolha uma das seguintes opcoes: \n");
+	printf(" Escolha uma das seguintes opcoes: \n");
 	printf("\n");
-	printf("1 - Consulta \n");
-	printf("2 - Pesquisa \n");
-	printf("3 - Voltar Atras \n");
+	printf(" 1 - Consulta \n");
+	printf(" 2 - Pesquisa \n");
+	printf(" 3 - Voltar Atras \n");
 	printf("\n");
 	printf("======================================\n");
 	do {
-			printf("Opcao escolhida: ");
+			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
 		}
 	while (escolha<0 || escolha>3);
@@ -192,7 +192,7 @@ do
 		break;
 	default:
 		system("cls");
-		printf("O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 3");
+		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 3");
 		break;
 	}
 }
@@ -208,19 +208,19 @@ do
 {
 	system("cls");
 	printf("======================================\n");
-	printf("Menu de Gestao de Consumos\n");
+	printf(" Menu de Gestao de Consumos\n");
 	printf("\n");
-	printf("escolha uma das seguintes opcoes: \n");
+	printf(" Escolha uma das seguintes opcoes: \n");
 	printf("\n");
-	printf("1 - Novo \n");
-	printf("2 - Editar \n");
-	printf("3 - Remover \n");
-	printf("4 - Listar \n");
-	printf("5 - Voltar Atras \n");
+	printf(" 1 - Novo \n");
+	printf(" 2 - Editar \n");
+	printf(" 3 - Remover \n");
+	printf(" 4 - Listar \n");
+	printf(" 5 - Voltar Atras \n");
 	printf("\n");
 	printf("======================================\n");
 	do {
-			printf("Opcao escolhida: ");
+			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
 		}
 	while (escolha<0 || escolha>5);
@@ -248,7 +248,7 @@ do
 		break;		
 	default:
 		system("cls");
-		printf("O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
+		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
 		break;
 	}
 }
@@ -264,19 +264,19 @@ do
 {
 	system("cls");
 	printf("======================================\n");
-	printf("Menu de Gestao de Clientes\n");
+	printf(" Menu de Gestao de Clientes\n");
 	printf("\n");
-	printf("Escolha uma das seguintes opcoes: \n");
+	printf(" Escolha uma das seguintes opcoes: \n");
 	printf("\n");
-	printf("1 - Novo \n");
-	printf("2 - Editar \n");
-	printf("3 - Remover \n");
-	printf("4 - Listar \n");
-	printf("5 - Voltar Atras \n");
+	printf(" 1 - Novo \n");
+	printf(" 2 - Editar \n");
+	printf(" 3 - Remover \n");
+	printf(" 4 - Listar \n");
+	printf(" 5 - Voltar Atras \n");
 	printf("\n");
 	printf("======================================\n");
 	do {
-			printf("Opcao escolhida: ");
+			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
 		}
 	while (escolha<0 || escolha>5);
@@ -304,7 +304,7 @@ do
 		break;	
 	default:
 		system("cls");
-		printf("O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
+		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
 		break;
 	}
 }
@@ -323,17 +323,17 @@ do
 	printf("======================================\n");
 	printf("---------------Bem Vindo-------------- \n");
 	printf("\n");
-	printf("Escolha uma das seguintes opcoes: \n");
+	printf(" Escolha uma das seguintes opcoes: \n");
 	printf("\n");
-	printf("1 - Gestao clientes \n");
-	printf("2 - Gestao consumos  \n");
-	printf("3 - Consultar base de dados \n");
-	printf("4 - Alterar base de dados \n");
-	printf("5 - Sair \n");
+	printf(" 1 - Gestao clientes \n");
+	printf(" 2 - Gestao consumos  \n");
+	printf(" 3 - Consultar base de dados \n");
+	printf(" 4 - Alterar base de dados \n");
+	printf(" 5 - Sair \n");
 	printf("\n");
 	printf("======================================\n");
 	do {
-			printf("Opcao escolhida: ");
+			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
 		}
 	while (escolha<0 || escolha>5);
@@ -361,7 +361,7 @@ do
 		break;
 	default:
 		system("cls");
-		printf("O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
+		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
 		break;
 	}
 }
