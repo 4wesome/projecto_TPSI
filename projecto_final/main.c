@@ -4,6 +4,7 @@
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
+<<<<<<< HEAD
 void menu_gestao_clientes() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
 	int escolha;
 
@@ -55,6 +56,9 @@ do
 while (escolha != 5);
 	
 }
+=======
+
+>>>>>>> 565d02cd4e9f0b8ab5e87a4957e3dff0ec924db7
 
 
 void menu_principal () { // este vai ser o menu principal, que será apresentado ao utilizador quando ele abre o programa
