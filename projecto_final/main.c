@@ -2,12 +2,13 @@
 #include <stdlib.h>
 #include <string.h>
 
+
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 
 
 
-void menu_ficheiros() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
+void menu_ficheiros() {// este é o menu que será apresentado ao utilizador. aqui ele ira ler e gravar dados na base de dados
 	int escolha;
 
 do 
@@ -53,7 +54,7 @@ while (escolha != 3);
 	
 }
 
-void menu_pesquisas() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
+void menu_pesquisas() {// este é o menu que será apresentado ao utilizador. aqui ele ira pesquisar por varios parametros
 	int escolha;
 
 do 
@@ -109,7 +110,7 @@ while (escolha != 5);
 	
 }
 
-void menu_consultas() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
+void menu_consultas() {// este é o menu que será apresentado ao utilizador. aqui consulta clientes por consumo e os que nao pagaram
 	int escolha;
 
 do 
@@ -155,7 +156,7 @@ while (escolha != 3);
 	
 }
 
-void menu_consultas_bd() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
+void menu_consultas_bd() {// este é o menu que será apresentado ao utilizador. aqui faz as consultas a BD (consulta e pesquisa)
 	int escolha;
 
 do 
@@ -201,7 +202,7 @@ while (escolha != 3);
 	
 }
 
-void menu_gestao_consumos() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
+void menu_gestao_consumos() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os consumos (adicionar, editar, remover, e listar)
 	int escolha;
 
 do 
