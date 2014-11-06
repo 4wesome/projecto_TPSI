@@ -31,25 +31,26 @@
 		int estado;
 	}cliente;
 	
-	cliente lista_clientes[30]; 
-	int indice_cliente=0;
+	cliente lista_clientes[30];
+	consumos lista_consumos[100]; 
+	int indice_cliente=0, indice_consumos = 0;
 
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-void clientes(){
+void novo_consumo(){
 
 	int op, i;
 	
 		printf("_________________________________________________________________\n");
-          printf("\n     ADICIONAR CLIENTE");
+          printf("\n     Introduzir Novo Consumo");
           printf("\n_________________________________________________________________\n");
-          printf("\n Introduza o codigo do cliente: ");
-          scanf("%d", &lista_clientes[indice_cliente].codigo);
-          i = pesquisarCliente(cliente[indice_cliente].codigo);
+          printf("\n Introduza o codigo de Consumo: ");
+          scanf("%d", &lista_consumos[indice_consumos].codigo);
+          i = pesquisarConsumo(consumo[indice_consumos].codigo);
 
-          if (i != -1) // Verifico se o código do cliente já existe
+          if (i != -1) // Verifico se o código do consumo já existe
           {
              system("cls");
-             printf("\n O CODIGO DO CLIENTE JA EXISTE!!!\n\n Tente novamente.\n\n ");
+             printf("\n O CODIGO DO CONSUMO JA EXISTE!!!\n\n Tente novamente.\n\n ");
              system("pause");
              system("cls");
           }
@@ -94,7 +95,7 @@ void clientes(){
 }
 int main(int argc, char *argv[]) {
 	
-clientes();
+novo_consumo();
 
 return 0;
 
