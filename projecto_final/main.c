@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 
-typedef struct { // registo para a data
+	typedef struct { // registo para a data
 		int dia;
 		int mes;
 		int ano;
@@ -20,9 +20,9 @@ typedef struct { // registo para a data
 	
 	typedef struct { // registo para os clientes
 		int codigo;
-		char nome;
-		char morada;
-		char email;
+		char nome[100];
+		char morada[250];
+		char email[50];
 		int telemovel;
 		data data_nascimento;
 		int bi;
@@ -31,9 +31,8 @@ typedef struct { // registo para a data
 		int estado;
 	}cliente;
 	
-	cliente lista_clientes[30];
-	consumos lista_consumos[100]; 
-	int indice_cliente=0, indice_consumos = 0;
+	cliente lista_clientes[30]; 
+	int indice_cliente=0;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 
@@ -264,7 +263,7 @@ do
 	switch (escolha) {
 	case 1:
 		system("cls");
-		novo_consumo();
+		//novo_consumo();
 		break;
 	case 2:
 		system("cls");
@@ -293,6 +292,96 @@ while (escolha != 5);
 	
 }
 
+int pesquisar_clientes(int codigo_cliente) {
+	int l,u,i;
+      l = 0;
+      u = indice_cliente - 1;
+      i = (l + u) / 2;
+
+      while ((l <= u) && (lista_clientes[i].codigo != codigo_cliente))
+      {
+            if(codigo_cliente < lista_clientes[i].codigo)
+            {
+                  u = i - 1;
+            }
+            else
+            {
+                  l = i + 1;
+            }
+            i = (l + u) / 2;
+      }
+
+      if(l <= u)
+      {
+            return i;
+      }
+      else
+      {
+            return -1;
+      }
+	
+	
+}
+void inserir_clientes(){
+
+	int op, i, codigo_cliente;
+	
+		printf("_________________________________________________________________\n");
+          printf("\n     ADICIONAR CLIENTE");
+          printf("\n_________________________________________________________________\n");
+          printf("\n Introduza o codigo do cliente: ");
+          scanf("%d", &codigo_cliente);
+          i = pesquisar_clientes(codigo_cliente);
+
+          if (i != -1) // Verifico se o código do cliente já existe
+          {
+             system("cls");
+             printf("\n O CODIGO DO CLIENTE JA EXISTE!!!\n\n Tente novamente.\n\n ");
+             system("pause");
+             system("cls");
+          }
+          else
+          {
+              lista_clientes[indice_cliente].codigo = codigo_cliente;
+              
+			  
+			  
+              printf("\n Introduza o seu nome: ");
+              fflush(stdin);
+              gets(lista_clientes[indice_cliente].nome);
+              printf("\n Introduza a morada: ");
+              fflush(stdin);
+              gets(lista_clientes[indice_cliente].morada);
+              printf("\n Introduza o seu email: ");
+              fflush(stdin);
+              gets(lista_clientes[indice_cliente].email);
+              printf("\n Introduza o seu telemovel: ");
+              scanf("%d", &lista_clientes[indice_cliente].telemovel);
+              printf("\n Introduza a Data de Nascimento: \n ");
+              printf("		Introduza  o dia: ");
+              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
+              printf("\n		Introduza o mes:  ");
+              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
+              printf("\n		Introuza o ano: ");
+              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
+              printf("\n Introduza o seu BI: ");
+              scanf("%d", &lista_clientes[indice_cliente].bi);
+              printf("\n Introduza o numero fiscal: ");
+              scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
+              
+              
+              
+              
+              // Incremento o número actual de clientes em +1
+              indice_cliente++;
+              system("cls");
+              printf("\n O CLIENTE FOI ADICINADO COM SUCESSO.\n");
+              
+            }
+	
+}
+
+
 void menu_gestao_clientes() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
 	int escolha;
 
@@ -320,7 +409,7 @@ do
 	switch (escolha) {
 	case 1:
 		system("cls");
-		//novo_cliente();
+		inserir_clientes();
 		break;
 	case 2:
 		system("cls");
