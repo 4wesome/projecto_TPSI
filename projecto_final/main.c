@@ -2,7 +2,38 @@
 #include <stdlib.h>
 #include <string.h>
 
+typedef struct { // registo para a data
+		int dia;
+		int mes;
+		int ano;
+	}data;
 
+	typedef struct{ // registo para os consumos
+		int cod_consumo;
+		int mes;
+		int ano;
+		float consumo;
+		float preco;
+		int estado;
+		
+	}consumo;
+	
+	typedef struct { // registo para os clientes
+		int codigo;
+		char nome;
+		char morada;
+		char email;
+		int telemovel;
+		data data_nascimento;
+		int bi;
+		int num_fiscal;
+		consumo consumo[100];
+		int estado;
+	}cliente;
+	
+	cliente lista_clientes[30];
+	consumos lista_consumos[100]; 
+	int indice_cliente=0, indice_consumos = 0;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 
@@ -202,6 +233,10 @@ while (escolha != 3);
 	
 }
 
+
+
+            
+            
 void menu_gestao_consumos() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os consumos (adicionar, editar, remover, e listar)
 	int escolha;
 
@@ -229,7 +264,7 @@ do
 	switch (escolha) {
 	case 1:
 		system("cls");
-		//novo_cliente();
+		novo_consumo();
 		break;
 	case 2:
 		system("cls");
