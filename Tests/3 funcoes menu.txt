@@ -1,0 +1,21 @@
+void gotoxy(int x, int y)
+{
+     COORD c = { x, y };  
+     SetConsoleCursorPosition(GetStdHandle(STD_OUTPUT_HANDLE),c);
+}
+//troca o atributo do texto da consola
+void trocarCor(int x){
+     SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE),x);
+}
+//Muda o fundo de x ate com e de y ate altura
+///nao usar i ou j nas funcoes que se chama esta 
+void mudarFundo(int x, int y, int comp, int alt, int cor){
+     int i = 0, j = 0;
+     trocarCor(cor);
+     for(i=0; i<=alt; i++){
+          for(j=0; j<=comp; j++){
+               gotoxy(x+j, y +i);
+               printf(" ");
+          }     
+     }     
+}?
