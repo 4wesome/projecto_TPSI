@@ -20,9 +20,9 @@
 	
 	typedef struct { // registo para os clientes
 		int codigo;
-		char nome;
-		char morada;
-		char email;
+		char nome[100];
+		char morada[250];
+		char email[50];
 		int telemovel;
 		data data_nascimento;
 		int bi;
@@ -34,15 +34,15 @@
 	cliente lista_clientes[30]; 
 	int indice_cliente=0;
 
-int pesquisar_clientes(codigo_cliente) {
+int pesquisar_clientes(int codigo_cliente) {
 	int l,u,i;
       l = 0;
       u = indice_cliente - 1;
       i = (l + u) / 2;
 
-      while ((l <= u) && (cliente[i].codigo_cliente != codigo_cliente))
+      while ((l <= u) && (lista_clientes[i].codigo != codigo_cliente))
       {
-            if(codigo_cliente < cliente[i].codigo_cliente)
+            if(codigo_cliente < lista_clientes[i].codigo)
             {
                   u = i - 1;
             }
@@ -66,14 +66,14 @@ int pesquisar_clientes(codigo_cliente) {
 }
 void inserir_clientes(){
 
-	int op, i;
+	int op, i, codigo_cliente;
 	
 		printf("_________________________________________________________________\n");
           printf("\n     ADICIONAR CLIENTE");
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o codigo do cliente: ");
-          scanf("%d", &lista_clientes[indice_cliente].codigo);
-          i = pesquisar_cliente(cliente[indice_cliente].codigo);
+          scanf("%d", &codigo_cliente);
+          i = pesquisar_clientes(codigo_cliente);
 
           if (i != -1) // Verifico se o código do cliente já existe
           {
@@ -84,31 +84,31 @@ void inserir_clientes(){
           }
           else
           {
-              cliente[indice_cliente].codigo = codigo_cliente;
+              lista_clientes[indice_cliente].codigo = codigo_cliente;
               
 			  
 			  
               printf("\n Introduza o seu nome: ");
               fflush(stdin);
-              gets(cliente[indice_cliente].nome);
+              gets(lista_clientes[indice_cliente].nome);
               printf("\n Introduza a morada: ");
               fflush(stdin);
-              gets(cliente[indice_cliente].morada);
+              gets(lista_clientes[indice_cliente].morada);
               printf("\n Introduza o seu email: ");
               fflush(stdin);
-              gets(cliente[indice_cliente].email);
+              gets(lista_clientes[indice_cliente].email);
               printf("\n Introduza o seu telemovel: ");
-              scanf("%d", &cliente[indice_cliente].telemovel);
+              scanf("%d", &lista_clientes[indice_cliente].telemovel);
               printf("insira a data. primeiro insira o dia: ");
-              scanf("%d", &data[indice_cliente].dia);
+              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
               printf("\n agora insira o mes: ");
-              scanf("%d", &data[indice_cliente].mes);
+              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
               printf("\n agora insira o ano: ");
-              scanf("%d", &data[indice_cliente].ano);
+              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
               printf("\n insira o seu BI: ");
-              scanf("%d", &cliente[indice_cliente].bi);
+              scanf("%d", &lista_clientes[indice_cliente].bi);
               printf("\n insira o numero fiscal: ");
-              scanf("%d", &cliente[indice_cliente].num_fiscal);
+              scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
               
               
               
