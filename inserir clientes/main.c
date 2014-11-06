@@ -1,6 +1,9 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#define TRUE 1
+#define FALSE 0
+
 
 	typedef struct { // registo para a data
 		int dia;
@@ -64,6 +67,22 @@ int pesquisar_clientes(int codigo_cliente) {
 	
 	
 }
+
+
+int Verifica_email(char email[50])
+{
+   int i;
+   for (i = 0; i <50; i++) {
+   	
+		
+         
+		
+		}
+     
+}
+
+
+
 void inserir_clientes(){
 
 	int op, i, codigo_cliente;
@@ -73,7 +92,20 @@ void inserir_clientes(){
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o codigo do cliente: ");
           scanf("%d", &codigo_cliente);
-          i = pesquisar_clientes(codigo_cliente);
+          
+          if (codigo_cliente > 19215000 || codigo_cliente < 19214000) { // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
+          	system("cls");
+			printf("\n O CODIGO DO CLIENTE JA EXISTE!!!\n\n  por favor insira um codigo entre 19214000 e 19215000\n \n");
+			system("pause");
+			system("cls");
+			inserir_clientes();
+          }
+          
+         else {
+         
+          
+        	i = pesquisar_clientes(codigo_cliente);
+				
 
           if (i != -1) // Verifico se o código do cliente já existe
           {
@@ -81,6 +113,7 @@ void inserir_clientes(){
              printf("\n O CODIGO DO CLIENTE JA EXISTE!!!\n\n Tente novamente.\n\n ");
              system("pause");
              system("cls");
+             inserir_clientes();
           }
           else
           {
@@ -95,7 +128,17 @@ void inserir_clientes(){
               fflush(stdin);
               gets(lista_clientes[indice_cliente].morada);
               printf("\n Introduza o seu email: ");
-              fflush(stdin);
+              
+			   if(Verifica_email(lista_clientes[indice_cliente].email) == TRUE) {
+			   
+      				printf("E-mail válido!\n");
+      			}
+   				else {
+   				
+      				printf("E-mail inválido!\n");
+      			}
+			  
+			  fflush(stdin);
               gets(lista_clientes[indice_cliente].email);
               printf("\n Introduza o seu telemovel: ");
               scanf("%d", &lista_clientes[indice_cliente].telemovel);
@@ -119,7 +162,7 @@ void inserir_clientes(){
               printf("\n O CLIENTE FOI ADICINADO COM SUCESSO.\n");
               
             }
-	
+		}
 }
 int main(int argc, char *argv[]) {
 	
