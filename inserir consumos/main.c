@@ -35,36 +35,36 @@
 	cliente lista_clientes[30]; 
 	int indice_cliente=0;
 	
-int pesquisar_consumos(int codigo_consumo, int indiceCliente) {
-	int l,u,i;
-      l = 0;
-      u = indice_cliente - 1;
-      i = (l + u) / 2;
-
-      while ((l <= u) && (lista_clientes[indiceCliente].consumo[i].codigo != codigo_consumo))
-      {
-            if(codigo_consumo < lista_clientes[indiceCliente].consumo[i].codigo)
-            {
-                  u = i - 1;
-            }
-            else
-            {
-                  l = i + 1;
-            }
-            i = (l + u) / 2;
-      }
-
-      if(l <= u)
-      {
-            return i;
-      }
-      else
-      {
-            return -1;
-      }
-	
-	
-}
+//		int pesquisar_consumos(int codigo_consumo, int indiceCliente) {
+//			int l,u,i;
+//		      l = 0;
+//		      u = indice_cliente - 1;
+//		      i = (l + u) / 2;
+//		
+//		      while ((l <= u) && (lista_clientes[indiceCliente].consumo[i].codigo != codigo_consumo))
+//		      {
+//		            if(codigo_consumo < lista_clientes[indiceCliente].consumo[i].codigo)
+//		            {
+//		                  u = i - 1;
+//		            }
+//		            else
+//		            {
+//		                  l = i + 1;
+//		            }
+//		            i = (l + u) / 2;
+//		      }
+//		
+//		      if(l <= u)
+//		      {
+//		            return i;
+//		      }
+//		      else
+//		      {
+//		            return -1;
+//		      }
+//			
+			
+//}
 
 void inserir_consumos(){
 
