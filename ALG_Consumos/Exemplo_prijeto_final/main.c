@@ -211,16 +211,23 @@ void menu_consultas_bd() {// este é o menu que será apresentado ao utilizador. a
 do
 {
 	system("cls");
-	printf("======================================\n");
-	printf(" Menu Consultas da Base de Dados\n");
-	printf("\n");
-	printf(" Escolha uma das seguintes opcoes: \n");
-	printf("\n");
-	printf(" 1 - Consulta \n");
-	printf(" 2 - Pesquisa \n");
-	printf(" 3 - Voltar Atras \n");
-	printf("\n");
-	printf("======================================\n");
+	printf("            %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("            %c Consultas da Base de Dados! %c",186,186);
+        printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 1 - Consulta                                         %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 2 - Pesquisa                                         %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 3 - Voltar Atras                                     %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
 	do {
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
