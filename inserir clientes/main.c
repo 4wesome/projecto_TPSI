@@ -71,16 +71,25 @@ int pesquisar_clientes(int codigo_cliente) {
 
 int Verifica_email(char email[50])
 {
-   int i;
-   for (i = 0; i <50; i++) {
-   	
-		
+   
+   	char * pch;
+   	pch=strchr(email,'@');
+	while (pch!=NULL)
+  {
+    	printf("%d",pch-email);
+	pch=strchr(pch+1,'@');	
+         }
          
-		
-		}
-     
+if ((pch-email) < 3 ) {
+    	system("cls");
+    	printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
+    	system("pause");
+		system("cls");
+		inserir_clientes();
+	
+    }
+    
 }
-
 
 
 void inserir_clientes(){
@@ -95,7 +104,7 @@ void inserir_clientes(){
           
           if (codigo_cliente > 19215000 || codigo_cliente < 19214000) { // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
           	system("cls");
-			printf("\n O CODIGO DO CLIENTE JA EXISTE!!!\n\n  por favor insira um codigo entre 19214000 e 19215000\n \n");
+			printf("\n O CODIGO DO CLIENTE NAO E VALIDO!!!\n\n  por favor insira um codigo entre 19214000 e 19215000\n \n");
 			system("pause");
 			system("cls");
 			inserir_clientes();
@@ -128,18 +137,10 @@ void inserir_clientes(){
               fflush(stdin);
               gets(lista_clientes[indice_cliente].morada);
               printf("\n Introduza o seu email: ");
-              
-			   if(Verifica_email(lista_clientes[indice_cliente].email) == TRUE) {
-			   
-      				printf("E-mail válido!\n");
-      			}
-   				else {
-   				
-      				printf("E-mail inválido!\n");
-      			}
-			  
-			  fflush(stdin);
+              fflush(stdin);
               gets(lista_clientes[indice_cliente].email);
+              Verifica_email(lista_clientes[indice_cliente].email);
+              
               printf("\n Introduza o seu telemovel: ");
               scanf("%d", &lista_clientes[indice_cliente].telemovel);
               printf("insira a data. primeiro insira o dia: ");
