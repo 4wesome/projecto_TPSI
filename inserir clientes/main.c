@@ -69,25 +69,44 @@ int pesquisar_clientes(int codigo_cliente) {
 }
 
 
-int Verifica_email(char email[50])
+int Verifica_email(char email[50]) // funcao para validar o email do cliente
 {
+   int posArroba = strchr(email, '@') - email + 1;
+   int posPonto;
    
-   	char * pch;
-   	pch=strchr(email,'@');
-	while (pch!=NULL)
-  {
-    	printf("%d",pch-email);
-	pch=strchr(pch+1,'@');	
-         }
-         
-if ((pch-email) < 3 ) {
-    	system("cls");
+   if(posArroba > 3)
+   {
+   		posPonto = strrchr(email, '.') - email + 1;
+   		if( !(strlen(email) - posPonto >= 2 && strlen(email) - posPonto <= 3) )
+   		{
+   			system("cls");
+    		printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
+    		system("pause");
+			system("cls");
+			inserir_clientes();
+   		}
+   		else
+   		{
+   			if(posPonto - posArroba < 3)
+   			{
+   				system("cls");
+    			printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
+    			system("pause");
+				system("cls");
+				inserir_clientes();
+   			}
+   		}
+   }
+   else
+   {
+   		system("cls");
     	printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
     	system("pause");
 		system("cls");
 		inserir_clientes();
-	
-    }
+   
+   }
+   
     
 }
 
@@ -136,23 +155,67 @@ void inserir_clientes(){
               printf("\n Introduza a morada: ");
               fflush(stdin);
               gets(lista_clientes[indice_cliente].morada);
-              printf("\n Introduza o seu email: ");
+              
+			  printf("\n Introduza o seu email: ");
               fflush(stdin);
               gets(lista_clientes[indice_cliente].email);
-              Verifica_email(lista_clientes[indice_cliente].email);
+              Verifica_email(lista_clientes[indice_cliente].email); //chama a funcao para verificar o email
               
               printf("\n Introduza o seu telemovel: ");
               scanf("%d", &lista_clientes[indice_cliente].telemovel);
-              printf("insira a data. primeiro insira o dia: ");
+              if (lista_clientes[indice_cliente].telemovel <910000000 || lista_clientes[indice_cliente].telemovel>969999999) {
+              	system("cls");
+             	printf("\n O NUMERO DE TELEMOVEL E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             	system("pause");
+             	system("cls");
+             	inserir_clientes();
+              }
+              
+              printf("\n insira a data. \n \t primeiro insira o dia: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
-              printf("\n agora insira o mes: ");
+              	if(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31) {
+              		system("cls");
+             		printf("\n O NUMERO DE TELEMOVEL E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
+              printf("\n \t agora insira o mes: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
-              printf("\n agora insira o ano: ");
+              	if(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12) {
+              		system("cls");
+             		printf("\n O MES DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
+              printf("\n \t agora insira o ano: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
-              printf("\n insira o seu BI: ");
-              scanf("%d", &lista_clientes[indice_cliente].bi);
+              	if(lista_clientes[indice_cliente].data_nascimento.ano<1900 || lista_clientes[indice_cliente].data_nascimento.ano> 2014) {
+              		system("cls");
+             		printf("\n O ANO DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
+			  printf("\n insira o seu BI: ");
+				scanf("%d", &lista_clientes[indice_cliente].bi);
+				if(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 ) {
+              		system("cls");
+             		printf("\n O SEU BI E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
               printf("\n insira o numero fiscal: ");
               scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
+              	if(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999) {
+              		system("cls");
+             		printf("\n O SEU NIF E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
               
               
               
