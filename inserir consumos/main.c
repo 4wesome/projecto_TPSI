@@ -116,11 +116,31 @@ void inserir_consumos(){
           if (lista_clientes[i].indice_consumo < 100)
           {
           
-			  if (i != -1) // Verifico se o código do cliente já existe
+          	//Final aqui fica i != -1
+			  if (i == -1) // Verifico se o código do cliente já existe
 		      {
 		         system("cls");
-		         printf("\n Introduza o codigo do consumo: ");
-		      	 scanf("%d", &cod_consumo);
+		         
+		         
+		         
+		         
+		         do
+		         {
+		         	printf("\n Introduza o codigo do consumo: ");
+		         	scanf("%d", &cod_consumo);
+		         	if (cod_consumo > 2921000 || cod_consumo < 2920000) 
+					{ // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
+						printf("\n O CODIGO DO CONSUMO NAO E VALIDO!!!\n\n  por favor insira um codigo entre 2920000 e 2921000\n \n");
+          			}
+		         }while(cod_consumo > 2921000 || cod_consumo < 2920000);
+		         
+		         
+		         
+		         
+		      	 
+		      	 
+		    
+		      	 
 		      	 a = pesquisar_consumos(lista_clientes[i].indice_consumo, cod_consumo);
 		      	 
 		      	 if(lista_clientes[i].estado == 1){ //1 e ativo 0 e inativo
