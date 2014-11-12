@@ -40,6 +40,27 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 
 //Funcoes declaradas no topo 
+
+void guardar_clientes() {
+	FILE *fp;
+
+
+fp = fopen("dados.bin", "w");
+if(!fp)
+{
+           printf("Erro na abertura do ficheiro.\n");
+           exit(0);
+}
+else
+{
+		fwrite(lista_clientes, sizeof(cliente), indice_cliente, fp);
+		  fclose(fp); 
+    printf("Gravado com sucesso.\n");
+}
+fclose(fp);
+
+}
+
 int pesquisar_clientes(int codigo_cliente) {
 	int l,u,i;
       l = 0;
@@ -353,19 +374,39 @@ void inserir_consumos(){
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o codigo do cliente: ");
           scanf("%d", &codigo_cliente);
-          i = pesquisar_clientes(codigo_cliente); //chama a funcao pesquisar clientes para varificar o codigo do cliente
+          i = pesquisar_clientes(codigo_cliente);
 
-          if (lista_clientes[i].indice_consumo < 100) //so e permitido avancar se oliente tiver menos de 100 consumos
+          if (lista_clientes[i].indice_consumo < 100)
           {
           
-			  if (i != -1) // Verifico se o código do cliente já existe
+          	//Final aqui fica i != -1
+			  if (i == -1) // Verifico se o código do cliente já existe
 		      {
 		         system("cls");
-		         printf("\n Introduza o codigo do consumo: ");
-		      	 scanf("%d", &cod_consumo);
+		         
+		         
+		         
+		         
+		         do
+		         {
+		         	printf("\n Introduza o codigo do consumo: ");
+		         	scanf("%d", &cod_consumo);
+		         	if (cod_consumo > 2921000 || cod_consumo < 2920000) 
+					{ // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
+						printf("\n O CODIGO DO CONSUMO NAO E VALIDO!!!\n\n  por favor insira um codigo entre 2920000 e 2921000\n \n");
+          			}
+		         }while(cod_consumo > 2921000 || cod_consumo < 2920000);
+		         
+		         
+		         
+		         
+		      	 
+		      	 
+		    
+		      	 
 		      	 a = pesquisar_consumos(lista_clientes[i].indice_consumo, cod_consumo);
 		      	 
-		      	 if(lista_clientes[i].estado == 1){ // 1 e ativo 0 e inativo
+		      	 if(lista_clientes[i].estado == 1){ //1 e ativo 0 e inativo
 		      	 		
 						if (a != -1) // Verifica-se se o código do consumo já existe
 						{
@@ -389,11 +430,11 @@ void inserir_consumos(){
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano);
 						
 						existe = 0;
-						for(m=0; m <= lista_clientes[i].indice_consumo; m++) //verifica se o cliente ja tem um consumo adicionado opara o mes e ano pretendido
+						for(m=0; m <= lista_clientes[i].indice_consumo; m++)
 							{
 								if(lista_clientes[i].consumo[m].mes == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].mes && lista_clientes[i].consumo[m].ano == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].ano ){
 									
-									printf("\n Ja foi inserido um consumo para o mes e ano selecionados \n");
+									printf("\n Ja foi inserido um consumo para o mes e ano selecionados ");
 									existe = 1;
 								}
 							}
@@ -410,7 +451,6 @@ void inserir_consumos(){
 						
 						lista_clientes[i].consumo[lista_clientes[i].indice_consumo].preco = preco_total;
 						
-						//preco a pagar e apresentado 
 						printf("O preco total a pagar e de : %f \n", preco_total);
 						
 						// Incremento o número actual de consumo em +1
@@ -427,20 +467,15 @@ void inserir_consumos(){
 				   }
 		   	 					   
 		      } else {
-		      	printf("\n  ERRO!! O Codigo de Cliente nao existe \n");
+		      	printf("\n  ERRO!! O Codigo de Cliente nao existe");
 		      }
           
           } else {
-          		printf("\n  O cliente selecionado ja atingiu o limite de consumos \n");          	
+          		printf("\n  O cliente selecionado ja atingiu o limite de consumos");          	
           }
-          
-          system("pause");
-
-          
+                   
 	
 }
-
-            
             
 void menu_gestao_consumos() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os consumos (adicionar, editar, remover, e listar)
 	int escolha;
@@ -498,128 +533,178 @@ while (escolha != 5);
 	
 }
 
+void remover_clientes() {
+	int codigo_cliente, i, a, op, j, z,flag_remov;
+      
+      if (indice_cliente == 0) // Verifico se existem docentes para remover
+      {
+         printf("\n NAO EXISTEM CLIENTES!!!\n\n ");
+         system("pause");
+         system("cls");
+      }
+      else
+      {
+          printf("_________________________________________________________________\n");
+          printf("\n     REMOVER CLIENTES");
+          printf("\n_________________________________________________________________\n");
+          printf("\n_________________________________________________________________\n");
+          for(i = 0; i< indice_cliente ; i++)
+          {
+                printf("\n Codigo:%d     Numero BI:%d      Nome:%s", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
+          }
+          printf("\n_________________________________________________________________\n");
+          printf("\n Introduza o codigo do docente: ");
+          scanf("%d", &codigo_cliente);
+          i = pesquisar_clientes(codigo_cliente);
+          if (i == -1) // Pesquiso se o docente existe
+          {
+             system("cls");
+             printf("\n O CODIGO DO CLIENTE NAO EXISTE!!!\n\n Tente novamente.\n\n ");
+             system("pause");
+             system("cls");
+          }
+          else
+          {
+              system("cls");
+
+			  // Removo o docente puxando os docentes seguintes 1 posição para traz
+              for(a = i; a < indice_cliente - 1;a++)
+              {
+                    lista_clientes[a] = lista_clientes[a + 1];
+              }
+              // Decremento o número actual de docentes em -1
+              indice_cliente--;
+              system("cls");
+              printf("\n O DOCENTE FOI REMOVIDO COM SUCESSO.\n");
+          }
+      }
+	
+	
+}
 
 void inserir_clientes(){
 
-			int op, i, codigo_cliente;
-
-				printf("_________________________________________________________________\n");
-				printf("\n     ADICIONAR CLIENTE");
-				printf("\n_________________________________________________________________\n");
-				printf("\n Introduza o codigo do cliente: ");
-				scanf("%d", &codigo_cliente);
-
-				if (codigo_cliente > 19215000 || codigo_cliente < 19214000) { // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
-					system("cls");
-					printf("\n O CODIGO DO CLIENTE NAO E VALIDO!!!\n\n  Por favor insira um codigo entre 19214000 e 19215000\n \n");
-					system("pause");
-					system("cls");
-					inserir_clientes();
-				}
-
-				else {
-
-
-					i = pesquisar_clientes(codigo_cliente);
+	int op, i, codigo_cliente;
 	
+		printf("_________________________________________________________________\n");
+          printf("\n     ADICIONAR CLIENTE");
+          printf("\n_________________________________________________________________\n");
+          printf("\n Introduza o codigo do cliente: ");
+          scanf("%d", &codigo_cliente);
+          
+          if (codigo_cliente > 19215000 || codigo_cliente < 19214000) { // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
+          	system("cls");
+			printf("\n O CODIGO DO CLIENTE NAO E VALIDO!!!\n\n  por favor insira um codigo entre 19214000 e 19215000\n \n");
+			system("pause");
+			system("cls");
+			inserir_clientes();
+          }
+          
+         else {
+         
+          
+        	i = pesquisar_clientes(codigo_cliente);
+				
 
-				if (i != -1) // Verifico se o código do cliente já existe
-					{
-					 system("cls");
-					 printf("\n O CODIGO DO CLIENTE JA EXISTE!!!\n\n Tente novamente.\n\n ");
-					 system("pause");
-					 system("cls");
-					 inserir_clientes();
-					}
-				else
-				{
-					lista_clientes[indice_cliente].codigo = codigo_cliente;
-					
-					
-					
-					printf("\n Introduza o seu nome: ");
-					fflush(stdin);
-					gets(lista_clientes[indice_cliente].nome);
-					printf("\n Introduza a morada: ");
-					fflush(stdin);
-					gets(lista_clientes[indice_cliente].morada);
-					
-					printf("\n Introduza o seu email: ");
-					fflush(stdin);
-					gets(lista_clientes[indice_cliente].email);
-					Verifica_email(lista_clientes[indice_cliente].email); //chama a funcao para verificar o email
-					
-					printf("\n Introduza o seu  numero telemovel: ");
-					scanf("%d", &lista_clientes[indice_cliente].telemovel);
-  				if (lista_clientes[indice_cliente].telemovel <910000000 || lista_clientes[indice_cliente].telemovel>969999999) {
-				  	system("cls");
-				 	printf("\n O NUMERO DE TELEMOVEL E INVALIDO!!!\n\n Tente novamente.\n\n ");
-				 	system("pause");
-				 	system("cls");
-				 	inserir_clientes();
-  				}
-  
-					printf("\n Data de Nascimento \n \t Introduza o dia: ");
-					scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
-					
-  				if(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31) {
-					system("cls");
-					printf("\n O NUMERO DE TELEMOVEL E INVALIDO!!!\n\n Tente novamente.\n\n ");
-					system("pause");
-					system("cls");
-					inserir_clientes();
-  				}
-					printf("\n \t Introduza o mes: ");
-					scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
-  				if(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12) {
-			  		system("cls");
-			 		printf("\n O MES DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
-			 		system("pause");
-			 		system("cls");
-			 		inserir_clientes();
-			  	}
-					printf("\n \t Introduza o ano: ");
-					scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
-					
-  				if(lista_clientes[indice_cliente].data_nascimento.ano<1900 || lista_clientes[indice_cliente].data_nascimento.ano> 2014) {
-			  		system("cls");
-			 		printf("\n O ANO DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
-			 		system("pause");
-			 		system("cls");
-			 		inserir_clientes();
-				}
-					printf("\n Introduza o numero de BI: ");
-					scanf("%d", &lista_clientes[indice_cliente].bi);
-					
+          if (i != -1) // Verifico se o código do cliente já existe
+          {
+             system("cls");
+             printf("\n O CODIGO DO CLIENTE JA EXISTE!!!\n\n Tente novamente.\n\n ");
+             system("pause");
+             system("cls");
+             inserir_clientes();
+          }
+          else
+          {
+              lista_clientes[indice_cliente].codigo = codigo_cliente;
+              
+			  
+			  
+              printf("\n Introduza o seu nome: ");
+              fflush(stdin);
+              gets(lista_clientes[indice_cliente].nome);
+              printf("\n Introduza a morada: ");
+              fflush(stdin);
+              gets(lista_clientes[indice_cliente].morada);
+              
+			  printf("\n Introduza o seu email: ");
+              fflush(stdin);
+              gets(lista_clientes[indice_cliente].email);
+              do {
+            
+              Verifica_email(lista_clientes[indice_cliente].email); //chama a funcao para verificar o email
+              }
+              while (Verifica_email(lista_clientes[indice_cliente].email) == 1);
+              
+              printf("\n Introduza o seu telemovel: ");
+              scanf("%d", &lista_clientes[indice_cliente].telemovel);
+              if (lista_clientes[indice_cliente].telemovel <910000000 || lista_clientes[indice_cliente].telemovel>969999999) {
+              	system("cls");
+             	printf("\n O NUMERO DE TELEMOVEL E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             	system("pause");
+             	system("cls");
+             	inserir_clientes();
+              }
+              
+              printf("\n insira a data. \n \t primeiro insira o dia: ");
+              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
+              	if(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31) {
+              		system("cls");
+             		printf("\n O DIA DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
+              printf("\n \t agora insira o mes: ");
+              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
+              	if(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12) {
+              		system("cls");
+             		printf("\n O MES DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
+              printf("\n \t agora insira o ano: ");
+              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
+              	if(lista_clientes[indice_cliente].data_nascimento.ano<1900 || lista_clientes[indice_cliente].data_nascimento.ano> 2014) {
+              		system("cls");
+             		printf("\n O ANO DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
+			  printf("\n insira o seu BI: ");
+				scanf("%d", &lista_clientes[indice_cliente].bi);
 				if(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 ) {
-			  		system("cls");
-			 		printf("\n O SEU BI E INVALIDO!!!\n\n Tente novamente.\n\n ");
-			 		system("pause");
-			 		system("cls");
-			 		inserir_clientes();
-  				}
-					printf("\n Introduza o numero de Identificacao fiscal: ");
-					scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
-					
-  				if(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999) {
-			  		system("cls");
-			 		printf("\n O SEU NIF E INVALIDO!!!\n\n Tente novamente.\n\n ");
-			 		system("pause");
-			 		system("cls");
-			 		inserir_clientes();
-  				}
-  
-  
-  
-  
-					// Incremento o número actual de clientes em +1
-					indice_cliente++;
-					system("cls");
-					printf("\n O CLIENTE FOI ADICINADO COM SUCESSO.\n");
-					system("pause");
-  
-				}
-			}
+              		system("cls");
+             		printf("\n O SEU BI E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
+              printf("\n insira o numero fiscal: ");
+              scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
+              	if(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999) {
+              		system("cls");
+             		printf("\n O SEU NIF E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		inserir_clientes();
+              	}
+              
+              
+              
+              
+              // Incremento o número actual de clientes em +1
+              indice_cliente++;
+              system("cls");
+              printf("\n O CLIENTE FOI ADICINADO COM SUCESSO.\n");
+              system("pause");
+              system("cls");
+              
+              
+            }
+		}
 }
 
 void menu_gestao_clientes() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
