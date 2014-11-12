@@ -750,7 +750,7 @@ void inserir_clientes(){
 
 void editar_clientes() {
 	
-int op, i, codigo_cliente;
+int op, i, codigo_cliente, a, j, z,flag_remov;
 	
 		if (indice_cliente == 0) // Verifico se existem docentes para editar
       {
@@ -784,7 +784,12 @@ int op, i, codigo_cliente;
           
       	 
       	 else {
-		   
+		   		for(a = i; a < indice_cliente ;a++) //elemina o cliente anterior
+              {
+                    lista_clientes[a] = lista_clientes[a + 1];
+              }
+              indice_cliente--;
+              
           
               lista_clientes[indice_cliente].codigo = codigo_cliente;
               	system("cls");
