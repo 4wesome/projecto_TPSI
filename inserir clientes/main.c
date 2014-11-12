@@ -83,7 +83,9 @@ int Verifica_email(char email[50]) // funcao para validar o email do cliente
     		printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
     		system("pause");
 			system("cls");
-			inserir_clientes();
+			return 1;
+		
+			
    		}
    		else
    		{
@@ -93,7 +95,8 @@ int Verifica_email(char email[50]) // funcao para validar o email do cliente
     			printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
     			system("pause");
 				system("cls");
-				inserir_clientes();
+				return 1;
+				
    			}
    		}
    }
@@ -103,13 +106,33 @@ int Verifica_email(char email[50]) // funcao para validar o email do cliente
     	printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
     	system("pause");
 		system("cls");
-		inserir_clientes();
+		return 1;
+		
    
    }
    
     
 }
 
+void guardar_clientes() {
+	FILE *fp;
+
+
+fp = fopen("dados.bin", "w");
+if(!fp)
+{
+           printf("Erro na abertura do ficheiro.\n");
+           exit(0);
+}
+else
+{
+		fwrite(lista_clientes, sizeof(cliente), indice_cliente, fp);
+		  fclose(fp); 
+    printf("Gravado com sucesso.\n");
+}
+fclose(fp);
+
+}
 
 void inserir_clientes(){
 
@@ -159,7 +182,11 @@ void inserir_clientes(){
 			  printf("\n Introduza o seu email: ");
               fflush(stdin);
               gets(lista_clientes[indice_cliente].email);
+              do {
+            
               Verifica_email(lista_clientes[indice_cliente].email); //chama a funcao para verificar o email
+              }
+              while (Verifica_email(lista_clientes[indice_cliente].email) == 1);
               
               printf("\n Introduza o seu telemovel: ");
               scanf("%d", &lista_clientes[indice_cliente].telemovel);
@@ -175,7 +202,7 @@ void inserir_clientes(){
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
               	if(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31) {
               		system("cls");
-             		printf("\n O NUMERO DE TELEMOVEL E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		printf("\n O DIA DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
              		inserir_clientes();
@@ -224,13 +251,67 @@ void inserir_clientes(){
               indice_cliente++;
               system("cls");
               printf("\n O CLIENTE FOI ADICINADO COM SUCESSO.\n");
+              system("pause");
+              system("cls");
+              
               
             }
 		}
 }
-int main(int argc, char *argv[]) {
+
+void remover_clientes() {
+	int codigo_cliente, i, a, op, j, z,flag_remov;
+      
+      if (indice_cliente == 0) // Verifico se existem docentes para remover
+      {
+         printf("\n NAO EXISTEM CLIENTES!!!\n\n ");
+         system("pause");
+         system("cls");
+      }
+      else
+      {
+          printf("_________________________________________________________________\n");
+          printf("\n     REMOVER CLIENTES");
+          printf("\n_________________________________________________________________\n");
+          printf("\n_________________________________________________________________\n");
+          for(i = 0; i< indice_cliente ; i++)
+          {
+                printf("\n Codigo:%d     Numero BI:%d      Nome:%s", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
+          }
+          printf("\n_________________________________________________________________\n");
+          printf("\n Introduza o codigo do docente: ");
+          scanf("%d", &codigo_cliente);
+          i = pesquisar_clientes(codigo_cliente);
+          if (i == -1) // Pesquiso se o docente existe
+          {
+             system("cls");
+             printf("\n O CODIGO DO CLIENTE NAO EXISTE!!!\n\n Tente novamente.\n\n ");
+             system("pause");
+             system("cls");
+          }
+          else
+          {
+              system("cls");
+
+			  // Removo o docente puxando os docentes seguintes 1 posição para traz
+              for(a = i; a < indice_cliente - 1;a++)
+              {
+                    lista_clientes[a] = lista_clientes[a + 1];
+              }
+              // Decremento o número actual de docentes em -1
+              indice_cliente--;
+              system("cls");
+              printf("\n O DOCENTE FOI REMOVIDO COM SUCESSO.\n");
+          }
+      }
 	
+	
+}
+int main(int argc, char *argv[]) {
+
+
 inserir_clientes();
+guardar_clientes();
 
 return 0;
 
