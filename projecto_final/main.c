@@ -224,7 +224,7 @@ printf("_________________________________________________________________\n");
        if (a == 0)
        {
                                printf("Nome:%c \n ",lista_clientes[x].nome);
-                               printf("codigo de cliente: %d\n",lista_clientes[x].codigo);
+                               printf("Codigo de Cliente: %d\n",lista_clientes[x].codigo);
                                printf("Morada: %c \n",lista_clientes[x].morada);
                                printf("Email: %c \n",lista_clientes[x].email);
                                printf("Telemovel: %c \n",lista_clientes[x].telemovel);
