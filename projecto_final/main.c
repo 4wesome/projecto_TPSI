@@ -846,6 +846,20 @@ void inserir_clientes(){
               }
               while(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999);
               
+              do{
+			
+              printf("\n Introduza o seu estado: ");
+              scanf("%d", &lista_clientes[indice_cliente].estado);
+              	if(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1) {
+              		system("cls");
+             		printf("\n O SEU ESTADO E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		
+              	}
+              }
+              while(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1);
+              
               
               
               
@@ -859,7 +873,24 @@ void inserir_clientes(){
               
             }
 		}
+void listar_clientes() {
+int i, op;
 
+do {
+
+	printf("_________________________________________________________________\n");
+          printf("\n     CLIENTES");
+          printf("\n_________________________________________________________________\n");
+          printf("\n_________________________________________________________________\n");
+          for(i = 0; i< indice_cliente ; i++)
+          {
+                printf("\n Codigo:%d     Numero BI:%d      Nome:%s      Morada:%s      Email:%s      Telemovel:%d      Data Nascimento:%d      Num Fiscal:%d      Estado:%d", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome, lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel, lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
+          }
+          printf("\n\n para sair prima a tecla 5.\n");
+          scanf("%d", &op);
+    }
+    while(op!=5);
+}
 
 void editar_clientes() {
 	
@@ -1009,7 +1040,19 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
               }
               while(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999);
               
-              
+               do{
+			
+              printf("\n Introduza o seu estado: ");
+              scanf("%d", &lista_clientes[indice_cliente].estado);
+              	if(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1) {
+              		system("cls");
+             		printf("\n O SEU ESTADO E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             		system("pause");
+             		system("cls");
+             		
+              	}
+              }
+              while(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1);
               
               
               // Incremento o número actual de clientes em +1
@@ -1063,7 +1106,7 @@ do
 		break;
 	case 4:
 		system("cls");
-		//listar_cliente();
+		listar_clientes();
 		break;
 	case 5:
 		system("cls");
