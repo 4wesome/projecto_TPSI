@@ -384,7 +384,7 @@ void inserir_consumos(){
           {
           
           	//Final aqui fica i != -1
-			  if (i == -1) // Verifico se o código do cliente já existe
+			  if (i != -1) // Verifico se o código do cliente já existe
 		      {
 		         system("cls");
 		         
@@ -400,13 +400,6 @@ void inserir_consumos(){
 						printf("\n O CODIGO DO CONSUMO NAO E VALIDO!!!\n\n  por favor insira um codigo entre 2920000 e 2921000\n \n");
           			}
 		         }while(cod_consumo > 2921000 || cod_consumo < 2920000);
-		         
-		         
-		         
-		         
-		      	 
-		      	 
-		    
 		      	 
 		      	 a = pesquisar_consumos(lista_clientes[i].indice_consumo, cod_consumo);
 		      	 
@@ -477,7 +470,10 @@ void inserir_consumos(){
           } else {
           		printf("\n  O cliente selecionado ja atingiu o limite de consumos");          	
           }
-                   
+          
+          
+
+          
 	
 }
             
@@ -670,7 +666,7 @@ void inserir_clientes(){
               
               do {
 			  
-              printf("\n insira a data. \n \t primeiro insira o dia: ");
+              printf("\n Introduza a data de nascimento:  \n \t Dia: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
               	if(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31) {
               		system("cls");
@@ -682,7 +678,7 @@ void inserir_clientes(){
               while(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31);
             do {
 			
-              printf("\n \t agora insira o mes: ");
+              printf("\n \t Mes: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
               	if(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12) {
               		system("cls");
@@ -695,7 +691,7 @@ void inserir_clientes(){
 			  
 			  do {
 			  
-              printf("\n \t agora insira o ano: ");
+              printf("\n \t Ano: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
               	if(lista_clientes[indice_cliente].data_nascimento.ano<1900 || lista_clientes[indice_cliente].data_nascimento.ano> 2014) {
               		system("cls");
@@ -708,7 +704,7 @@ void inserir_clientes(){
              
              do{
 			 
-			  printf("\n insira o seu BI: ");
+			  printf("\n Introduza Nr BI: ");
 				scanf("%d", &lista_clientes[indice_cliente].bi);
 				if(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 ) {
               		system("cls");
@@ -721,7 +717,7 @@ void inserir_clientes(){
         	while(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 );
         	do{
 			
-              printf("\n insira o numero fiscal: ");
+              printf("\n Introduza NIF: ");
               scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
               	if(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999) {
               		system("cls");
@@ -833,7 +829,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
               
               do {
 			  
-              printf("\n insira a data. \n \t primeiro insira o dia: ");
+              printf("\n Introduza a data de nascimento \n \t Dia: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
               	if(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31) {
               		system("cls");
@@ -845,7 +841,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
               while(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31);
             do {
 			
-              printf("\n \t agora insira o mes: ");
+              printf("\n \t Mes: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
               	if(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12) {
               		system("cls");
@@ -858,7 +854,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
 			  
 			  do {
 			  
-              printf("\n \t agora insira o ano: ");
+              printf("\n \t Ano: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
               	if(lista_clientes[indice_cliente].data_nascimento.ano<1900 || lista_clientes[indice_cliente].data_nascimento.ano> 2014) {
               		system("cls");
@@ -871,7 +867,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
              
              do{
 			 
-			  printf("\n insira o seu BI: ");
+			  printf("\n Introduza o Nr BI: ");
 				scanf("%d", &lista_clientes[indice_cliente].bi);
 				if(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 ) {
               		system("cls");
@@ -884,7 +880,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
         	while(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 );
         	do{
 			
-              printf("\n insira o numero fiscal: ");
+              printf("\n Introduza o NIF: ");
               scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
               	if(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999) {
               		system("cls");
