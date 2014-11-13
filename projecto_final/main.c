@@ -133,38 +133,24 @@ int Verifica_email(char email[50]) // funcao para validar o email do cliente
    		posPonto = strrchr(email, '.') - email + 1;
    		if( !(strlen(email) - posPonto >= 2 && strlen(email) - posPonto <= 3) )
    		{
-   			system("cls");
-    		printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
-    		system("pause");
-			system("cls");
 			return 1;
-		
-			
    		}
    		else
    		{
    			if(posPonto - posArroba < 3)
    			{
-   				system("cls");
-    			printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
-    			system("pause");
-				system("cls");
-				return 1;
-				
+				return 1;	
+   			}
+   			else
+   			{
+   				return 0;
    			}
    		}
    }
    else
    {
-   		system("cls");
-    	printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
-    	system("pause");
-		system("cls");
 		return 1;
-		
-   
    }
-   
     
 }
 
@@ -473,8 +459,11 @@ void inserir_consumos(){
           			}
 		         }while(cod_consumo > 2921000 || cod_consumo < 2920000);
 		      	 
-		      	 a = pesquisar_consumos(lista_clientes[i].indice_consumo, cod_consumo);
+		      	 printf("frente");
+		      	 a = pesquisar_consumos(cod_consumo, lista_clientes[i].indice_consumo);
 		      	 
+		      	 printf("Valor de a:%d", a);
+		      	 system("pause");
 		      	 if(lista_clientes[i].estado == 1){ //1 e ativo 0 e inativo
 		      	 		
 						if (a != -1) // Verifica-se se o código do consumo já existe
@@ -533,14 +522,17 @@ void inserir_consumos(){
 				   } else {
 				   		system("cls");
 						printf("\n Nao podem ser adicionados consumos ao cliente caloteiro :D .\n");
+						system("pause");
 				   }
 		   	 					   
 		      } else {
 		      	printf("\n  ERRO!! O Codigo de Cliente nao existe");
+		      	system("pause");
 		      }
           
           } else {
-          		printf("\n  O cliente selecionado ja atingiu o limite de consumos");          	
+          		printf("\n  O cliente selecionado ja atingiu o limite de consumos");
+				system("pause");          	
           }
           
           
@@ -657,7 +649,7 @@ void remover_clientes() {
 
 void inserir_clientes(){
 
-	int op, i, codigo_cliente;
+	int op, i, codigo_cliente, vEmail = 0;
 	
 		
          
@@ -709,16 +701,23 @@ void inserir_clientes(){
               printf("\n Introduza a morada: ");
               fflush(stdin);
               gets(lista_clientes[indice_cliente].morada);
-              
-			  printf("\n Introduza o seu email: ");
-              fflush(stdin);
-              gets(lista_clientes[indice_cliente].email);
+  
               
             do {
 			
-              Verifica_email(lista_clientes[indice_cliente].email); //chama a funcao para verificar o email
-          		}
-          	while(Verifica_email(lista_clientes[indice_cliente].email) == 1);
+			            
+			  printf("\n Introduza o seu email: ");
+              fflush(stdin);
+              gets(lista_clientes[indice_cliente].email);
+			
+              	vEmail = Verifica_email(lista_clientes[indice_cliente].email); //chama a funcao para verificar o email
+              
+              	if(vEmail == 1)
+              	{
+    				printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
+              	}
+          	}
+          	while(vEmail == 1);
               
               
              do {
