@@ -1,4 +1,4 @@
-void pesquisa_codigo(){ 
+void pesquisa_nome(){ 
 
 int x,a;
 char nome_cliente_procura[100];
