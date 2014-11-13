@@ -133,38 +133,24 @@ int Verifica_email(char email[50]) // funcao para validar o email do cliente
    		posPonto = strrchr(email, '.') - email + 1;
    		if( !(strlen(email) - posPonto >= 2 && strlen(email) - posPonto <= 3) )
    		{
-   			system("cls");
-    		printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
-    		system("pause");
-			system("cls");
 			return 1;
-		
-			
    		}
    		else
    		{
    			if(posPonto - posArroba < 3)
    			{
-   				system("cls");
-    			printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
-    			system("pause");
-				system("cls");
-				return 1;
-				
+				return 1;	
+   			}
+   			else
+   			{
+   				return 0;
    			}
    		}
    }
    else
    {
-   		system("cls");
-    	printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
-    	system("pause");
-		system("cls");
 		return 1;
-		
-   
    }
-   
     
 }
 
@@ -216,6 +202,52 @@ while (escolha != 3);
 	
 }
 
+
+
+
+
+void pesquisa_nome(){ 
+
+int x,a,i;
+char nome_cliente_procura[100];
+char nome_cliente[100];
+printf("_________________________________________________________________\n");
+          printf("\n     Pesquisa por Nome");
+          printf("\n_________________________________________________________________\n");
+          printf("\n Introduza o nome do cliente: ");
+          scanf("%c", &nome_cliente);
+          
+	for (x = 0; x <= indice_cliente ; x++)
+	{
+        a = strcmp(nome_cliente_procura,lista_clientes[x].nome);
+
+       if (a == 0)
+       {
+                               printf("Nome:%c \n ",lista_clientes[x].nome);
+                               printf("Codigo de Cliente: %d\n",lista_clientes[x].codigo);
+                               printf("Morada: %c \n",lista_clientes[x].morada);
+                               printf("Email: %c \n",lista_clientes[x].email);
+                               printf("Telemovel: %c \n",lista_clientes[x].telemovel);
+                               printf("Data de nascimento: %c/%c/%c \n",lista_clientes[x].data_nascimento.dia,lista_clientes[x].data_nascimento.mes,lista_clientes[x].data_nascimento.ano);
+                               printf("Cartao de cidadao: %c \n",lista_clientes[x].bi);
+                               printf("Nif: %c \n",lista_clientes[x].num_fiscal);
+                               printf("Consumos");
+                               printf("Codigo de consumos   Mes    Ano     Consumo");
+                               for(i=0;i<=lista_clientes[x].indice_consumo;i++){
+                               printf("%d %d %d %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo);
+                                
+                                
+                                }             
+                                }
+                                                   else {
+                                     printf("Nome de cliente nao existe ou nome de cliente mal escrito");
+                                     }                                   
+                               }
+                               }
+
+
+
+
 void menu_pesquisas() {// este é o menu que será apresentado ao utilizador. aqui ele ira pesquisar por varios parametros
 	int escolha;
 
@@ -247,7 +279,7 @@ do
 		break;
 	case 2:
 		system("cls");
-		//editar_cliente();
+		pesquisa_nome();
 		break;
 	case 3:
 		system("cls");
@@ -271,6 +303,78 @@ do
 while (escolha != 5);
 	
 }
+
+
+
+
+
+
+void consulta_consumos(){
+
+int x, i, n=1, soma_consumos; // soma_consumos é a soma de todos os consumos de um cliente
+float tab_cliente_totconsumo[30][2]; //tabela temporaria com os valores <codigo cliente> e <soma de consumos>
+float swap_consulta;
+float swap_cod_cliente;
+int h;
+for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clientes, desde 0 ate ao número actual de clientes na base de dados
+	{
+		
+	soma_consumos = 0;	
+		
+	tab_cliente_totconsumo[x][0] = (float)lista_clientes[x].codigo;
+	
+
+	for (i=0; i <= lista_clientes[x].indice_consumo; i++) // Esta funcao vai calcular a soma de todos os consumos de um cliente especifico (x)
+		{
+			for(h=0;h<=lista_clientes[x].indice_consumo;h++);
+			{
+			
+			soma_consumos = soma_consumos + lista_clientes[x].consumo[i].consumo;
+        }
+		}
+		
+	tab_cliente_totconsumo[x][1] = soma_consumos;
+	
+	} // no final deste FOR, o ARRAY tab_cliente_totconsumo[30][2] vai estar totalmente preenchido, com a primeira coluna mostrando o código de cliente e a segunda o somatório de todos os consumos.
+	
+	//////////////////////////////////////
+	
+	for(x = 0; x < indice_cliente - 2 ; x++) // função para ordenar os valores do ARRAY tab_cliente_totconsumo[30][2], de forma decrescente.
+		{
+			for(i = 0; i < indice_cliente - 2 - i; i--)
+				{		
+					if (tab_cliente_totconsumo[0][1] < tab_cliente_totconsumo[x+1][1])
+						{
+							swap_consulta = tab_cliente_totconsumo[0][1];
+							swap_cod_cliente = tab_cliente_totconsumo[0][0];
+							
+							tab_cliente_totconsumo[0][1] = tab_cliente_totconsumo[x+1][1];
+							tab_cliente_totconsumo[0][0] = tab_cliente_totconsumo[x+1][0];
+							
+							tab_cliente_totconsumo[x+1][1] = swap_consulta;
+							tab_cliente_totconsumo[x+1][0] = swap_cod_cliente;
+							
+							
+					}
+				}
+		}
+
+	//////////////////////////////
+
+	printf("Código Cliente | Consumos \n");
+	printf("\n");	
+
+		for (x = 0; x <= indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por consumo.
+		{
+				printf("%f | %f \n", tab_cliente_totconsumo[x][0],tab_cliente_totconsumo[x][1]);
+		}
+
+	
+}
+
+
+
+
 
 void menu_consultas() {// este é o menu que será apresentado ao utilizador. aqui consulta clientes por consumo e os que nao pagaram
 	int escolha;
@@ -297,7 +401,7 @@ do
 	switch (escolha) {
 	case 1:
 		system("cls");
-		//novo_cliente();
+		consulta_consumos();
 		break;
 	case 2:
 		system("cls");
@@ -384,7 +488,7 @@ void inserir_consumos(){
           {
           
           	//Final aqui fica i != -1
-			  if (i == -1) // Verifico se o código do cliente já existe
+			  if (i != -1) // Verifico se o código do cliente já existe
 		      {
 		         system("cls");
 		         
@@ -400,16 +504,12 @@ void inserir_consumos(){
 						printf("\n O CODIGO DO CONSUMO NAO E VALIDO!!!\n\n  por favor insira um codigo entre 2920000 e 2921000\n \n");
           			}
 		         }while(cod_consumo > 2921000 || cod_consumo < 2920000);
-		         
-		         
-		         
-		         
 		      	 
+		      	 printf("frente");
+		      	 a = pesquisar_consumos(cod_consumo, lista_clientes[i].indice_consumo);
 		      	 
-		    
-		      	 
-		      	 a = pesquisar_consumos(lista_clientes[i].indice_consumo, cod_consumo);
-		      	 
+		      	 printf("Valor de a:%d", a);
+		      	 system("pause");
 		      	 if(lista_clientes[i].estado == 1){ //1 e ativo 0 e inativo
 		      	 		
 						if (a != -1) // Verifica-se se o código do consumo já existe
@@ -468,16 +568,22 @@ void inserir_consumos(){
 				   } else {
 				   		system("cls");
 						printf("\n Nao podem ser adicionados consumos ao cliente caloteiro :D .\n");
+						system("pause");
 				   }
 		   	 					   
 		      } else {
 		      	printf("\n  ERRO!! O Codigo de Cliente nao existe");
+		      	system("pause");
 		      }
           
           } else {
-          		printf("\n  O cliente selecionado ja atingiu o limite de consumos");          	
+          		printf("\n  O cliente selecionado ja atingiu o limite de consumos");
+				system("pause");          	
           }
-                   
+          
+          
+
+          
 	
 }
             
@@ -589,7 +695,7 @@ void remover_clientes() {
 
 void inserir_clientes(){
 
-	int op, i, codigo_cliente;
+	int op, i, codigo_cliente, vEmail = 0;
 	
 		
          
@@ -641,16 +747,23 @@ void inserir_clientes(){
               printf("\n Introduza a morada: ");
               fflush(stdin);
               gets(lista_clientes[indice_cliente].morada);
-              
-			  printf("\n Introduza o seu email: ");
-              fflush(stdin);
-              gets(lista_clientes[indice_cliente].email);
+  
               
             do {
 			
-              Verifica_email(lista_clientes[indice_cliente].email); //chama a funcao para verificar o email
-          		}
-          	while(Verifica_email(lista_clientes[indice_cliente].email) == 1);
+			            
+			  printf("\n Introduza o seu email: ");
+              fflush(stdin);
+              gets(lista_clientes[indice_cliente].email);
+			
+              	vEmail = Verifica_email(lista_clientes[indice_cliente].email); //chama a funcao para verificar o email
+              
+              	if(vEmail == 1)
+              	{
+    				printf("o seu email e invalido!! \n\n por favor tente outra vez \n \n");
+              	}
+          	}
+          	while(vEmail == 1);
               
               
              do {
@@ -670,7 +783,7 @@ void inserir_clientes(){
               
               do {
 			  
-              printf("\n insira a data. \n \t primeiro insira o dia: ");
+              printf("\n Introduza a data de nascimento:  \n \t Dia: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
               	if(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31) {
               		system("cls");
@@ -682,7 +795,7 @@ void inserir_clientes(){
               while(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31);
             do {
 			
-              printf("\n \t agora insira o mes: ");
+              printf("\n \t Mes: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
               	if(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12) {
               		system("cls");
@@ -695,7 +808,7 @@ void inserir_clientes(){
 			  
 			  do {
 			  
-              printf("\n \t agora insira o ano: ");
+              printf("\n \t Ano: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
               	if(lista_clientes[indice_cliente].data_nascimento.ano<1900 || lista_clientes[indice_cliente].data_nascimento.ano> 2014) {
               		system("cls");
@@ -708,7 +821,7 @@ void inserir_clientes(){
              
              do{
 			 
-			  printf("\n insira o seu BI: ");
+			  printf("\n Introduza Nr BI: ");
 				scanf("%d", &lista_clientes[indice_cliente].bi);
 				if(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 ) {
               		system("cls");
@@ -721,7 +834,7 @@ void inserir_clientes(){
         	while(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 );
         	do{
 			
-              printf("\n insira o numero fiscal: ");
+              printf("\n Introduza NIF: ");
               scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
               	if(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999) {
               		system("cls");
@@ -833,7 +946,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
               
               do {
 			  
-              printf("\n insira a data. \n \t primeiro insira o dia: ");
+              printf("\n Introduza a data de nascimento \n \t Dia: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
               	if(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31) {
               		system("cls");
@@ -845,7 +958,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
               while(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31);
             do {
 			
-              printf("\n \t agora insira o mes: ");
+              printf("\n \t Mes: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
               	if(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12) {
               		system("cls");
@@ -858,7 +971,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
 			  
 			  do {
 			  
-              printf("\n \t agora insira o ano: ");
+              printf("\n \t Ano: ");
               scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
               	if(lista_clientes[indice_cliente].data_nascimento.ano<1900 || lista_clientes[indice_cliente].data_nascimento.ano> 2014) {
               		system("cls");
@@ -871,7 +984,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
              
              do{
 			 
-			  printf("\n insira o seu BI: ");
+			  printf("\n Introduza o Nr BI: ");
 				scanf("%d", &lista_clientes[indice_cliente].bi);
 				if(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 ) {
               		system("cls");
@@ -884,7 +997,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
         	while(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 );
         	do{
 			
-              printf("\n insira o numero fiscal: ");
+              printf("\n Introduza o NIF: ");
               scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
               	if(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999) {
               		system("cls");
