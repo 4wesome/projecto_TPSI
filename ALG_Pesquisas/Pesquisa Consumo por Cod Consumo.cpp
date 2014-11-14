@@ -11,20 +11,20 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
       printf("\n_______________________________________________________________\n");
 	  scanf("%s\n", &pesquisa_codigo);
 		  
-		  for (x = 0; x < indice_clientes;i++) 
+		  for (x = 0; x < indice_cliente;i++) 
 		  {
 		  	for (i = 0; i < lista_clientes[x].indice_consumo;i=i++)
 		  	
-		  		if (pesquisa_codigo == lista_clientes[x].consumo[i].codigo_consumo ) //comapara-se o codigo inserido com todos os codigos de consumos dos clientes
+		  		if (pesquisa_codigo == lista_clientes[x].consumo[i].cod_consumo) //comapara-se o codigo inserido com todos os codigos de consumos dos clientes
  					{
 			  		 system("cls");
 			   		 printf("_________________________________________\n");
-			   		 printf("\n      Consumo %d do cliente %s\n", lista_clientes[x].consumo[i].codigo_consumo, lista_clientes[x].nome);
+			   		 printf("\n      Consumo %d do cliente %s\n", lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].nome);
 			   		 printf("_________________________________________\n");
 			   		 s = 1;
-          			 printf("Codigo Consumo: %d | Data: %d/%d | Consumo: %f \n",lista_clientes[x].consumo[i].codigo_consumo, lista_clientes[x].consumo[i].mes, lista_clientes[x].consumo[i].ano, lista_clientes[x].consumo[i].consumo);
+         			 printf("\nCodigo Consumo: %d | Data: %d/%d | Consumo: %f \n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes, lista_clientes[x].consumo[i].ano, lista_clientes[x].consumo[i].consumo);
    	   	  			 
-					  x = indice_clientes; // uma vez encontrado o cliente a pesquisar, alteram-se as variaveis dos FOR para forcar uma saida 
+					  x = indice_cliente; // uma vez encontrado o cliente a pesquisar, alteram-se as variaveis dos FOR para forcar uma saida 
    	   	  			  i = lista_clientes[x].indice_consumo;
  			   	   
  				   	}
