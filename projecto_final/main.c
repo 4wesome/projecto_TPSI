@@ -468,12 +468,66 @@ while (escolha != 3);
 	
 }
 
+void remover_consumos() {
+	int cod_consumo, i, a, op, j, z,flag_remov;
+	int indice_consumo;
+	indice_consumo = lista_clientes[i].indice_consumo;
+      
+      if (indice_consumo == 0) // Verifico se existem docentes para remover
+      {
+         printf("\n NAO EXISTEM CONSUMOS!!!\n\n ");
+         system("pause");
+         system("cls");
+      }
+      else
+      {
+          printf("_________________________________________________________________\n");
+          printf("\n     REMOVER CONSUMOS");
+          printf("\n_________________________________________________________________\n");
+          printf("\n_________________________________________________________________\n");
+          for(i = 0; i< indice_consumo ; i++)
+          {
+                printf("\n Codigo:%d     Consumo:%d      Preco:%s", lista_clientes[i].consumo[lista_clientes[i].indice_consumo].cod_consumo, lista_clientes[i].consumo[lista_clientes[i].indice_consumo].consumo, lista_clientes[i].consumo[lista_clientes[i].indice_consumo].preco);
+          }
+          printf("\n_________________________________________________________________\n");
+          printf("\n Introduza o codigo do Consumo: ");
+          scanf("%d", &cod_consumo);
+          i = pesquisar_consumos(cod_consumo, indice_cliente);
+          if (i == -1) // Pesquiso se o codigo de consumo existe
+          {
+             system("cls");
+             printf("\n O CODIGO DO CONSUMO NAO EXISTE!!!\n\n Tente novamente.\n\n ");
+             system("pause");
+             system("cls");
+          }
+          else
+          {
+              system("cls");
 
+			  // Removo o cliente puxando os consumos seguintes 1 posição para traz
+              
+			  //for(a = i; a < indice_consumo - 1;a++)
+              //{
+                    //lista_clientes[a].consumo = lista_clientes[a + 1];
+              //}
+              
+              // Decremento o número actual de docentes em -1
+              
+			  //indice_consumo--;
+              system("cls");
+              printf("\n O CONSUMO FOI REMOVIDO COM SUCESSO.\n");
+              system("pause");
+          }
+      }
+	
+	
+}
 
 
 void inserir_consumos(){
 
 	int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
+	
 
 	float preco_total;
 	
@@ -484,12 +538,14 @@ void inserir_consumos(){
           scanf("%d", &codigo_cliente);
           i = pesquisar_clientes(codigo_cliente);
 
-          if (lista_clientes[i].indice_consumo < 100)
+          
+		  if (lista_clientes[i].indice_consumo < 100)
           {
           
           	//Final aqui fica i != -1
 			  if (i != -1) // Verifico se o código do cliente já existe
 		      {
+		      	
 		         system("cls");
 		         
 		         
@@ -533,6 +589,7 @@ void inserir_consumos(){
 						fflush(stdin);
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano);
 						
+						
 						existe = 0;
 						for(m=0; m <= lista_clientes[i].indice_consumo; m++)
 							{
@@ -540,6 +597,7 @@ void inserir_consumos(){
 									
 									printf("\n Ja foi inserido um consumo para o mes e ano selecionados ");
 									existe = 1;
+									system("pause");
 								}
 							}
 							if(existe == 0)
@@ -575,7 +633,7 @@ void inserir_consumos(){
 		      	printf("\n  ERRO!! O Codigo de Cliente nao existe");
 		      	system("pause");
 		      }
-          
+      
           } else {
           		printf("\n  O cliente selecionado ja atingiu o limite de consumos");
 				system("pause");          	
@@ -666,7 +724,7 @@ void remover_clientes() {
           printf("\n Introduza o codigo do docente: ");
           scanf("%d", &codigo_cliente);
           i = pesquisar_clientes(codigo_cliente);
-          if (i == -1) // Pesquiso se o docente existe
+          if (i == -1) // Pesquiso se o cliente existe
           {
              system("cls");
              printf("\n O CODIGO DO CLIENTE NAO EXISTE!!!\n\n Tente novamente.\n\n ");
@@ -677,7 +735,7 @@ void remover_clientes() {
           {
               system("cls");
 
-			  // Removo o docente puxando os docentes seguintes 1 posição para traz
+			  // Removo o cliente puxando os clientes seguintes 1 posição para traz
               for(a = i; a < indice_cliente - 1;a++)
               {
                     lista_clientes[a] = lista_clientes[a + 1];
@@ -685,7 +743,7 @@ void remover_clientes() {
               // Decremento o número actual de docentes em -1
               indice_cliente--;
               system("cls");
-              printf("\n O DOCENTE FOI REMOVIDO COM SUCESSO.\n");
+              printf("\n O CLIENTE FOI REMOVIDO COM SUCESSO.\n");
               system("pause");
           }
       }
