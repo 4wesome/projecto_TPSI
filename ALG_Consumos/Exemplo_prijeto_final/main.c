@@ -272,23 +272,23 @@ void menu_gestao_consumos() {// este é o menu que será apresentado ao utilizador
 do
 {
 	system("cls");
-	printf("    %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
-	printf("    %c Menu de Gestao de Consumos %c\n",186,186);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,187);
+	printf("               %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+	printf("               %c Menu de Gestao de Consumos %c\n",186,186);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,187);
 
-	printf("%c Escolha uma das seguintes opcoes: %c \n",186,186);
-	printf("%c                                   %c\n",186,186);
-	printf("%c 1 - Novo                          %C\n",186,186);
-	printf("%c                                   %C\n",186,186);
-	printf("%c 2 - Editar                        %c\n",186,186);
-	printf("%c                                   %C\n",186,186);
-	printf("%c 3 - Remover                       %c\n",186,186);
-	printf("%c                                   %C\n",186,186);
-	printf("%c 4 - Listar                        %c\n",186,186);
-	printf("%c                                   %c\n",186,186);
-	printf("%c 5 - Voltar Atras                  %c\n",186,186);
-	printf("%c                                   %c\n",186,186);
-    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
+	printf("%c Escolha uma das seguintes opcoes:                    %c \n",186,186);
+	printf("%c                                                      %c\n",186,186);
+	printf("%c 1 - Novo                                             %c\n",186,186);
+	printf("%c                                                      %c\n",186,186);
+	printf("%c 2 - Editar                                           %c\n",186,186);
+	printf("%c                                                      %c\n",186,186);
+	printf("%c 3 - Remover                                          %c\n",186,186);
+	printf("%c                                                      %c\n",186,186);
+	printf("%c 4 - Listar                                           %c\n",186,186);
+	printf("%c                                                      %c\n",186,186);
+	printf("%c 5 - Voltar Atras                                     %c\n",186,186);
+	printf("%c                                                      %c\n",186,186);
+    printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
 	do {
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
