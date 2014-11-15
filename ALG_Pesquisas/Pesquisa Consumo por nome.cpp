@@ -10,7 +10,7 @@
 
 
 // ATENÇAO! O MENU menu_pesquisas está mal. Na opção 3 deve estar "3 - Pesquisar Consumo por Nome de Cliente.\n" em vez de "3 - Pesquisar Consumo por Codigo \n"
-//											Na opçao 4 deve estar "4 - Pesquisar Consumos por Código de Consumo.\n" em vez de "4 - Pesquisar Consumo por Cogigo de Cliente."
+//											Na opçao 4 deve estar "4 - Pesquisar Consumos por Código de Consumo.\n" em vez de "4 - Pesquisar Consumo por Cogigo de Consumo."
 
 
 

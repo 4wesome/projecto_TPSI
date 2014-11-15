@@ -3,7 +3,7 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
  int n = 1; // variavel de saida da funcao
  do
    {
-   	char pesquisa_codigo // variavel para pesquisa
+   	int pesquisa_codigo // variavel para pesquisa
    	int x, i, s = 0; //a variavel S retorna uma mensagem de erro caso o nome pesquisado nao corresponder a nenhum nome da base de dados
    	
 	  printf("_________________________________________________________________\n");

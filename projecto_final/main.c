@@ -261,8 +261,8 @@ do
 	printf("\n");
 	printf(" 1 - Pesquisar Cliente por Codigo \n");
 	printf(" 2 - Pesquisar Cliente por Nome \n");
-	printf(" 3 - Pesquisar Consumo por Codigo \n");
-	printf(" 4 - Pesquisar Consumo por Codigo de Cliente \n");
+	printf(" 3 - Pesquisar Consumo por Nome de Cliente \n");
+	printf(" 4 - Pesquisar Consumo por Codigo de Consumo \n");
 	printf(" 5 - Voltar Atras \n");
 	printf("\n");
 	printf("======================================\n");
