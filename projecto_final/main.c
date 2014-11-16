@@ -943,6 +943,15 @@ do {
           for(i = 0; i< indice_cliente ; i++)
           {
                 printf("\n Codigo:%d     Numero BI:%d      Nome:%s      Morada:%s      Email:%s      Telemovel:%d      Data Nascimento:%d      Num Fiscal:%d      Estado:%d", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome, lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel, lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
+                
+                /*
+                
+                printf("\n Codigo: %d 		Numero BI: %d		Nome:%s",lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
+                printf("\n Morada: %s      Email: %s      Telemovel: %d",lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel)
+                printf("Data Nascimento: %d      Num Fiscal: %d      Estado: %d",lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado)
+                printf("_________________________________________________________________\n");
+                
+                */
           }
           printf("\n\n para sair prima a tecla 5.\n");
           scanf("%d", &op);
