@@ -233,7 +233,7 @@ printf("_________________________________________________________________\n");
 
        if (a == 0)
        {
-                               printf("Nome:%s \n ",lista_clientes[x].nome);
+                               printf("Nome:%s \n",lista_clientes[x].nome);
                                printf("Codigo de Cliente: %d\n",lista_clientes[x].codigo);
                                printf("Morada: %s \n",lista_clientes[x].morada);
                                printf("Email: %s \n",lista_clientes[x].email);
@@ -241,10 +241,10 @@ printf("_________________________________________________________________\n");
                                printf("Data de nascimento: %d/%d/%d \n",lista_clientes[x].data_nascimento.dia,lista_clientes[x].data_nascimento.mes,lista_clientes[x].data_nascimento.ano);
                                printf("Cartao de cidadao: %d \n",lista_clientes[x].bi);
                                printf("Nif: %d \n",lista_clientes[x].num_fiscal);
-                               printf("Consumos");
+                               printf("Consumos:\n");
                                printf("Codigo de consumos   Mes    Ano     Consumo \n");
                                for(i=0;i<lista_clientes[x].indice_consumo;i++){
-                               printf("                                 %d %d %d %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
+                               printf("%d                    %d      %d       %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
                                 
                                 }             
                                 }
@@ -297,7 +297,7 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
 	printf("Prima 0 para voltar ao menu anterior.");
 	scanf("%d", &n);
 	}while (n != 0);
-	
+	                               system("pause"); 
 //Problema: Para cada cliente, os codigos de consumo sao exclusivos? Caso contrario, esta funcao retorna apenas o consumo i do primeiro cliente, e depois acaba.
 }
 	
@@ -632,6 +632,7 @@ void remover_consumos() {
 	
 }
 
+<<<<<<< HEAD
 void editar_consumos() {
 	
 int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
@@ -764,6 +765,8 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
           
 
 }
+=======
+>>>>>>> origin/master
 
 void inserir_consumos(){
 
@@ -826,23 +829,23 @@ void inserir_consumos(){
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].mes);
 						
 							
-						do
-						{
-							
-							printf("\n Introduza o ano: ");
-							fflush(stdin);
-							scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano);
-							existe = 0;
-							for(m=0; m < lista_clientes[i].indice_consumo; m++)
+						printf("\n Introduza o ano: ");
+						fflush(stdin);
+						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano);
+						
+						
+						existe = 0;
+						for(m=0; m <= lista_clientes[i].indice_consumo; m++)
 							{
 								if(lista_clientes[i].consumo[m].mes == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].mes && lista_clientes[i].consumo[m].ano == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].ano ){
 									
+									printf("\n Ja foi inserido um consumo para o mes e ano selecionados ");
 									existe = 1;
-									printf("\n Ja foi inserido um consumo para o mes e ano selecionados");
+									system("pause");
 								}
-							}			
-						}while(existe == 1);
-						
+							}
+							if(existe == 0)
+							{
 							
 						
 						printf("\n Introduza o consumo: ");
@@ -855,15 +858,13 @@ void inserir_consumos(){
 						lista_clientes[i].consumo[lista_clientes[i].indice_consumo].preco = preco_total;
 						
 						printf("O preco total a pagar e de : %f \n", preco_total);
-						system("pause");
 						
 						// Incremento o número actual de consumo em +1
 						lista_clientes[i].indice_consumo++;
 						system("cls");
 						printf("\n O CONSUMO FOI ADICINADO COM SUCESSO.\n");
-						system("pause");
 						
-
+						}
 					}
 				   
 				   } else {
@@ -925,7 +926,7 @@ do
 		break;
 	case 2:
 		system("cls");
-		editar_consumos();
+		//editar_cliente();
 		break;
 	case 3:
 		system("cls");
@@ -1205,7 +1206,7 @@ void editar_clientes() {
 	
 int op, i, codigo_cliente, a, j, z,flag_remov;
 	
-		if (indice_cliente == 0) // Verifico se existem clientes para editar
+		if (indice_cliente == 0) // Verifico se existem docentes para editar
       {
          printf("\n NAO EXISTEM CLIENTES!!!\n\n ");
          system("pause");
