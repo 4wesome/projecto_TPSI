@@ -219,32 +219,32 @@ void pesquisa_nome(){
 
 int x,a,i;
 char nome_cliente_procura[100];
-char nome_cliente[100];
+
 printf("_________________________________________________________________\n");
           printf("\n     Pesquisa por Nome");
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o nome do cliente: ");
-          scanf("%c", &nome_cliente);
+          fflush(stdin);
+          gets(nome_cliente_procura);
           
-	for (x = 0; x <= indice_cliente ; x++)
+	for (x = 0; x < indice_cliente ; x++)
 	{
         a = strcmp(nome_cliente_procura,lista_clientes[x].nome);
 
        if (a == 0)
        {
-                               printf("Nome:%c \n ",lista_clientes[x].nome);
+                               printf("Nome:%s \n ",lista_clientes[x].nome);
                                printf("Codigo de Cliente: %d\n",lista_clientes[x].codigo);
-                               printf("Morada: %c \n",lista_clientes[x].morada);
-                               printf("Email: %c \n",lista_clientes[x].email);
-                               printf("Telemovel: %c \n",lista_clientes[x].telemovel);
-                               printf("Data de nascimento: %c/%c/%c \n",lista_clientes[x].data_nascimento.dia,lista_clientes[x].data_nascimento.mes,lista_clientes[x].data_nascimento.ano);
-                               printf("Cartao de cidadao: %c \n",lista_clientes[x].bi);
-                               printf("Nif: %c \n",lista_clientes[x].num_fiscal);
+                               printf("Morada: %s \n",lista_clientes[x].morada);
+                               printf("Email: %s \n",lista_clientes[x].email);
+                               printf("Telemovel: %d \n",lista_clientes[x].telemovel);
+                               printf("Data de nascimento: %d/%d/%d \n",lista_clientes[x].data_nascimento.dia,lista_clientes[x].data_nascimento.mes,lista_clientes[x].data_nascimento.ano);
+                               printf("Cartao de cidadao: %d \n",lista_clientes[x].bi);
+                               printf("Nif: %d \n",lista_clientes[x].num_fiscal);
                                printf("Consumos");
-                               printf("Codigo de consumos   Mes    Ano     Consumo");
-                               for(i=0;i<=lista_clientes[x].indice_consumo;i++){
-                               printf("%d %d %d %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo);
-                                
+                               printf("Codigo de consumos   Mes    Ano     Consumo \n");
+                               for(i=0;i<lista_clientes[x].indice_consumo;i++){
+                               printf("                                 %d %d %d %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
                                 
                                 }             
                                 }
@@ -252,6 +252,7 @@ printf("_________________________________________________________________\n");
                                      printf("Nome de cliente nao existe ou nome de cliente mal escrito");
                                      }                                   
                                }
+                                                              system("pause"); 
                                }
 
 
