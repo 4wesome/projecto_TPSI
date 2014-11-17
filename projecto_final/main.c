@@ -161,17 +161,26 @@ void menu_ficheiros() {// este é o menu que será apresentado ao utilizador. aqui
 
 do 
 {
+	
 	system("cls");
-	printf("======================================\n");
-	printf(" Menu Consultas da Base de Dados\n");
-	printf("\n");
-	printf(" Escolha uma das seguintes opcoes: \n");
-	printf("\n");
-	printf(" 1 - Ler Base de Dados \n");
-	printf(" 2 - Gravar Alteracoes \n");
-	printf(" 3 - Voltar Atras \n");
-	printf("\n");
-	printf("======================================\n");
+	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("             %c Consultas da Base de Dados  %c",186,186);
+        printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 1 - Ler Base de Dados                                %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 2 - Gravar Alteracoes                                %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 3 - Voltar Atras                                     %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
+	
 	do {
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
@@ -246,6 +255,52 @@ printf("_________________________________________________________________\n");
                                }
 
 
+void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo seu codigo e retornar a informacao especifica a esse consumo
+{
+ int n = 1; // variavel de saida da funcao
+ do
+   {
+   	int pesquisa_codigo; // variavel para pesquisa
+   	int x, i, s = 0; //a variavel S retorna uma mensagem de erro caso o nome pesquisado nao corresponder a nenhum nome da base de dados
+   	
+	  printf("_________________________________________________________________\n");
+      printf("\n     Insira Codigo do Cliente");
+      printf("\n_______________________________________________________________\n");
+	  scanf("%s\n", &pesquisa_codigo);
+		  
+		  for (x = 0; x < indice_cliente;i++) 
+		  {
+		  	for (i = 0; i < lista_clientes[x].indice_consumo;i++)
+		  	{
+		  	
+		  		if (pesquisa_codigo == lista_clientes[x].consumo[i].cod_consumo) //comapara-se o codigo inserido com todos os codigos de consumos dos clientes
+ 					{
+			  		 system("cls");
+			   		 printf("_________________________________________\n");
+			   		 printf("\n      Consumo %d do cliente %s\n", lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].nome);
+			   		 printf("_________________________________________\n");
+			   		 s = 1;
+         			 printf("\nCodigo Consumo: %d | Data: %d/%d | Consumo: %f \n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes, lista_clientes[x].consumo[i].ano, lista_clientes[x].consumo[i].consumo);
+   	   	  			 
+					  x = indice_cliente; // uma vez encontrado o cliente a pesquisar, alteram-se as variaveis dos FOR para forcar uma saida 
+   	   	  			  i = lista_clientes[x].indice_consumo;
+ 			   	   
+ 				   	}
+ 				   }
+		  }
+		  if (s == 0)
+		  {
+		  	printf("O codigo de consumo que pesquisou esta errado ou nao se encontra na lista.\n");
+		  }
+		  
+	printf("Prima 0 para voltar ao menu anterior.");
+	scanf("%d", &n);
+	}while (n != 0);
+	
+//Problema: Para cada cliente, os codigos de consumo sao exclusivos? Caso contrario, esta funcao retorna apenas o consumo i do primeiro cliente, e depois acaba.
+}
+	
+
 
 
 void menu_pesquisas() {// este é o menu que será apresentado ao utilizador. aqui ele ira pesquisar por varios parametros
@@ -253,19 +308,26 @@ void menu_pesquisas() {// este é o menu que será apresentado ao utilizador. aqui
 
 do 
 {
+	
 	system("cls");
-	printf("======================================\n");
-	printf(" Menu Consultas\n");
-	printf("\n");
-	printf(" Escolha uma das seguintes opcoes: \n");
-	printf("\n");
-	printf(" 1 - Pesquisar Cliente por Codigo \n");
-	printf(" 2 - Pesquisar Cliente por Nome \n");
-	printf(" 3 - Pesquisar Consumo por Codigo \n");
-	printf(" 4 - Pesquisar Consumo por Codigo de Cliente \n");
-	printf(" 5 - Voltar Atras \n");
-	printf("\n");
-	printf("======================================\n");
+	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("             %c          Pesquisas          %c",186,186);
+        printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 1 - Pesquisar Cliente por Codigo                     %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 2 - Pesquisar Cliente por Nome                       %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 3 - Pesquisar Consumo por Nome de Cliente            %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 4 - Pesquisar Consumo por Codigo de Consumo          %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 5 - Voltar Atras                                     %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
+
 	do {
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
@@ -287,7 +349,7 @@ do
 		break;
 	case 4:
 		system("cls");
-		//editar_cliente();
+		pesquisa_consumo_por_codigo();
 		break;
 	case 5:
 		system("cls");
@@ -373,7 +435,36 @@ for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clien
 }
 
 
+void consulta_inativos(){ // Esta função vai listar todos os clientes que tenham pelo menos 1 consumo não pago.
+int n = 1;
 
+do{
+
+	int x, i;
+	
+		// A função que se segue vai correr cada cliente, e, por cada um, vai analisar os seus consumos.
+		// Assim que identificar um consumo não pago, imprime uma msg e deixa de analisar mais consumos desse cliente, e passa para o próximo cliente.
+		for (x = 0; x < indice_cliente; x++) 
+		{
+		
+			for (i = 0; i < lista_clientes[x].indice_consumo; i++)
+			{
+				if (lista_clientes[x].consumo[i].estado == 0);
+					{
+						printf("%d  |  %s\n",lista_clientes[x].codigo, lista_clientes[x].nome);	
+						x++;
+						i = 0;
+					}
+			}
+		}
+		
+		printf("Prima 0 para voltar ao menu anterior.");
+		scanf("%", &n);
+	
+		
+}while (n != 0);
+
+}
 
 
 void menu_consultas() {// este é o menu que será apresentado ao utilizador. aqui consulta clientes por consumo e os que nao pagaram
@@ -381,17 +472,25 @@ void menu_consultas() {// este é o menu que será apresentado ao utilizador. aqui
 
 do 
 {
-	system("cls");
-	printf("======================================\n");
-	printf(" Menu Consultas\n");
-	printf("\n");
-	printf(" Escolha uma das seguintes opcoes: \n");
-	printf("\n");
-	printf(" 1 - Listar Clientes por Consumo \n");
-	printf(" 2 - Listar Clientes que nao pagaram \n");
-	printf(" 3 - Voltar Atras \n");
-	printf("\n");
-	printf("======================================\n");
+		system("cls");
+	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("             %c          Consultas          %c",186,186);
+        printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 1 - Listar Clientes por Consumo                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 2 - Listar Clientes que nao pagaram                  %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 3 - Voltar Atras                                     %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
+
 	do {
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
@@ -405,7 +504,7 @@ do
 		break;
 	case 2:
 		system("cls");
-		//editar_cliente();
+		consulta_inativos();
 		break;
 	case 3:
 		system("cls");
@@ -427,17 +526,26 @@ void menu_consultas_bd() {// este é o menu que será apresentado ao utilizador. a
 
 do 
 {
-	system("cls");
-	printf("======================================\n");
-	printf(" Menu Consultas da Base de Dados\n");
-	printf("\n");
-	printf(" Escolha uma das seguintes opcoes: \n");
-	printf("\n");
-	printf(" 1 - Consulta \n");
-	printf(" 2 - Pesquisa \n");
-	printf(" 3 - Voltar Atras \n");
-	printf("\n");
-	printf("======================================\n");
+	
+		system("cls");
+	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("             %c  Consultas da Base de Dados %c",186,186);
+        printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 1 - Consulta                                         %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 2 - Pesquisa                                         %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 3 - Voltar Atras                                     %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
+
 	do {
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
@@ -468,12 +576,66 @@ while (escolha != 3);
 	
 }
 
+void remover_consumos() {
+	int cod_consumo, i, a, op, j, z,flag_remov;
+	int indice_consumo;
+	indice_consumo = lista_clientes[i].indice_consumo;
+      
+      if (indice_consumo == 0) // Verifico se existem docentes para remover
+      {
+         printf("\n NAO EXISTEM CONSUMOS!!!\n\n ");
+         system("pause");
+         system("cls");
+      }
+      else
+      {
+          printf("_________________________________________________________________\n");
+          printf("\n     REMOVER CONSUMOS");
+          printf("\n_________________________________________________________________\n");
+          printf("\n_________________________________________________________________\n");
+          for(i = 0; i< indice_consumo ; i++)
+          {
+                printf("\n Codigo:%d     Consumo:%d      Preco:%s", lista_clientes[i].consumo[lista_clientes[i].indice_consumo].cod_consumo, lista_clientes[i].consumo[lista_clientes[i].indice_consumo].consumo, lista_clientes[i].consumo[lista_clientes[i].indice_consumo].preco);
+          }
+          printf("\n_________________________________________________________________\n");
+          printf("\n Introduza o codigo do Consumo: ");
+          scanf("%d", &cod_consumo);
+          i = pesquisar_consumos(cod_consumo, indice_cliente);
+          if (i == -1) // Pesquiso se o codigo de consumo existe
+          {
+             system("cls");
+             printf("\n O CODIGO DO CONSUMO NAO EXISTE!!!\n\n Tente novamente.\n\n ");
+             system("pause");
+             system("cls");
+          }
+          else
+          {
+              system("cls");
 
+			  // Removo o cliente puxando os consumos seguintes 1 posição para traz
+              
+			  //for(a = i; a < indice_consumo - 1;a++)
+              //{
+                    //lista_clientes[a].consumo = lista_clientes[a + 1];
+              //}
+              
+              // Decremento o número actual de docentes em -1
+              
+			  //indice_consumo--;
+              system("cls");
+              printf("\n O CONSUMO FOI REMOVIDO COM SUCESSO.\n");
+              system("pause");
+          }
+      }
+	
+	
+}
 
 
 void inserir_consumos(){
 
 	int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
+	
 
 	float preco_total;
 	
@@ -484,12 +646,14 @@ void inserir_consumos(){
           scanf("%d", &codigo_cliente);
           i = pesquisar_clientes(codigo_cliente);
 
-          if (lista_clientes[i].indice_consumo < 100)
+          
+		  if (lista_clientes[i].indice_consumo < 100)
           {
           
           	//Final aqui fica i != -1
 			  if (i != -1) // Verifico se o código do cliente já existe
 		      {
+		      	
 		         system("cls");
 		         
 		         
@@ -533,6 +697,7 @@ void inserir_consumos(){
 						fflush(stdin);
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano);
 						
+						
 						existe = 0;
 						for(m=0; m <= lista_clientes[i].indice_consumo; m++)
 							{
@@ -540,6 +705,7 @@ void inserir_consumos(){
 									
 									printf("\n Ja foi inserido um consumo para o mes e ano selecionados ");
 									existe = 1;
+									system("pause");
 								}
 							}
 							if(existe == 0)
@@ -575,7 +741,7 @@ void inserir_consumos(){
 		      	printf("\n  ERRO!! O Codigo de Cliente nao existe");
 		      	system("pause");
 		      }
-          
+      
           } else {
           		printf("\n  O cliente selecionado ja atingiu o limite de consumos");
 				system("pause");          	
@@ -592,19 +758,27 @@ void menu_gestao_consumos() {// este é o menu que será apresentado ao utilizador
 
 do 
 {
-	system("cls");
-	printf("======================================\n");
-	printf(" Menu de Gestao de Consumos\n");
-	printf("\n");
-	printf(" Escolha uma das seguintes opcoes: \n");
-	printf("\n");
-	printf(" 1 - Novo \n");
-	printf(" 2 - Editar \n");
-	printf(" 3 - Remover \n");
-	printf(" 4 - Listar \n");
-	printf(" 5 - Voltar Atras \n");
-	printf("\n");
-	printf("======================================\n");
+	
+	
+		system("cls");
+	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("             %c      Gestao de Consumos     %c",186,186);
+        printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 1 - Novo                                             %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 2 - Editar                                           %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 3 - Remover                                          %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 4 - Listar                                           %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 5 - Voltar Atras                                     %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
+
 	do {
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
@@ -666,7 +840,7 @@ void remover_clientes() {
           printf("\n Introduza o codigo do docente: ");
           scanf("%d", &codigo_cliente);
           i = pesquisar_clientes(codigo_cliente);
-          if (i == -1) // Pesquiso se o docente existe
+          if (i == -1) // Pesquiso se o cliente existe
           {
              system("cls");
              printf("\n O CODIGO DO CLIENTE NAO EXISTE!!!\n\n Tente novamente.\n\n ");
@@ -677,7 +851,7 @@ void remover_clientes() {
           {
               system("cls");
 
-			  // Removo o docente puxando os docentes seguintes 1 posição para traz
+			  // Removo o cliente puxando os clientes seguintes 1 posição para traz
               for(a = i; a < indice_cliente - 1;a++)
               {
                     lista_clientes[a] = lista_clientes[a + 1];
@@ -685,7 +859,7 @@ void remover_clientes() {
               // Decremento o número actual de docentes em -1
               indice_cliente--;
               system("cls");
-              printf("\n O DOCENTE FOI REMOVIDO COM SUCESSO.\n");
+              printf("\n O CLIENTE FOI REMOVIDO COM SUCESSO.\n");
               system("pause");
           }
       }
@@ -884,7 +1058,13 @@ do {
           printf("\n_________________________________________________________________\n");
           for(i = 0; i< indice_cliente ; i++)
           {
+          	 /*
                 printf("\n Codigo:%d     Numero BI:%d      Nome:%s      Morada:%s      Email:%s      Telemovel:%d      Data Nascimento:%d      Num Fiscal:%d      Estado:%d", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome, lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel, lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
+            */  
+                printf("\n Codigo: %d 		Numero BI: %d		Nome:%s",lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
+                printf("\n Morada: %s      Email: %s      Telemovel: %d",lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel);
+                printf("Data Nascimento: %d      Num Fiscal: %d      Estado: %d",lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
+                printf("_________________________________________________________________\n");
           }
           printf("\n\n para sair prima a tecla 5.\n");
           scanf("%d", &op);
@@ -1072,19 +1252,26 @@ void menu_gestao_clientes() {// este é o menu que será apresentado ao utilizador
 
 do 
 {
-	system("cls");
-	printf("======================================\n");
-	printf(" Menu de Gestao de Clientes\n");
-	printf("\n");
-	printf(" Escolha uma das seguintes opcoes: \n");
-	printf("\n");
-	printf(" 1 - Novo \n");
-	printf(" 2 - Editar \n");
-	printf(" 3 - Remover \n");
-	printf(" 4 - Listar \n");
-	printf(" 5 - Voltar Atras \n");
-	printf("\n");
-	printf("======================================\n");
+			system("cls");
+	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("             %c      Gestao de Clientes     %c",186,186);
+        printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 1 - Novo                                             %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 2 - Editar                                           %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 3 - Remover                                          %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 4 - Listar                                           %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 5 - Voltar Atras                                     %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
+
+	
 	do {
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
@@ -1129,19 +1316,25 @@ int escolha;
 
 do 
 {
-	system("cls");
-	printf("======================================\n");
-	printf("---------------Bem Vindo-------------- \n");
-	printf("\n");
-	printf(" Escolha uma das seguintes opcoes: \n");
-	printf("\n");
-	printf(" 1 - Gestao clientes \n");
-	printf(" 2 - Gestao consumos  \n");
-	printf(" 3 - Consultar base de dados \n");
-	printf(" 4 - Alterar base de dados \n");
-	printf(" 5 - Sair \n");
-	printf("\n");
-	printf("======================================\n");
+			system("cls");
+	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("             %c          Bem Vindo          %c",186,186);
+        printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 1 - Gestao de Clientes                               %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 2 - Gestao de Consumos                               %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 3 - Consultar Base de Dados                          %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 4 - Alterar Base de Dados                            %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 5 - Sair                                             %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",200,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,188);
+
 	do {
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);

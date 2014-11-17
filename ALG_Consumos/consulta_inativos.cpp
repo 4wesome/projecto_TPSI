@@ -11,7 +11,7 @@ do{
 		for (x = 0; x < indice_clientes ; x++) 
 		{
 		
-			for (i = 0; i < indice_clientes[x].indice_consumo; i++)
+			for (i = 0; i < lista_clientes[x].indice_consumo; i++)
 			{
 				if (lista_clientes[x].consumo[i].estado == 0);
 					{

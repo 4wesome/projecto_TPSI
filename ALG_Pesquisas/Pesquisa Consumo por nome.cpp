@@ -1,19 +1,46 @@
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+// ATENÇAO! O MENU menu_pesquisas está mal. Na opção 3 deve estar "3 - Pesquisar Consumo por Nome de Cliente.\n" em vez de "3 - Pesquisar Consumo por Codigo \n"
+//											Na opçao 4 deve estar "4 - Pesquisar Consumos por Código de Consumo.\n" em vez de "4 - Pesquisar Consumo por Cogigo de Consumo."
+
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 void pesquisa_consumo_por_nome() //Esta funcao vai pesquisar um cliente pelo nome e retornar a informacao especifica aos seus consumos
 {
  int n = 1; // variavel de saida da funcao
  do
    {
-   	char pesquisa_nome[100] // variavel para pesquisa
-   	int x, i, s = 0; //a variavel S retorna uma mensagem de erro caso o nome pesquisado nao corresponder a nenhum nome da base de dados
+   	char pesquisa_nome[100]; // variavel para pesquisa
+ 	int x, i, s = 0; //a variavel S retorna uma mensagem de erro caso o nome pesquisado nao corresponder a nenhum nome da base de dados
    	
 	  printf("_________________________________________________________________\n");
       printf("\n     Insira Nome do Cliente");
       printf("\n_______________________________________________________________\n");
+      fflush("stdin");
 	  scanf("%s\n", &pesquisa_nome);
+   	  fflush("stdin");
+
 		  
-		  for (x = 0; x < indice_clientes;i++) 
+		  for (x = 0; x < indice_cliente;i++) 
 		  {
-		  	if ((strcmp(pesquisa_nome == lista_clientes[x].nome)) == 0) //comapara-se a string inserida com todos os nomes dos clientes
+		  	if ((strcmp(pesquisa_nome,lista_clientes[x].nome)) == 0) //comapara-se a string inserida com todos os nomes dos clientes
  			{
 			   system("cls");
 			   printf("_________________________________________\n");
@@ -23,11 +50,11 @@ void pesquisa_consumo_por_nome() //Esta funcao vai pesquisar um cliente pelo nom
 			   
  			   for (i = 0; i < lista_clientes[x].indice_consumo;i=i++)
  			   	   {
- 			   	   	  s = 1;
-   	                  printf("Codigo Consumo: %d | Data: %d/%d | Consumo: %f \n",lista_clientes[x].consumo[i].codigo_consumo, lista_clientes[x].consumo[i].mes, lista_clientes[x].consumo[i].ano, lista_clientes[x].consumo[i].consumo);
+  	   			  	   s = 1;
+   	               	   printf("Codigo Consumo: %d | Data: %d/%d | Consumo: %f \n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes, lista_clientes[x].consumo[i].ano, lista_clientes[x].consumo[i].consumo);
    	   	  			 
-					  x = indice_clientes; // uma vez encontrado o cliente a pesquisar, alteram-se as variaveis dos FOR para forcar uma saida 
-   	   	  			  i = lista_clientes[x].indice_consumo;
+					   x = indice_cliente; // uma vez encontrado o cliente a pesquisar, alteram-se as variaveis dos FOR para forçar uma saida 
+   	   	  		  	   i = lista_clientes[x].indice_consumo;
  			   	   }
  			}
 		  }
@@ -38,8 +65,9 @@ void pesquisa_consumo_por_nome() //Esta funcao vai pesquisar um cliente pelo nom
 		  
 	printf("Prima 0 para voltar ao menu anterior.");
 	scanf("%d", &n);
+	
 	}while (n != 0);
 
 }
-	
-	
+
+

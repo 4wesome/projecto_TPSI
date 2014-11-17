@@ -16,7 +16,7 @@ for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clien
 	for (i=0; i <= lista_clientes[x]indice_consumos; i++) // Esta funcao vai calcular a soma de todos os consumos de um cliente especifico (x)
 		{
 			
-			soma_consumos = soma_consumos + lista_cliente.cliente.consumo[i];
+			soma_consumos = soma_consumos + lista_cliente[x].cliente.consumo[i];
 			
 		}
 		
@@ -24,11 +24,9 @@ for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clien
 	
 	} // no final deste FOR, o ARRAY tab_cliente_totconsumo[30][2] vai estar totalmente preenchido, com a primeira coluna mostrando o código de cliente e a segunda o somatório de todos os consumos.
 	
-	//////////////////////////////////////
-	
-	for(x = 0; x < indice_clientes - 2 ; x++) // função para ordenar os valores do ARRAY tab_cliente_totconsumo[30][2], de forma decrescente.
+	for(x = 0; x < indice_cliente - 2 ; x++) // função para ordenar os valores do ARRAY tab_cliente_totconsumo[30][2], de forma decrescente.
 		{
-			for(i = 0; i < indice_clientes - 2 - i; i--)
+			for(i = 0; i < indice_cliente - 2 - i; i--)
 				{		
 					if (tab_cliente_totconsumo[0][1] < tab_cliente_totconsumo[x+1][1])
 						{
@@ -46,15 +44,13 @@ for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clien
 				}
 		}
 
-	//////////////////////////////
-
 	printf("Código Cliente | Consumos \n");
-	printf("\n");	
+	printf("\n_______________________________\n");	
 
-		for (x = 0; x <= indice_clientes; x++) // Imprime tab_cliente_totconsumo - lista de clientes por consumo.
+		for (x = 0; x <= indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por consumo.
 		{
-				printf("%f | %f \n", tab_cliente_totconsumo[x][0],tab_cliente_totconsumo[x][1]);
+				printf("Codigo Cliente: %f	Nome: %s	Consumo Total: %f",tab_cliente_totconsumo[x][0],lista_clientes[x].nome, tab_cliente_totconsumo[x][1]);
 		}
 
-	
+	// É preciso isto tudo estar dentro de um DO / WHILE?
 }
