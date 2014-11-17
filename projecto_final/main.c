@@ -1237,11 +1237,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
           
       	 
       	 else {
-		   		for(a = i; a < indice_cliente ;a++) //elemina o cliente anterior
-              {
-                    lista_clientes[a] = lista_clientes[a + 1];
-              }
-              indice_cliente--;
+		   	
               
           
               lista_clientes[indice_cliente].codigo = codigo_cliente;
@@ -1364,8 +1360,8 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
               while(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1);
               
               
-              // Incremento o número actual de clientes em +1
-              indice_cliente++;
+              
+              
               system("cls");
               printf("\n O CLIENTE FOI EDITADO COM SUCESSO.\n");
               system("pause");
