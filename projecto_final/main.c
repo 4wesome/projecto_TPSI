@@ -778,6 +778,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 						
 
 						}
+					}
 		   	 					   
 }
 
@@ -1259,7 +1260,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
 		   	
               
           
-              lista_clientes[indice_cliente].codigo = codigo_cliente;
+              lista_clientes[i].codigo = codigo_cliente;
               	system("cls");
 			    printf("_________________________________________________________________\n");
           		printf("\n     EDITAR CLIENTES");
@@ -1268,80 +1269,80 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
 			  
               printf("\n Introduza o seu nome: ");
               fflush(stdin);
-              gets(lista_clientes[indice_cliente].nome);
+              gets(lista_clientes[i].nome);
               printf("\n Introduza a morada: ");
               fflush(stdin);
-              gets(lista_clientes[indice_cliente].morada);
+              gets(lista_clientes[i].morada);
               
 			  printf("\n Introduza o seu email: ");
               fflush(stdin);
-              gets(lista_clientes[indice_cliente].email);
+              gets(lista_clientes[i].email);
               
             do {
 			
-              Verifica_email(lista_clientes[indice_cliente].email); //chama a funcao para verificar o email
+              Verifica_email(lista_clientes[i].email); //chama a funcao para verificar o email
           		}
-          	while(Verifica_email(lista_clientes[indice_cliente].email) == 1);
+          	while(Verifica_email(lista_clientes[i].email) == 1);
               
               
              do {
 			 
 			 
               printf("\n Introduza o seu telemovel: ");
-              scanf("%d", &lista_clientes[indice_cliente].telemovel);
-              if (lista_clientes[indice_cliente].telemovel <910000000 || lista_clientes[indice_cliente].telemovel>969999999) {
+              scanf("%d", &lista_clientes[i].telemovel);
+              if (lista_clientes[i].telemovel <910000000 || lista_clientes[i].telemovel>969999999) {
               	system("cls");
              	printf("\n O NUMERO DE TELEMOVEL E INVALIDO!!!\n\n Tente novamente.\n\n ");
              	system("pause");
              	system("cls");
              	}
              }
-            while(lista_clientes[indice_cliente].telemovel <910000000 || lista_clientes[indice_cliente].telemovel>969999999);
+            while(lista_clientes[i].telemovel <910000000 || lista_clientes[i].telemovel>969999999);
              	
               
               do {
 			  
               printf("\n Introduza a data de nascimento \n \t Dia: ");
-              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.dia);
-              	if(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31) {
+              scanf("%d", &lista_clientes[i].data_nascimento.dia);
+              	if(lista_clientes[i].data_nascimento.dia<1 || lista_clientes[i].data_nascimento.dia> 31) {
               		system("cls");
              		printf("\n O DIA DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
              	}
              }
-              while(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31);
+              while(lista_clientes[i].data_nascimento.dia<1 || lista_clientes[i].data_nascimento.dia> 31);
             do {
 			
               printf("\n \t Mes: ");
-              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.mes);
-              	if(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12) {
+              scanf("%d", &lista_clientes[i].data_nascimento.mes);
+              	if(lista_clientes[i].data_nascimento.mes<1 || lista_clientes[i].data_nascimento.mes> 12) {
               		system("cls");
              		printf("\n O MES DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
 			  		}
 			  }
-			  while(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12);
+			  while(lista_clientes[i].data_nascimento.mes<1 || lista_clientes[i].data_nascimento.mes> 12);
 			  
 			  do {
 			  
               printf("\n \t Ano: ");
-              scanf("%d", &lista_clientes[indice_cliente].data_nascimento.ano);
-              	if(lista_clientes[indice_cliente].data_nascimento.ano<1900 || lista_clientes[indice_cliente].data_nascimento.ano> 2014) {
+              scanf("%d", &lista_clientes[i].data_nascimento.ano);
+              	if(lista_clientes[i].data_nascimento.ano<1900 || lista_clientes[i].data_nascimento.ano> 2014) {
               		system("cls");
              		printf("\n O ANO DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
              		}
              }
-             while(lista_clientes[indice_cliente].data_nascimento.ano<1900 || lista_clientes[indice_cliente].data_nascimento.ano> 2014);
+             while(lista_clientes[i].data_nascimento.ano<1900 || lista_clientes[i].data_nascimento.ano> 2014);
              
              do{
 			 
 			  printf("\n Introduza o Nr BI: ");
-				scanf("%d", &lista_clientes[indice_cliente].bi);
-				if(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 ) {
+				scanf("%d", &lista_clientes[i].bi);
+				if(lista_clientes[i].bi <10000000 || lista_clientes[i].bi > 99999999 ) {
               		system("cls");
              		printf("\n O SEU BI E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
@@ -1349,12 +1350,12 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
              		
               	}
         	}
-        	while(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 );
+        	while(lista_clientes[i].bi <10000000 || lista_clientes[i].bi > 99999999 );
         	do{
 			
               printf("\n Introduza o NIF: ");
-              scanf("%d", &lista_clientes[indice_cliente].num_fiscal);
-              	if(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999) {
+              scanf("%d", &lista_clientes[i].num_fiscal);
+              	if(lista_clientes[i].num_fiscal<100000000 || lista_clientes[i].num_fiscal>999999999) {
               		system("cls");
              		printf("\n O SEU NIF E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
@@ -1362,13 +1363,13 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
              		
               	}
               }
-              while(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999);
+              while(lista_clientes[i].num_fiscal<100000000 || lista_clientes[i].num_fiscal>999999999);
               
                do{
 			
               printf("\n Introduza o seu estado: ");
-              scanf("%d", &lista_clientes[indice_cliente].estado);
-              	if(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1) {
+              scanf("%d", &lista_clientes[i].estado);
+              	if(lista_clientes[i].estado<0 || lista_clientes[i].estado>1) {
               		system("cls");
              		printf("\n O SEU ESTADO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
@@ -1376,7 +1377,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
              		
               	}
               }
-              while(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1);
+              while(lista_clientes[i].estado<0 || lista_clientes[i].estado>1);
               
               
               
