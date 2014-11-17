@@ -213,7 +213,36 @@ while (escolha != 3);
 	
 }
 
+void pesquisa_codigo(){ 
 
+int x,cod_cliente_procura,i;
+printf("_________________________________________________________________\n");
+          printf("\n     Pesquisa por codigo");
+          printf("\n_________________________________________________________________\n");
+          printf("\n Introduza o codigo do cliente: ");
+          scanf("%d", &cod_cliente_procura);
+          
+	for (x = 0; x <= indice_cliente ; x++)
+	{
+       if (cod_cliente_procura == lista_clientes[x].codigo)
+       {
+                               printf("Nome:%c \n ",lista_clientes[x].nome);
+                               printf("Codigo de cliente: %d\n",lista_clientes[x].codigo);
+                               printf("Morada: %c \n",lista_clientes[x].morada);
+                               printf("Email: %c \n",lista_clientes[x].email);
+                               printf("Telemovel: %c \n",lista_clientes[x].telemovel);
+                               printf("Data de nascimento: %c/%c/%c \n",lista_clientes[x].data_nascimento.dia,lista_clientes[x].data_nascimento.mes,lista_clientes[x].data_nascimento.ano);
+                               printf("Cartao de cidadao: %c \n",lista_clientes[x].bi);
+                               printf("Nif: %c \n",lista_clientes[x].num_fiscal);
+                               printf("Consumos");
+                               printf("Codigo de consumos   Mes    Ano     Consumo");
+                               for(i=0;i<lista_clientes[x].indice_consumo;i++){
+                               printf("%d                    %d      %d       %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo);
+                                                             }
+                                }                                                
+                               }
+                               system("pause");
+                               }
 
 
 
@@ -267,9 +296,9 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
    	int x, i, s = 0; //a variavel S retorna uma mensagem de erro caso o nome pesquisado nao corresponder a nenhum nome da base de dados
    	
 	  printf("_________________________________________________________________\n");
-      printf("\n     Insira Codigo do Cliente");
+      printf("\n     Insira Codigo do Consumo a Pesquisar");
       printf("\n_______________________________________________________________\n");
-	  scanf("%s\n", &pesquisa_codigo);
+	  scanf("%d\n", &pesquisa_codigo);
 		  
 		  for (x = 0; x < indice_cliente;i++) 
 		  {
@@ -282,7 +311,7 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
 			   		 printf("_________________________________________\n");
 			   		 printf("\n      Consumo %d do cliente %s\n", lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].nome);
 			   		 printf("_________________________________________\n");
-			   		 s = 1;
+			   		 s = 1; //caso u0m consumo com o codigo pesquisado seja encontrado, s torna-se 1
          			 printf("\nCodigo Consumo: %d | Data: %d/%d | Consumo: %f \n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes, lista_clientes[x].consumo[i].ano, lista_clientes[x].consumo[i].consumo);
    	   	  			 
 					  x = indice_cliente; // uma vez encontrado o cliente a pesquisar, alteram-se as variaveis dos FOR para forcar uma saida 
@@ -291,7 +320,7 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
  				   	}
  				   }
 		  }
-		  if (s == 0)
+		  if (s == 0) //se s =0, é porque os FOR's não encontraram nenhum consumo com o codigo pesquisado. Logo retorna uma mensagem de erro
 		  {
 		  	printf("O codigo de consumo que pesquisou esta errado ou nao se encontra na lista.\n");
 		  }
@@ -299,7 +328,7 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
 	printf("Prima 0 para voltar ao menu anterior.");
 	scanf("%d", &n);
 	}while (n != 0);
-	                               system("pause"); 
+    system("pause"); 
 //Problema: Para cada cliente, os codigos de consumo sao exclusivos? Caso contrario, esta funcao retorna apenas o consumo i do primeiro cliente, e depois acaba.
 }
 	
@@ -340,7 +369,7 @@ do
 	switch (escolha) {
 	case 1:
 		system("cls");
-		//novo_cliente();
+		pesquisa_codigo();
 		break;
 	case 2:
 		system("cls");
@@ -348,7 +377,7 @@ do
 		break;
 	case 3:
 		system("cls");
-		//editar_cliente();
+		pesquisa_nome();
 		break;
 	case 4:
 		system("cls");
@@ -783,7 +812,7 @@ void inserir_consumos(){
 		         	printf("\n Introduza o codigo do consumo: ");
 		         	scanf("%d", &cod_consumo);
 		         	if (cod_consumo > 2921000 || cod_consumo < 2920000) 
-					{ // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
+					{ // aqui é onde o pograma verifica se o codigo inserido é valido ou nao
 						printf("\n O CODIGO DO CONSUMO NAO E VALIDO!!!\n\n  por favor insira um codigo entre 2920000 e 2921000\n \n");
           			}
 		         }while(cod_consumo > 2921000 || cod_consumo < 2920000);
@@ -1227,11 +1256,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
           
       	 
       	 else {
-		   		for(a = i; a < indice_cliente ;a++) //elemina o cliente anterior
-              {
-                    lista_clientes[a] = lista_clientes[a + 1];
-              }
-              indice_cliente--;
+		   	
               
           
               lista_clientes[indice_cliente].codigo = codigo_cliente;
@@ -1354,8 +1379,8 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
               while(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1);
               
               
-              // Incremento o número actual de clientes em +1
-              indice_cliente++;
+              
+              
               system("cls");
               printf("\n O CLIENTE FOI EDITADO COM SUCESSO.\n");
               system("pause");
