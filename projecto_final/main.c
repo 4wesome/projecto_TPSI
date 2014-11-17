@@ -320,20 +320,20 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
  //do
   // {
    	int pesquisa_codigo; // variavel para pesquisa
-   	int x, i, s = 0; //a variavel S retorna uma mensagem de erro caso o nome pesquisado nao corresponder a nenhum nome da base de dados
+   	int x, i, s = 0,a; //a variavel S retorna uma mensagem de erro caso o nome pesquisado nao corresponder a nenhum nome da base de dados
    	
 	  printf("_________________________________________________________________\n");
       printf("\n     Insira Codigo do Consumo a Pesquisar");
       printf("\n_______________________________________________________________\n");
-      scanf("%d \n", &pesquisa_codigo);
-		  
+      scanf("%d", &pesquisa_codigo);
+ 	       		  
 		  for (x = 0; x < indice_cliente;x++) 
 		  {
               
 		  	for (i = 0; i < lista_clientes[x].indice_consumo;i++)
 		  	{
-		  	               
-		  		if (pesquisa_codigo = lista_clientes[x].consumo[i].cod_consumo) //comapara-se o codigo inserido com todos os codigos de consumos dos clientes
+		  	    
+		  		if (pesquisa_codigo == lista_clientes[x].consumo[i].cod_consumo) //comapara-se o codigo inserido com todos os codigos de consumos dos clientes
  					{
                                     
 			   		 printf("_________________________________________\n");
@@ -344,10 +344,10 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
                      printf("Codigo de Cliente: %d\n",lista_clientes[x].codigo);
                      printf("Consumos:\n");
                      printf("Codigo de consumos   Mes    Ano     Consumo \n");
-                     for(i=0;i<lista_clientes[x].indice_consumo;i++){
+                     
                      printf("%d              %d      %d      %f\n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
                                 
-                                }             
+                                            
    	   	  			 
 					  x = indice_cliente; // uma vez encontrado o cliente a pesquisar, alteram-se as variaveis dos FOR para forcar uma saida 
    	   	  			  i = lista_clientes[x].indice_consumo;
