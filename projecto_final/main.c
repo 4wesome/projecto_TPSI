@@ -765,7 +765,8 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 							}			
 						}while(existe == 1);
 						
-							
+						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago: ");
+						scanf("%d", &lista_clientes[i].consumo[a].estado);	
 						
 						printf("\n Introduza o consumo: ");
 						scanf("%f", &lista_clientes[i].consumo[a].consumo);
@@ -887,7 +888,11 @@ void inserir_consumos(){
 							}
 							if(existe == 0)
 							{
-							
+						
+						//estado do consumo 1 e pago 0 e nao pago	
+						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago): ");
+						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].estado);
+						
 						
 						printf("\n Introduza o consumo: ");
 						scanf("%f", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].consumo);
