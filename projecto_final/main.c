@@ -637,7 +637,7 @@ void remover_consumos() {
 
 void editar_consumos() {
 	
-int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
+int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 	
 
 	float preco_total;
@@ -656,18 +656,23 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
           printf("\n_________________________________________________________________\n");
           printf("\n_________________________________________________________________\n");
           
-          	//lista consumos do cliente selecionado
                 printf("\n Codigo: %d 		Nome: %s",lista_clientes[i].codigo, lista_clientes[i].nome);
-                printf("\n Consumo: %f      ", lista_clientes[i].consumo[a].consumo);
-                printf("_________________________________________________________________\n");
+          		for(j = 0; j < lista_clientes[i].indice_consumo; j++)
+          		{
+          			//lista consumos do cliente selecionado
+
+					printf("\n Ano: %d      ", lista_clientes[i].consumo[j].ano);
+                	printf("\n Consumo: %f      ", lista_clientes[i].consumo[j].consumo);
+                	printf("_________________________________________________________________\n");
+          
+          		}
           
           printf("\n\n para sair prima a tecla 5.\n");
           scanf("%d", &op);
     	  }while(op!=5);
 
           
-		  if (lista_clientes[i].indice_consumo < 100)
-          {
+		  
           
           	//Final aqui fica i != -1
 			  if (i != -1) // Verifico se o código do cliente já existe
@@ -689,7 +694,6 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
 		      	 
 		      	 printf("Valor de a:%d", a);
 		      	 system("pause");
-		      	 if(lista_clientes[i].estado == 1){ //1 e ativo 0 e inativo
 		      	 		
 						if (a != -1) // Verifica-se se o código do consumo já existe
 						{
@@ -745,27 +749,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
 						
 
 						}
-				   
-				   } else {
-				   		system("cls");
-						printf("\n Nao podem ser adicionados consumos ao cliente caloteiro :D .\n");
-						system("pause");
-				   }
 		   	 					   
-		      } else {
-		      	printf("\n  ERRO!! O Codigo de Cliente nao existe");
-		      	system("pause");
-		      }
-      
-          } else {
-          		printf("\n  O cliente selecionado ja atingiu o limite de consumos");
-				system("pause");          	
-          }
-          
-          
-
-          
-
 }
 
 
@@ -845,7 +829,7 @@ void inserir_consumos(){
 						
 						
 						existe = 0;
-						for(m=0; m <= lista_clientes[i].indice_consumo; m++)
+						for(m=0; m < lista_clientes[i].indice_consumo; m++)
 							{
 								if(lista_clientes[i].consumo[m].mes == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].mes && lista_clientes[i].consumo[m].ano == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].ano ){
 									
