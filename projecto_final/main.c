@@ -691,22 +691,24 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
           do {
 
 		  printf("_________________________________________________________________\n");
-          printf("\n     CONSUMOS DO CLIENTE");
+          printf("\n     CONSUMOS DO CLIENTE %d", codigo_cliente);
           printf("\n_________________________________________________________________\n");
           printf("\n_________________________________________________________________\n");
           
-                printf("\n Codigo: %d 		Nome: %s",lista_clientes[i].codigo, lista_clientes[i].nome);
+                printf("\n Codigo: %d 		\n Nome: %s",lista_clientes[i].codigo, lista_clientes[i].nome);
           		for(j = 0; j < lista_clientes[i].indice_consumo; j++)
           		{
           			//lista consumos do cliente selecionado
 
+					printf("\n Mes: %d      ", lista_clientes[i].consumo[j].mes);
 					printf("\n Ano: %d      ", lista_clientes[i].consumo[j].ano);
                 	printf("\n Consumo: %f      ", lista_clientes[i].consumo[j].consumo);
-                	printf("_________________________________________________________________\n");
+                	
           
           		}
+          printf("\n_________________________________________________________________\n");
           
-          printf("\n\n para sair prima a tecla 5.\n");
+		  printf("\n\n \t para sair prima a tecla 5.\n");
           scanf("%d", &op);
     	  }while(op!=5);
 
@@ -728,11 +730,9 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
           			}
 		         }while(cod_consumo > 2921000 || cod_consumo < 2920000);
 		      	 
-		      	 printf("frente");
 		      	 a = pesquisar_consumos(cod_consumo, lista_clientes[i].indice_consumo);
 		      	 
-		      	 printf("Valor de a:%d", a);
-		      	 system("pause");
+		    
 		      	 		
 						if (a != -1) // Verifica-se se o código do consumo já existe
 						{
@@ -845,6 +845,8 @@ void inserir_consumos(){
 						{
 						lista_clientes[i].consumo[lista_clientes[i].indice_consumo].cod_consumo = cod_consumo;
 						
+						do{
+						
 						printf("\n Introduza o mes: ");
 						fflush(stdin);
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].mes);
@@ -854,8 +856,11 @@ void inserir_consumos(){
              			system("pause");
              			system("cls");
 			  			}
+			  			}while(lista_clientes[i].consumo[lista_clientes[i].indice_consumo].mes<1 || lista_clientes[i].consumo[lista_clientes[i].indice_consumo].mes>12);
 						
 							
+						do{
+						
 						printf("\n Introduza o ano: ");
 						fflush(stdin);
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano);
@@ -866,7 +871,7 @@ void inserir_consumos(){
              			system("pause");
              			system("cls");
              			}
-						
+						}while(lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano<1900 || lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano>2014);
 						
 						existe = 0;
 						for(m=0; m < lista_clientes[i].indice_consumo; m++)
@@ -892,11 +897,13 @@ void inserir_consumos(){
 						lista_clientes[i].consumo[lista_clientes[i].indice_consumo].preco = preco_total;
 						
 						printf("O preco total a pagar e de : %f \n", preco_total);
+						system("pause");
 						
 						// Incremento o número actual de consumo em +1
 						lista_clientes[i].indice_consumo++;
 						system("cls");
 						printf("\n O CONSUMO FOI ADICINADO COM SUCESSO.\n");
+						system("pause");
 						
 						}
 					}
