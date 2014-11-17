@@ -733,12 +733,12 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 					printf("\n Mes: %d      ", lista_clientes[i].consumo[j].mes);
 					printf("\n Ano: %d      ", lista_clientes[i].consumo[j].ano);
                 	printf("\n Consumo: %f      ", lista_clientes[i].consumo[j].consumo);
-                	
+                	printf("\n");
           
           		}
           printf("\n_________________________________________________________________\n");
           
-		  printf("\n\n \t para sair prima a tecla 5.\n");
+		  printf("\n\n \t para editar prima a tecla 5.\n");
           scanf("%d", &op);
     	  }while(op!=5);
 
