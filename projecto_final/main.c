@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include <conio.h>
 
 #define PRECO_GB 0.5
 #define IVA 0.23
@@ -163,6 +164,7 @@ do
 {
 	
 	system("cls");
+	
 	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
         printf("             %c Consultas da Base de Dados  %c",186,186);
         printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
@@ -632,7 +634,7 @@ void remover_consumos() {
 	
 }
 
-<<<<<<< HEAD
+
 void editar_consumos() {
 	
 int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
@@ -765,8 +767,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
           
 
 }
-=======
->>>>>>> origin/master
+
 
 void inserir_consumos(){
 
@@ -791,9 +792,7 @@ void inserir_consumos(){
 		      {
 		      	
 		         system("cls");
-		         
-		         
-		         
+
 		         
 		         do
 		         {
@@ -807,9 +806,7 @@ void inserir_consumos(){
 		      	 
 		      	 
 		      	 a = pesquisar_consumos(cod_consumo, lista_clientes[i].indice_consumo);
-		      	 
-		    
-		      	 system("pause");
+		      	
 		      	 if(lista_clientes[i].estado == 1){ //1 e ativo 0 e inativo
 		      	 		
 						if (a != -1) // Verifica-se se o código do consumo já existe
@@ -827,11 +824,24 @@ void inserir_consumos(){
 						printf("\n Introduza o mes: ");
 						fflush(stdin);
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].mes);
+						if(lista_clientes[i].consumo[lista_clientes[i].indice_consumo].mes<1 || lista_clientes[i].consumo[lista_clientes[i].indice_consumo].mes>12) {
+              			system("cls");
+             			printf("\n O MES E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             			system("pause");
+             			system("cls");
+			  			}
 						
 							
 						printf("\n Introduza o ano: ");
 						fflush(stdin);
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano);
+						
+						if(lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano<1900 || lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano>2014) {
+              			system("cls");
+             			printf("\n O ANO E INVALIDO!!!\n\n Tente novamente.\n\n ");
+             			system("pause");
+             			system("cls");
+             			}
 						
 						
 						existe = 0;
@@ -882,11 +892,6 @@ void inserir_consumos(){
           		printf("\n  O cliente selecionado ja atingiu o limite de consumos");
 				system("pause");          	
           }
-          
-          
-
-          
-	
 }
             
 void menu_gestao_consumos() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os consumos (adicionar, editar, remover, e listar)
@@ -926,7 +931,7 @@ do
 		break;
 	case 2:
 		system("cls");
-		//editar_cliente();
+		editar_consumos();
 		break;
 	case 3:
 		system("cls");
@@ -1182,7 +1187,7 @@ int i, op;
 
 do {
 
-	printf("_________________________________________________________________\n");
+		  printf("_________________________________________________________________\n");
           printf("\n     CLIENTES");
           printf("\n_________________________________________________________________\n");
           printf("\n_________________________________________________________________\n");
@@ -1383,6 +1388,7 @@ void menu_gestao_clientes() {// este é o menu que será apresentado ao utilizador
 do 
 {
 			system("cls");
+			system("color 70");
 	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
         printf("             %c      Gestao de Clientes     %c",186,186);
         printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
@@ -1447,6 +1453,7 @@ int escolha;
 do 
 {
 			system("cls");
+			system("color 70");
 	printf("             %c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,187);
         printf("             %c          Bem Vindo          %c",186,186);
         printf("\n%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c%c\n",201,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,205,202,205,205,205,205,205,205,205,205,205,205,205,187);
