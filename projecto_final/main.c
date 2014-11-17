@@ -286,33 +286,7 @@ printf("_________________________________________________________________\n");
                                                               system("pause"); 
                                }
                                
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* A função pesquisa_consumo_por_codigo tem como objectivio:
-     - Fazer scan de um numero inserido pelo utilizador(pesquisa_código);
-     - Correr todos os clientes, e, em cada cliente, correr todos os seus consumos.
-     - Por cada consumo que ele analisa vai comparar a variavel pesquisa_codigo com esse valor.
-     - Se encontrar um codigo de consumo igual, imprime as informaçoes especificas a esse consumo.
-     - Uma vez encontrado o código pretendido, termina a pesquisa.
 
-PROBLEMA: Depois de fazer scan da variavel pesquisa_codigo, o programa não avança.
-          O mais curiose é que, se inserirmos o um numero de cliente após termos inserido o codigo, ele executa os prinf's.
-
-*/
 
 void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo seu codigo e retornar a informacao especifica a esse consumo
 {
@@ -364,7 +338,6 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
 	//scanf("%d", &n);
 	//}while (n != 0);
     system("pause"); 
-//Problema: Para cada cliente, os codigos de consumo sao exclusivos? Caso contrario, esta funcao retorna apenas o consumo i do primeiro cliente, e depois acaba.
 }
 	
 
@@ -1262,10 +1235,10 @@ do {
           	 /*
                 printf("\n Codigo:%d     Numero BI:%d      Nome:%s      Morada:%s      Email:%s      Telemovel:%d      Data Nascimento:%d      Num Fiscal:%d      Estado:%d", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome, lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel, lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
             */  
-                printf("\n Codigo: %d 		Numero BI: %d		Nome:%s",lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
-                printf("\n Morada: %s      Email: %s      Telemovel: %d",lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel);
-                printf("Data Nascimento: %d      Num Fiscal: %d      Estado: %d",lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
-                printf("_________________________________________________________________\n");
+                printf("\nCodigo: %d   Numero BI: %d   Nome:%s\n",lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
+                printf("\nMorada: %s   Email: %s Telemovel: %d\n",lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel);
+                printf("\nData Nascimento: %d   Num Fiscal: %d   Estado: %d\n",lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
+                printf("\n_________________________________________________________________\n");
           }
           printf("\n\n para sair prima a tecla 5.\n");
           scanf("%d", &op);
