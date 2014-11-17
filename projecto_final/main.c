@@ -631,6 +631,132 @@ void remover_consumos() {
 	
 }
 
+void editar_consumos() {
+	
+int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
+	
+
+	float preco_total;
+	
+		  printf("_________________________________________________________________\n");
+          printf("\n     ADICIONAR Consumo");
+          printf("\n_________________________________________________________________\n");
+          printf("\n Introduza o codigo do cliente: ");
+          scanf("%d", &codigo_cliente);
+          i = pesquisar_clientes(codigo_cliente);
+
+          
+		  if (lista_clientes[i].indice_consumo < 100)
+          {
+          
+          	//Final aqui fica i != -1
+			  if (i != -1) // Verifico se o código do cliente já existe
+		      {
+		      	
+		         system("cls");
+		         
+		         
+		         
+		         
+		         do
+		         {
+		         	printf("\n Introduza o codigo do consumo: ");
+		         	scanf("%d", &cod_consumo);
+		         	if (cod_consumo > 2921000 || cod_consumo < 2920000) 
+					{ // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
+						printf("\n O CODIGO DO CONSUMO NAO E VALIDO!!!\n\n  por favor insira um codigo entre 2920000 e 2921000\n \n");
+          			}
+		         }while(cod_consumo > 2921000 || cod_consumo < 2920000);
+		      	 
+		      	 printf("frente");
+		      	 a = pesquisar_consumos(cod_consumo, lista_clientes[i].indice_consumo);
+		      	 
+		      	 printf("Valor de a:%d", a);
+		      	 system("pause");
+		      	 if(lista_clientes[i].estado == 1){ //1 e ativo 0 e inativo
+		      	 		
+						if (a != -1) // Verifica-se se o código do consumo já existe
+						{
+						system("cls");
+						printf("\n O CODIGO DO CONSUMO JA EXISTE!!!\n\n Tente novamente.\n\n ");
+						system("pause");
+						system("cls");
+						
+						printf("\n Introduza o mes: ");
+						fflush(stdin);
+						scanf("%d", &lista_clientes[i].consumo[a].mes);
+						
+							
+						do
+						{
+							
+							printf("\n Introduza o ano: ");
+							fflush(stdin);
+							scanf("%d", &lista_clientes[i].consumo[a].ano);
+							existe = 0;
+							for(m=0; m < lista_clientes[i].indice_consumo; m++)
+							{
+								if(lista_clientes[i].consumo[m].mes == lista_clientes[m].consumo[a].mes && lista_clientes[i].consumo[m].ano == lista_clientes[m].consumo[a].ano ){
+									
+									existe = 1;
+									printf("\n Ja foi inserido um consumo para o mes e ano selecionados");
+								}
+							}			
+						}while(existe == 1);
+						
+							
+						
+						printf("\n Introduza o consumo: ");
+						scanf("%f", &lista_clientes[i].consumo[a].consumo);
+						
+						//calcular o preco a pagar
+						preco_total = lista_clientes[i].consumo[a].consumo * PRECO_GB;
+						preco_total = preco_total + preco_total * IVA;
+						
+						lista_clientes[i].consumo[a].preco = preco_total;
+						
+						printf("O preco total a pagar e de : %f \n", preco_total);
+						system("pause");
+						
+						
+						}
+		      
+						else // se o codigo do consumo ainda nao existir o utilizador pode inserir o resto dos campos
+						{
+						lista_clientes[i].consumo[lista_clientes[i].indice_consumo].cod_consumo = cod_consumo;
+						
+						
+						
+						// Incremento o número actual de consumo em +1
+						lista_clientes[i].indice_consumo++;
+						system("cls");
+						printf("\n O CONSUMO FOI ADICINADO COM SUCESSO.\n");
+						system("pause");
+						
+
+					}
+				   
+				   } else {
+				   		system("cls");
+						printf("\n Nao podem ser adicionados consumos ao cliente caloteiro :D .\n");
+						system("pause");
+				   }
+		   	 					   
+		      } else {
+		      	printf("\n  ERRO!! O Codigo de Cliente nao existe");
+		      	system("pause");
+		      }
+      
+          } else {
+          		printf("\n  O cliente selecionado ja atingiu o limite de consumos");
+				system("pause");          	
+          }
+          
+          
+
+          
+
+}
 
 void inserir_consumos(){
 
@@ -693,23 +819,23 @@ void inserir_consumos(){
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].mes);
 						
 							
-						printf("\n Introduza o ano: ");
-						fflush(stdin);
-						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano);
-						
-						
-						existe = 0;
-						for(m=0; m <= lista_clientes[i].indice_consumo; m++)
+						do
+						{
+							
+							printf("\n Introduza o ano: ");
+							fflush(stdin);
+							scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano);
+							existe = 0;
+							for(m=0; m < lista_clientes[i].indice_consumo; m++)
 							{
 								if(lista_clientes[i].consumo[m].mes == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].mes && lista_clientes[i].consumo[m].ano == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].ano ){
 									
-									printf("\n Ja foi inserido um consumo para o mes e ano selecionados ");
 									existe = 1;
-									system("pause");
+									printf("\n Ja foi inserido um consumo para o mes e ano selecionados");
 								}
-							}
-							if(existe == 0)
-							{
+							}			
+						}while(existe == 1);
+						
 							
 						
 						printf("\n Introduza o consumo: ");
@@ -722,13 +848,15 @@ void inserir_consumos(){
 						lista_clientes[i].consumo[lista_clientes[i].indice_consumo].preco = preco_total;
 						
 						printf("O preco total a pagar e de : %f \n", preco_total);
+						system("pause");
 						
 						// Incremento o número actual de consumo em +1
 						lista_clientes[i].indice_consumo++;
 						system("cls");
 						printf("\n O CONSUMO FOI ADICINADO COM SUCESSO.\n");
+						system("pause");
 						
-						}
+
 					}
 				   
 				   } else {
@@ -792,7 +920,7 @@ do
 		break;
 	case 2:
 		system("cls");
-		//editar_cliente();
+		editar_consumos();
 		break;
 	case 3:
 		system("cls");
@@ -1076,7 +1204,7 @@ void editar_clientes() {
 	
 int op, i, codigo_cliente, a, j, z,flag_remov;
 	
-		if (indice_cliente == 0) // Verifico se existem docentes para editar
+		if (indice_cliente == 0) // Verifico se existem clientes para editar
       {
          printf("\n NAO EXISTEM CLIENTES!!!\n\n ");
          system("pause");
