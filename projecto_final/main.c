@@ -640,11 +640,27 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
 	float preco_total;
 	
 		  printf("_________________________________________________________________\n");
-          printf("\n     ADICIONAR Consumo");
+          printf("\n     Editar Consumos");
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o codigo do cliente: ");
           scanf("%d", &codigo_cliente);
           i = pesquisar_clientes(codigo_cliente);
+          
+          do {
+
+		  printf("_________________________________________________________________\n");
+          printf("\n     CONSUMOS DO CLIENTE");
+          printf("\n_________________________________________________________________\n");
+          printf("\n_________________________________________________________________\n");
+          
+          	//lista consumos do cliente selecionado
+                printf("\n Codigo: %d 		Nome: %s",lista_clientes[i].codigo, lista_clientes[i].nome);
+                printf("\n Consumo: %f      ", lista_clientes[i].consumo[a].consumo);
+                printf("_________________________________________________________________\n");
+          
+          printf("\n\n para sair prima a tecla 5.\n");
+          scanf("%d", &op);
+    	  }while(op!=5);
 
           
 		  if (lista_clientes[i].indice_consumo < 100)
@@ -654,11 +670,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
 			  if (i != -1) // Verifico se o código do cliente já existe
 		      {
 		      	
-		         system("cls");
-		         
-		         
-		         
-		         
+		         system("cls");		         
 		         do
 		         {
 		         	printf("\n Introduza o codigo do consumo: ");
@@ -722,20 +734,14 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0;
 						
 						}
 		      
-						else // se o codigo do consumo ainda nao existir o utilizador pode inserir o resto dos campos
+						else // se o codigo do consumo nao existir o utilizador nao pode editar
 						{
-						lista_clientes[i].consumo[lista_clientes[i].indice_consumo].cod_consumo = cod_consumo;
-						
-						
-						
-						// Incremento o número actual de consumo em +1
-						lista_clientes[i].indice_consumo++;
 						system("cls");
-						printf("\n O CONSUMO FOI ADICINADO COM SUCESSO.\n");
+						printf("\n O COODIGO DE CONSUMO NAO EXISTE.\n \n");
 						system("pause");
 						
 
-					}
+						}
 				   
 				   } else {
 				   		system("cls");
@@ -796,10 +802,10 @@ void inserir_consumos(){
           			}
 		         }while(cod_consumo > 2921000 || cod_consumo < 2920000);
 		      	 
-		      	 printf("frente");
+		      	 
 		      	 a = pesquisar_consumos(cod_consumo, lista_clientes[i].indice_consumo);
 		      	 
-		      	 printf("Valor de a:%d", a);
+		    
 		      	 system("pause");
 		      	 if(lista_clientes[i].estado == 1){ //1 e ativo 0 e inativo
 		      	 		
@@ -900,9 +906,7 @@ do
         printf("%c                                                      %c\n",186,186);
         printf("%c 3 - Remover                                          %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
-        printf("%c 4 - Listar                                           %c\n",186,186);
-        printf("%c                                                      %c\n",186,186);
-        printf("%c 5 - Voltar Atras                                     %c\n",186,186);
+        printf("%c 4 - Voltar Atras                                     %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
@@ -912,7 +916,7 @@ do
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
 		}
-	while (escolha<0 || escolha>5);
+	while (escolha<0 || escolha>4);
 	
 	switch (escolha) {
 	case 1:
@@ -925,24 +929,20 @@ do
 		break;
 	case 3:
 		system("cls");
-		//remover_cliente();
+		remover_consumos();
 		break;
 	case 4:
-		system("cls");
-		//listar_cliente();
-		break;
-	case 5:
 		system("cls");
 		
 		break;		
 	default:
 		system("cls");
-		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
+		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 4");
 		break;
 	}
 }
 
-while (escolha != 5);
+while (escolha != 4);
 	
 }
 
