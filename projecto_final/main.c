@@ -285,7 +285,34 @@ printf("_________________________________________________________________\n");
                                }
                                                               system("pause"); 
                                }
+                               
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+/* A função pesquisa_consumo_por_codigo tem como objectivio:
+     - Fazer scan de um numero inserido pelo utilizador(pesquisa_código);
+     - Correr todos os clientes, e, em cada cliente, correr todos os seus consumos.
+     - Por cada consumo que ele analisa vai comparar a variavel pesquisa_codigo com esse valor.
+     - Se encontrar um codigo de consumo igual, imprime as informaçoes especificas a esse consumo.
+     - Uma vez encontrado o código pretendido, termina a pesquisa.
 
+PROBLEMA: Depois de fazer scan da variavel pesquisa_codigo, o programa não avança.
+          O mais curiose é que, se inserirmos o um numero de cliente após termos inserido o codigo, ele executa os prinf's.
+
+*/
 
 void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo seu codigo e retornar a informacao especifica a esse consumo
 {
@@ -298,7 +325,7 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
 	  printf("_________________________________________________________________\n");
       printf("\n     Insira Codigo do Consumo a Pesquisar");
       printf("\n_______________________________________________________________\n");
-	  scanf("%d\n", &pesquisa_codigo);
+      scanf("%d \n", &pesquisa_codigo);
 		  
 		  for (x = 0; x < indice_cliente;x++) 
 		  {
@@ -306,11 +333,9 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
 		  	for (i = 0; i < lista_clientes[x].indice_consumo;i++)
 		  	{
 		  	               
-		  		if (pesquisa_codigo == lista_clientes[x].consumo[i].cod_consumo) //comapara-se o codigo inserido com todos os codigos de consumos dos clientes
+		  		if (pesquisa_codigo = lista_clientes[x].consumo[i].cod_consumo) //comapara-se o codigo inserido com todos os codigos de consumos dos clientes
  					{
                                     
-                                    
-			  		 system("cls");
 			   		 printf("_________________________________________\n");
 			   		 printf("\n      Consumo %d do cliente %s\n", lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].nome);
 			   		 printf("_________________________________________\n");
@@ -320,7 +345,7 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
                      printf("Consumos:\n");
                      printf("Codigo de consumos   Mes    Ano     Consumo \n");
                      for(i=0;i<lista_clientes[x].indice_consumo;i++){
-                     printf("%d              %d      %d      %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
+                     printf("%d              %d      %d      %f\n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
                                 
                                 }             
    	   	  			 
@@ -328,16 +353,16 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
    	   	  			  i = lista_clientes[x].indice_consumo;
  			   	   
  				   	}
- 				   }
-		  }
-		  if (s == 0) //se s =0, é porque os FOR's não encontraram nenhum consumo com o codigo pesquisado. Logo retorna uma mensagem de erro
+ 			   }
+		 }
+		 if (s == 0) //se s =0, é porque os FOR's não encontraram nenhum consumo com o codigo pesquisado. Logo retorna uma mensagem de erro
 		  {
 		  	printf("O codigo de consumo que pesquisou esta errado ou nao se encontra na lista.\n");
 		  }
 		  
-//	printf("Prima 0 para voltar ao menu anterior.");
+	//printf("Prima 0 para voltar ao menu anterior.");
 	//scanf("%d", &n);
-//	}while (n != 0);
+	//}while (n != 0);
     system("pause"); 
 //Problema: Para cada cliente, os codigos de consumo sao exclusivos? Caso contrario, esta funcao retorna apenas o consumo i do primeiro cliente, e depois acaba.
 }
@@ -465,22 +490,25 @@ for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clien
 
 	//////////////////////////////
 
-	printf("Código Cliente | Consumos \n");
+	printf("Codigo Cliente | Consumos \n");
 	printf("\n");	
 
-		for (x = 0; x <= indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por consumo.
+		for (x = 0; x < indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por consumo.
 		{
 				printf("%f | %f \n", tab_cliente_totconsumo[x][0],tab_cliente_totconsumo[x][1]);
 		}
 
-	
+	system("pause");
 }
 
 
 void consulta_inativos(){ // Esta função vai listar todos os clientes que tenham pelo menos 1 consumo não pago.
 int n = 1;
 int x, i;
-	
+system("cls");
+			   		 printf("_________________________________________\n");
+			   		 printf("\n      Clientes inativos\n");
+			   		 printf("_________________________________________\n");
 //do{
 
 
@@ -496,7 +524,7 @@ int x, i;
 					{
                                                         
 						printf("%d  |  %s\n",lista_clientes[x].codigo, lista_clientes[x].nome);	
-						x++;
+					
 						
 					}
 			}
@@ -507,7 +535,7 @@ int x, i;
 	
 		
 //}while (n != 0);
-
+system("pause");
 }
 
 
