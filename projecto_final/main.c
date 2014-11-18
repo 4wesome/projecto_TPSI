@@ -640,7 +640,9 @@ void remover_consumos() {
           printf("\n     CONSUMOS DO CLIENTE %d", codigo_cliente);
           printf("\n_________________________________________________________________\n");
           printf("\n_________________________________________________________________\n");
-          
+
+		printf("\n Insira codigo cliente: \n");     
+		scanf("%d", &codigo_cliente)     
                 printf("\n Codigo: %d 		\n Nome: %s",lista_clientes[i].codigo, lista_clientes[i].nome);
           		for(j = 0; j < lista_clientes[i].indice_consumo; j++)
           		{
@@ -674,14 +676,14 @@ void remover_consumos() {
 
 			  // Removo o cliente puxando os consumos seguintes 1 posição para traz
               
-			  //for(a = i; a < indice_consumo - 1;a++)
-              //{
-                    //lista_clientes[i].consumo = lista_clientes[i + 1];
-              //}
+			  for(a = i; a < indice_consumo - 1;a++)
+              {
+                    lista_clientes[indice_clientes].consumo[a] = lista_clientes[indice_clientes].consumo[a + 1];
+              }
               
               // Decremento o número actual de docentes em -1
               
-			  //indice_consumo--;
+			  lista_clientes[indice_clientes]indice_consumo--;
               system("cls");
               printf("\n O CONSUMO FOI REMOVIDO COM SUCESSO.\n");
               system("pause");
@@ -1280,7 +1282,7 @@ do {
 void editar_clientes() {
 	
 int op, i, codigo_cliente, a, j, z,flag_remov, b;
-	do {
+	
 	
 		if (indice_cliente == 0) // Verifico se existem docentes para editar
       {
@@ -1455,7 +1457,6 @@ int op, i, codigo_cliente, a, j, z,flag_remov, b;
   	} while(i == -1);
 	}
 
-}
 void menu_gestao_clientes() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
 	int escolha;
 
