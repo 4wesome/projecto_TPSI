@@ -643,11 +643,14 @@ while (escolha != 3);
 }
 
 void remover_consumos() {
-	int cod_consumo, u, i, a, op, j, z,flag_remov, codigo_cliente;
+	int cod_consumo, u, i = 0, a, op, j, z,flag_remov, codigo_cliente;
 	int t = 0;
 	int indice_consumo;
-	indice_consumo = lista_clientes[i].indice_consumo;
-      
+	printf("antesdisto");
+	
+
+     
+     printf("depois doadus sdisto"); 
       if (indice_consumo == 0) // Verifico se existem docentes para remover
       {
          printf("\n NAO EXISTEM CONSUMOS!!!\n\n ");
@@ -665,7 +668,8 @@ void remover_consumos() {
 
 		printf("\n Insira codigo cliente: \n");     
 		scanf("%d", &codigo_cliente);
-        i = pesquisar_clientes(codigo_cliente);    
+        i = pesquisar_clientes(codigo_cliente); 
+       	indice_consumo = lista_clientes[i].indice_consumo;   
                 printf("\n Codigo: %d 		\n Nome: %s ",lista_clientes[i].codigo, lista_clientes[i].nome);
           		for(j = 0; j < lista_clientes[i].indice_consumo; j++)
           		{
@@ -700,14 +704,15 @@ void remover_consumos() {
 
 			  // Removo o consumo puxando os consumos seguintes 1 posição para traz
               
-              /*for(a = 0; a < indice_consumo - 1;a++)
+              for(a = 0; a < indice_consumo - 1;a++)
               {
-                    lista_clientes[i].consumo[a] = lista_clientes[i].consumo[a + 1];
+                    
+                    lista_clientes[i].consumo[u] = lista_clientes[i].consumo[u + 1];
               }
               
               // Decremento o número actual de docentes em -1
               
-			  indice_consumo--;*/
+			  lista_clientes[i].indice_consumo -- ;
 			  
               system("cls");
               printf("\n O CONSUMO FOI REMOVIDO COM SUCESSO.\n");
