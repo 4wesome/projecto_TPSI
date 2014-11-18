@@ -1138,6 +1138,7 @@ void inserir_clientes(){
              		printf("\n O DIA DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
+             		fflush(stdin);
              	}
              }
               while(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31);
@@ -1150,6 +1151,7 @@ void inserir_clientes(){
              		printf("\n O MES DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
+             		fflush(stdin);
 			  		}
 			  }
 			  while(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12);
@@ -1176,7 +1178,7 @@ void inserir_clientes(){
              		printf("\n O SEU BI E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
-             		
+             		fflush(stdin);
               	}
         	}
         	while(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 );
@@ -1189,7 +1191,7 @@ void inserir_clientes(){
              		printf("\n O SEU NIF E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
-             		
+             		fflush(stdin);
               	}
               }
               while(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999);
@@ -1203,7 +1205,7 @@ void inserir_clientes(){
              		printf("\n O SEU ESTADO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
-             		
+             		fflush(stdin);
               	}
               }
               while(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1);
