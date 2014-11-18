@@ -704,6 +704,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o codigo do cliente: ");
           scanf("%d", &codigo_cliente);
+          fflush(stdin);
           i = pesquisar_clientes(codigo_cliente);
           
           do {
@@ -728,6 +729,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
           
 		  printf("\n\n \t para editar prima a tecla 5.\n");
           scanf("%d", &op);
+          fflush(stdin);
     	  }while(op!=5);
 
           
@@ -742,6 +744,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 		         {
 		         	printf("\n Introduza o codigo do consumo: ");
 		         	scanf("%d", &cod_consumo);
+		         	fflush(stdin);
 		         	if (cod_consumo > 2921000 || cod_consumo < 2920000) 
 					{ // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
 						printf("\n O CODIGO DO CONSUMO NAO E VALIDO!!!\n\n  por favor insira um codigo entre 2920000 e 2921000\n \n");
@@ -829,6 +832,7 @@ void inserir_consumos(){
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o codigo do cliente: ");
           scanf("%d", &codigo_cliente);
+          fflush(stdin);
           i = pesquisar_clientes(codigo_cliente);
 
           
@@ -846,6 +850,7 @@ void inserir_consumos(){
 		         {
 		         	printf("\n Introduza o codigo do consumo: ");
 		         	scanf("%d", &cod_consumo);
+		         	fflush(stdin);
 		         	if (cod_consumo > 2921000 || cod_consumo < 2920000) 
 					{ // aqui é onde o pograma verifica se o codigo inserido é valido ou nao
 						printf("\n O CODIGO DO CONSUMO NAO E VALIDO!!!\n\n  por favor insira um codigo entre 2920000 e 2921000\n \n");
@@ -1075,6 +1080,7 @@ void inserir_clientes(){
           printf("\n_________________________________________________________________\n");
 		  printf("\n Introduza o codigo do cliente: ");
           scanf("%d", &codigo_cliente);
+          fflush(stdin);
          if (codigo_cliente > 19215000 || codigo_cliente < 19214000) { // aqi é onde o pograma verifica de o codigo inserido é valido ou nao
           	 
 			system("cls");
@@ -1222,6 +1228,7 @@ void inserir_clientes(){
 			
               printf("\n Introduza o seu estado: ");
               scanf("%d", &lista_clientes[indice_cliente].estado);
+              fflush(stdin);
               	if(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1) {
               		system("cls");
              		printf("\n O SEU ESTADO E INVALIDO!!!\n\n Tente novamente.\n\n ");
@@ -1272,7 +1279,8 @@ do {
 
 void editar_clientes() {
 	
-int op, i, codigo_cliente, a, j, z,flag_remov;
+int op, i, codigo_cliente, a, j, z,flag_remov, b;
+	do {
 	
 		if (indice_cliente == 0) // Verifico se existem docentes para editar
       {
@@ -1282,7 +1290,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
       }
       else
       {
-         do {
+         
 		 
 		  printf("_________________________________________________________________\n");
           printf("\n     EDITAR CLIENTES");
@@ -1293,10 +1301,16 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
                 printf("\n Codigo:%d     Numero BI:%d      Nome:%s", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
           }
           printf("\n_________________________________________________________________\n");
+          
+		  printf("\n para sair prima a tecla 5 \n");
           printf("\n Introduza o codigo do cliente: ");
           scanf("%d", &codigo_cliente);
+          fflush(stdin);
+             
+          
           i = pesquisar_clientes(codigo_cliente);
-          if (i == -1) // Pesquiso se o cliente existe
+          
+		  if (i == -1) // Pesquiso se o cliente existe
           {
              system("cls");
              printf("\n O CODIGO DO CLIENTE NAO EXISTE!!!\n\n Tente novamente.\n\n ");
@@ -1440,6 +1454,7 @@ int op, i, codigo_cliente, a, j, z,flag_remov;
   		
   	} while(i == -1);
 	}
+
 }
 void menu_gestao_clientes() {// este é o menu que será apresentado ao utilizador. aqui ele ira puder gerir os clientes (adicionar, editar, remover, e listar)
 	int escolha;
