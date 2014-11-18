@@ -621,7 +621,7 @@ while (escolha != 3);
 }
 
 void remover_consumos() {
-	int cod_consumo, i, a, op, j, z,flag_remov;
+	int cod_consumo, i, a, op, j, z,flag_remov, codigo_cliente;
 	int indice_consumo;
 	indice_consumo = lista_clientes[i].indice_consumo;
       
@@ -633,14 +633,29 @@ void remover_consumos() {
       }
       else
       {
-          printf("_________________________________________________________________\n");
-          printf("\n     REMOVER CONSUMOS");
+          do {
+
+		  printf("_________________________________________________________________\n");
+          printf("\n     CONSUMOS DO CLIENTE %d", codigo_cliente);
           printf("\n_________________________________________________________________\n");
           printf("\n_________________________________________________________________\n");
-          for(i = 0; i< indice_consumo ; i++)
-          {
-                printf("\n Codigo:%d     Consumo:%d      Preco:%s", lista_clientes[i].consumo[lista_clientes[i].indice_consumo].cod_consumo, lista_clientes[i].consumo[lista_clientes[i].indice_consumo].consumo, lista_clientes[i].consumo[lista_clientes[i].indice_consumo].preco);
-          }
+          
+                printf("\n Codigo: %d 		\n Nome: %s",lista_clientes[i].codigo, lista_clientes[i].nome);
+          		for(j = 0; j < lista_clientes[i].indice_consumo; j++)
+          		{
+          			//lista consumos do cliente selecionado
+
+					printf("\n Mes: %d      ", lista_clientes[i].consumo[j].mes);
+					printf("\n Ano: %d      ", lista_clientes[i].consumo[j].ano);
+                	printf("\n Consumo: %f      ", lista_clientes[i].consumo[j].consumo);
+                	
+          
+          		}
+          printf("\n_________________________________________________________________\n");
+          
+		  printf("\n\n \t para selecionar o consumo a eliminar prima a tecla 5.\n");
+          scanf("%d", &op);
+    	  }while(op!=5);
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o codigo do Consumo: ");
           scanf("%d", &cod_consumo);
@@ -660,7 +675,7 @@ void remover_consumos() {
               
 			  //for(a = i; a < indice_consumo - 1;a++)
               //{
-                    //lista_clientes[a].consumo = lista_clientes[a + 1];
+                    //lista_clientes[i].consumo = lista_clientes[i + 1];
               //}
               
               // Decremento o número actual de docentes em -1
@@ -768,7 +783,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago: ");
 						scanf("%d", &lista_clientes[i].consumo[a].estado);	
 						
-						printf("\n Introduza o consumo: ");
+						printf("\n Introduza o consumo: \n\n");
 						scanf("%f", &lista_clientes[i].consumo[a].consumo);
 						
 						//calcular o preco a pagar
@@ -778,6 +793,11 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 						lista_clientes[i].consumo[a].preco = preco_total;
 						
 						printf("O preco total a pagar e de : %f \n", preco_total);
+						
+						
+						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago: ");
+						scanf("%d", &lista_clientes[i].consumo[a].estado);
+						
 						system("pause");
 						
 						
@@ -889,12 +909,10 @@ void inserir_consumos(){
 							if(existe == 0)
 							{
 						
-						//estado do consumo 1 e pago 0 e nao pago	
-						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago): ");
-						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].estado);
 						
 						
-						printf("\n Introduza o consumo: ");
+						
+						printf("\n Introduza o consumo: \n \n");
 						scanf("%f", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].consumo);
 						
 						//calcular o preco a pagar
@@ -903,7 +921,11 @@ void inserir_consumos(){
 						
 						lista_clientes[i].consumo[lista_clientes[i].indice_consumo].preco = preco_total;
 						
-						printf("O preco total a pagar e de : %f \n", preco_total);
+						printf("O preco total a pagar e de : %f \n\n", preco_total);
+						
+						//estado do consumo 1 e pago 0 e nao pago	
+						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago): ");
+						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].estado);
 						system("pause");
 						
 						// Incremento o número actual de consumo em +1
