@@ -285,6 +285,7 @@ printf("_________________________________________________________________\n");
                                }
                                                               system("pause"); 
                                }
+                               
 
 
 void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo seu codigo e retornar a informacao especifica a esse consumo
@@ -293,24 +294,22 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
  //do
   // {
    	int pesquisa_codigo; // variavel para pesquisa
-   	int x, i, s = 0; //a variavel S retorna uma mensagem de erro caso o nome pesquisado nao corresponder a nenhum nome da base de dados
+   	int x, i, s = 0,a; //a variavel S retorna uma mensagem de erro caso o nome pesquisado nao corresponder a nenhum nome da base de dados
    	
 	  printf("_________________________________________________________________\n");
       printf("\n     Insira Codigo do Consumo a Pesquisar");
       printf("\n_______________________________________________________________\n");
-	  scanf("%d\n", &pesquisa_codigo);
-		  
+      scanf("%d", &pesquisa_codigo);
+ 	       		  
 		  for (x = 0; x < indice_cliente;x++) 
 		  {
               
 		  	for (i = 0; i < lista_clientes[x].indice_consumo;i++)
 		  	{
-		  	               
+		  	    
 		  		if (pesquisa_codigo == lista_clientes[x].consumo[i].cod_consumo) //comapara-se o codigo inserido com todos os codigos de consumos dos clientes
  					{
                                     
-                                    
-			  		 system("cls");
 			   		 printf("_________________________________________\n");
 			   		 printf("\n      Consumo %d do cliente %s\n", lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].nome);
 			   		 printf("_________________________________________\n");
@@ -319,27 +318,26 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
                      printf("Codigo de Cliente: %d\n",lista_clientes[x].codigo);
                      printf("Consumos:\n");
                      printf("Codigo de consumos   Mes    Ano     Consumo \n");
-                     for(i=0;i<lista_clientes[x].indice_consumo;i++){
-                     printf("%d              %d      %d      %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
+                     
+                     printf("%d              %d      %d      %f\n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
                                 
-                                }             
+                                            
    	   	  			 
 					  x = indice_cliente; // uma vez encontrado o cliente a pesquisar, alteram-se as variaveis dos FOR para forcar uma saida 
    	   	  			  i = lista_clientes[x].indice_consumo;
  			   	   
  				   	}
- 				   }
-		  }
-		  if (s == 0) //se s =0, é porque os FOR's não encontraram nenhum consumo com o codigo pesquisado. Logo retorna uma mensagem de erro
+ 			   }
+		 }
+		 if (s == 0) //se s =0, é porque os FOR's não encontraram nenhum consumo com o codigo pesquisado. Logo retorna uma mensagem de erro
 		  {
 		  	printf("O codigo de consumo que pesquisou esta errado ou nao se encontra na lista.\n");
 		  }
 		  
-//	printf("Prima 0 para voltar ao menu anterior.");
+	//printf("Prima 0 para voltar ao menu anterior.");
 	//scanf("%d", &n);
-//	}while (n != 0);
+	//}while (n != 0);
     system("pause"); 
-//Problema: Para cada cliente, os codigos de consumo sao exclusivos? Caso contrario, esta funcao retorna apenas o consumo i do primeiro cliente, e depois acaba.
 }
 	
 
@@ -465,22 +463,25 @@ for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clien
 
 	//////////////////////////////
 
-	printf("Código Cliente | Consumos \n");
+	printf("Codigo Cliente | Consumos \n");
 	printf("\n");	
 
-		for (x = 0; x <= indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por consumo.
+		for (x = 0; x < indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por consumo.
 		{
 				printf("%f | %f \n", tab_cliente_totconsumo[x][0],tab_cliente_totconsumo[x][1]);
 		}
 
-	
+	system("pause");
 }
 
 
 void consulta_inativos(){ // Esta função vai listar todos os clientes que tenham pelo menos 1 consumo não pago.
 int n = 1;
 int x, i;
-	
+system("cls");
+			   		 printf("_________________________________________\n");
+			   		 printf("\n      Clientes inativos\n");
+			   		 printf("_________________________________________\n");
 //do{
 
 
@@ -496,7 +497,7 @@ int x, i;
 					{
                                                         
 						printf("%d  |  %s\n",lista_clientes[x].codigo, lista_clientes[x].nome);	
-						x++;
+					
 						
 					}
 			}
@@ -507,7 +508,7 @@ int x, i;
 	
 		
 //}while (n != 0);
-
+system("pause");
 }
 
 
@@ -720,12 +721,12 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 					printf("\n Mes: %d      ", lista_clientes[i].consumo[j].mes);
 					printf("\n Ano: %d      ", lista_clientes[i].consumo[j].ano);
                 	printf("\n Consumo: %f      ", lista_clientes[i].consumo[j].consumo);
-                	
+                	printf("\n");
           
           		}
           printf("\n_________________________________________________________________\n");
           
-		  printf("\n\n \t para sair prima a tecla 5.\n");
+		  printf("\n\n \t para editar prima a tecla 5.\n");
           scanf("%d", &op);
     	  }while(op!=5);
 
@@ -1159,6 +1160,7 @@ void inserir_clientes(){
              		printf("\n O DIA DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
+             		fflush(stdin);
              	}
              }
               while(lista_clientes[indice_cliente].data_nascimento.dia<1 || lista_clientes[indice_cliente].data_nascimento.dia> 31);
@@ -1171,6 +1173,7 @@ void inserir_clientes(){
              		printf("\n O MES DE NASCIMENTO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
+             		fflush(stdin);
 			  		}
 			  }
 			  while(lista_clientes[indice_cliente].data_nascimento.mes<1 || lista_clientes[indice_cliente].data_nascimento.mes> 12);
@@ -1197,7 +1200,7 @@ void inserir_clientes(){
              		printf("\n O SEU BI E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
-             		
+             		fflush(stdin);
               	}
         	}
         	while(lista_clientes[indice_cliente].bi <10000000 || lista_clientes[indice_cliente].bi > 99999999 );
@@ -1210,7 +1213,7 @@ void inserir_clientes(){
              		printf("\n O SEU NIF E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
-             		
+             		fflush(stdin);
               	}
               }
               while(lista_clientes[indice_cliente].num_fiscal<100000000 || lista_clientes[indice_cliente].num_fiscal>999999999);
@@ -1224,7 +1227,7 @@ void inserir_clientes(){
              		printf("\n O SEU ESTADO E INVALIDO!!!\n\n Tente novamente.\n\n ");
              		system("pause");
              		system("cls");
-             		
+             		fflush(stdin);
               	}
               }
               while(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1);
@@ -1256,10 +1259,10 @@ do {
           	 /*
                 printf("\n Codigo:%d     Numero BI:%d      Nome:%s      Morada:%s      Email:%s      Telemovel:%d      Data Nascimento:%d      Num Fiscal:%d      Estado:%d", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome, lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel, lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
             */  
-                printf("\n Codigo: %d 		Numero BI: %d		Nome:%s",lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
-                printf("\n Morada: %s      Email: %s      Telemovel: %d",lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel);
-                printf("Data Nascimento: %d      Num Fiscal: %d      Estado: %d",lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
-                printf("_________________________________________________________________\n");
+                printf("\nCodigo: %d   Numero BI: %d   Nome:%s\n",lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
+                printf("\nMorada: %s   Email: %s Telemovel: %d\n",lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel);
+                printf("\nData Nascimento: %d   Num Fiscal: %d   Estado: %d\n",lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
+                printf("\n_________________________________________________________________\n");
           }
           printf("\n\n para sair prima a tecla 5.\n");
           scanf("%d", &op);
