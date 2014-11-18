@@ -39,11 +39,31 @@
 	cliente lista_clientes[30]; 
 	int indice_cliente=0;
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
-
+FILE *fp;
 //Funcoes declaradas no topo 
+void ler_ficheiro() {
+     
+     fp = fopen("dados.bin","r"); // Abre o ficheiro binário dados.bin em modo de leitura
 
+      if(!fp) // Se o apontador devolvido for inválido ocorreu um erro na leitura
+      {
+            printf("\n IMPOSSIVEL ABRIR O FICHEIRO.");
+            printf("\n\n ");
+            system("pause");
+            system("cls");
+      }
+      else
+      {
+            indice_cliente = fread(lista_clientes, sizeof(cliente), indice_cliente, fp); // Lê a informação do ficheiro e armazena no array de docentes
+            fclose(fp); // Fecha o ficheiro
+            system("cls");
+            printf("\n O FICHEIRO FOI LIDO COM SUCESSO.\n\n ");
+            system("pause");
+            system("cls");
+      }
+      }
 void guardar_clientes() {
-	FILE *fp;
+	
 
 
 fp = fopen("dados.bin", "w");
@@ -57,6 +77,7 @@ else
 		fwrite(lista_clientes, sizeof(cliente), indice_cliente, fp);
 		  fclose(fp); 
     printf("Gravado com sucesso.\n");
+    system("pause");
 }
 fclose(fp);
 
@@ -192,7 +213,7 @@ do
 	switch (escolha) {
 	case 1:
 		system("cls");
-		//ler_ficheiro();
+		ler_ficheiro();
 		break;
 	case 2:
 		system("cls");
@@ -622,7 +643,8 @@ while (escolha != 3);
 }
 
 void remover_consumos() {
-	int cod_consumo, i, a, op, j, z,flag_remov, codigo_cliente;
+	int cod_consumo, u, i, a, op, j, z,flag_remov, codigo_cliente;
+	int t = 0;
 	int indice_consumo;
 	indice_consumo = lista_clientes[i].indice_consumo;
       
@@ -637,18 +659,20 @@ void remover_consumos() {
           do {
 
 		  printf("_________________________________________________________________\n");
-          printf("\n     CONSUMOS DO CLIENTE %d", codigo_cliente);
+          printf("\n     CONSUMOS DO CLIENTE ");
           printf("\n_________________________________________________________________\n");
           printf("\n_________________________________________________________________\n");
 
 		printf("\n Insira codigo cliente: \n");     
-		scanf("%d", &codigo_cliente)     
-                printf("\n Codigo: %d 		\n Nome: %s",lista_clientes[i].codigo, lista_clientes[i].nome);
+		scanf("%d", &codigo_cliente);
+        i = pesquisar_clientes(codigo_cliente);    
+                printf("\n Codigo: %d 		\n Nome: %s ",lista_clientes[i].codigo, lista_clientes[i].nome);
           		for(j = 0; j < lista_clientes[i].indice_consumo; j++)
           		{
           			//lista consumos do cliente selecionado
 
-					printf("\n Mes: %d      ", lista_clientes[i].consumo[j].mes);
+                    printf("\n Codigo Consumo: %d      ", lista_clientes[i].consumo[j].cod_consumo);
+                    printf("\n Mes: %d      ", lista_clientes[i].consumo[j].mes);
 					printf("\n Ano: %d      ", lista_clientes[i].consumo[j].ano);
                 	printf("\n Consumo: %f      ", lista_clientes[i].consumo[j].consumo);
                 	
@@ -662,7 +686,7 @@ void remover_consumos() {
           printf("\n_________________________________________________________________\n");
           printf("\n Introduza o codigo do Consumo: ");
           scanf("%d", &cod_consumo);
-          i = pesquisar_consumos(cod_consumo, indice_cliente);
+          u = pesquisar_consumos(cod_consumo, indice_cliente);
           if (i == -1) // Pesquiso se o codigo de consumo existe
           {
              system("cls");
@@ -674,16 +698,17 @@ void remover_consumos() {
           {
               system("cls");
 
-			  // Removo o cliente puxando os consumos seguintes 1 posição para traz
+			  // Removo o consumo puxando os consumos seguintes 1 posição para traz
               
-			  for(a = i; a < indice_consumo - 1;a++)
+              /*for(a = 0; a < indice_consumo - 1;a++)
               {
-                    lista_clientes[indice_clientes].consumo[a] = lista_clientes[indice_clientes].consumo[a + 1];
+                    lista_clientes[i].consumo[a] = lista_clientes[i].consumo[a + 1];
               }
               
               // Decremento o número actual de docentes em -1
               
-			  lista_clientes[indice_clientes]indice_consumo--;
+			  indice_consumo--;*/
+			  
               system("cls");
               printf("\n O CONSUMO FOI REMOVIDO COM SUCESSO.\n");
               system("pause");
@@ -1270,7 +1295,7 @@ do {
             */  
                 printf("\nCodigo: %d   Numero BI: %d   Nome:%s\n",lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
                 printf("\nMorada: %s   Email: %s Telemovel: %d\n",lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel);
-                printf("\nData Nascimento: %d   Num Fiscal: %d   Estado: %d\n",lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
+                printf("\nData Nascimento: %d/%d/%d   Num Fiscal: %d   Estado: %d\n",lista_clientes[i].data_nascimento.dia, lista_clientes[i].data_nascimento.mes, lista_clientes[i].data_nascimento.ano, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
                 printf("\n_________________________________________________________________\n");
           }
           printf("\n\n para sair prima a tecla 5.\n");
