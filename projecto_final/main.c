@@ -811,8 +811,6 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 							}			
 						}while(existe == 1);
 						
-						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago: ");
-						scanf("%d", &lista_clientes[i].consumo[a].estado);	
 						
 						printf("\n Introduza o consumo: \n\n");
 						scanf("%f", &lista_clientes[i].consumo[a].consumo);
@@ -826,9 +824,19 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 						printf("O preco total a pagar e de : %f \n", preco_total);
 						
 						
-						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago: ");
-						scanf("%d", &lista_clientes[i].consumo[a].estado);
+						//estado do consumo 1 e pago 0 e nao pago	
+						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago): ");
+						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].estado);
+						fflush(stdin);
+						if(lista_clientes[i].consumo[lista_clientes[i].indice_consumo].estado == 0){
+							
+							lista_clientes[i].estado == 0;
+							
+						}
 						
+						
+						system("cls");
+						printf("\n O CONSUMO FOI EDITADO COM SUCESSO.\n");
 						system("pause");
 						
 						
@@ -959,7 +967,12 @@ void inserir_consumos(){
 						//estado do consumo 1 e pago 0 e nao pago	
 						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago): ");
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].estado);
-						system("pause");
+						fflush(stdin);
+						if(lista_clientes[i].consumo[lista_clientes[i].indice_consumo].estado == 0){
+							
+							lista_clientes[i].estado == 0;
+							
+						}
 						
 						// Incremento o número actual de consumo em +1
 						lista_clientes[i].indice_consumo++;
