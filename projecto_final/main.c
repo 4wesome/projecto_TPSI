@@ -723,6 +723,29 @@ void remover_consumos() {
 	
 }
 
+/*
+void listar_consumos() {
+int i, op, a;
+
+do {
+
+		  printf("_________________________________________________________________\n");
+          printf("\n     Consumos");
+          printf("\n_________________________________________________________________\n");
+          printf("\n_________________________________________________________________\n");
+          for(i = 0; i< lista_clientes[i].indice_consumo ; i++)
+          {
+          	   
+                printf("\nCodigo: %d   Consumo: %d   Estado: %s\n",lista_clientes[i].consumo[a].cod_consumo, lista_clientes[i].consumo[a].consumo, lista_clientes[i].consumo[a].estado);
+                
+                printf("\n_________________________________________________________________\n");
+          }
+          printf("\n\n para sair prima a tecla 5.\n");
+          scanf("%d", &op);
+    }
+    while(op!=5);
+}
+*/
 
 void editar_consumos() {
 	
@@ -973,9 +996,10 @@ void inserir_consumos(){
 						printf("\n Introduza o estado do consumo(1 para pago || 0 para nao pago): ");
 						scanf("%d", &lista_clientes[i].consumo[lista_clientes[i].indice_consumo].estado);
 						fflush(stdin);
+						
 						if(lista_clientes[i].consumo[lista_clientes[i].indice_consumo].estado == 0){
 							
-							lista_clientes[i].estado == 0;
+							lista_clientes[i].estado = 0;
 							
 						}
 						
@@ -990,7 +1014,7 @@ void inserir_consumos(){
 				   
 				   } else {
 				   		system("cls");
-						printf("\n Nao podem ser adicionados consumos ao cliente caloteiro :D .\n");
+						printf("\n Nao podem ser adicionados consumos ao cliente devido ao estado em que este se encontra .\n");
 						system("pause");
 				   }
 		   	 					   
@@ -1021,9 +1045,11 @@ do
         printf("%c                                                      %c\n",186,186);
         printf("%c 2 - Editar                                           %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
-        printf("%c 3 - Remover                                          %c\n",186,186);
+        printf("%c 3 - Listar                                           %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
-        printf("%c 4 - Voltar Atras                                     %c\n",186,186);
+        printf("%c 4 - Remover                                          %c\n",186,186);
+        printf("%c                                                      %c\n",186,186);
+        printf("%c 5 - Voltar Atras                                     %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
@@ -1033,7 +1059,7 @@ do
 			printf(" Opcao escolhida: ");
 			scanf("%d", &escolha);
 		}
-	while (escolha<0 || escolha>4);
+	while (escolha<0 || escolha>5);
 	
 	switch (escolha) {
 	case 1:
@@ -1046,9 +1072,13 @@ do
 		break;
 	case 3:
 		system("cls");
-		remover_consumos();
+		//listar_consumos();
 		break;
 	case 4:
+		system("cls");
+		remover_consumos();
+		break;
+	case 5:
 		system("cls");
 		
 		break;		
@@ -1059,7 +1089,7 @@ do
 	}
 }
 
-while (escolha != 4);
+while (escolha != 5);
 	
 }
 
