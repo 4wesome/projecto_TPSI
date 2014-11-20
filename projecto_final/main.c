@@ -712,7 +712,7 @@ void remover_consumos() {
               
               // Decremento o número actual de docentes em -1
               
-			  lista_clientes[i].indice_consumo -- ;
+			  lista_clientes[i].indice_consumo --;
 			  
               system("cls");
               printf("\n O CONSUMO FOI REMOVIDO COM SUCESSO.\n");
