@@ -256,7 +256,7 @@ printf("_________________________________________________________________\n");
                                printf("Cartao de cidadao: %d \n",lista_clientes[x].bi);
                                printf("Nif: %d \n",lista_clientes[x].num_fiscal);
                                printf("Consumos");
-                               printf("Codigo de consumos   Mes    Ano     Consumo");
+                               printf("Codigo de consumos   Mes    Ano     Consumo\n");
                                for(i=0;i<lista_clientes[x].indice_consumo;i++){
                                printf("%d              %d      %d       %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo);
                                                              }
@@ -294,9 +294,9 @@ printf("_________________________________________________________________\n");
                                printf("Cartao de cidadao: %d \n",lista_clientes[x].bi);
                                printf("Nif: %d \n",lista_clientes[x].num_fiscal);
                                printf("Consumos:\n");
-                               printf("Codigo de consumos   Mes    Ano     Consumo \n");
+                               printf("Codigo de consumos   Mes    Ano     Consumo\n");
                                for(i=0;i<lista_clientes[x].indice_consumo;i++){
-                               printf("%d              %d      %d       %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
+                               printf("%d              %d      %d      %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
                                 
                                 }             
                                 }
@@ -338,7 +338,7 @@ void pesquisa_consumo_por_codigo() //Esta funcao vai pesquisar um consumo pelo s
          			 printf("Nome:%s \n",lista_clientes[x].nome);
                      printf("Codigo de Cliente: %d\n",lista_clientes[x].codigo);
                      printf("Consumos:\n");
-                     printf("Codigo de consumos   Mes    Ano     Consumo \n");
+                     printf("Codigo de consumos   Mes    Ano     Consumo\n");
                      
                      printf("%d              %d      %d      %f\n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
                                 
@@ -498,7 +498,7 @@ for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clien
 
 void consulta_inativos(){ // Esta função vai listar todos os clientes que tenham pelo menos 1 consumo não pago.
 int n = 1;
-int x, i;
+int x, i,flag;
 system("cls");
 			   		 printf("_________________________________________\n");
 			   		 printf("\n      Clientes inativos\n");
@@ -510,14 +510,17 @@ system("cls");
 		// Assim que identificar um consumo não pago, imprime uma msg e deixa de analisar mais consumos desse cliente, e passa para o próximo cliente.
 		for (x = 0; x < indice_cliente; x++) 
 		{
-		
+            flag = 0;		
 			for (i = 0; i < lista_clientes[x].indice_consumo; i++)
 			{
                 
 				if (lista_clientes[x].consumo[i].estado == 0);
 					{
-                                                        
-						printf("%d  |  %s\n",lista_clientes[x].codigo, lista_clientes[x].nome);	
+                         if(flag == 0)       
+                         {                        
+						         printf("%d  |  %s\n",lista_clientes[x].codigo, lista_clientes[x].nome);
+                                 flag = 1;	
+                           }
 					
 						
 					}
