@@ -54,7 +54,7 @@ void ler_ficheiro() {
       }
       else
       {
-            indice_cliente = fread(lista_clientes, sizeof(cliente), indice_cliente, fp); // Lê a informação do ficheiro e armazena no array de docentes
+            indice_cliente = fread(lista_clientes, sizeof(cliente), 30, fp); // Lê a informação do ficheiro e armazena no array de docentes
             fclose(fp); // Fecha o ficheiro
             system("cls");
             printf("\n O FICHEIRO FOI LIDO COM SUCESSO.\n\n ");
@@ -646,11 +646,8 @@ void remover_consumos() {
 	int cod_consumo, u, i = 0, a, op, j, z,flag_remov, codigo_cliente;
 	int t = 0;
 	int indice_consumo;
-	printf("antesdisto");
-	
 
      
-     printf("depois doadus sdisto"); 
       if (indice_consumo == 0) // Verifico se existem docentes para remover
       {
          printf("\n NAO EXISTEM CONSUMOS!!!\n\n ");
@@ -669,6 +666,7 @@ void remover_consumos() {
 		printf("\n Insira codigo cliente: \n");     
 		scanf("%d", &codigo_cliente);
         i = pesquisar_clientes(codigo_cliente); 
+        
        	indice_consumo = lista_clientes[i].indice_consumo;   
                 printf("\n Codigo: %d 		\n Nome: %s ",lista_clientes[i].codigo, lista_clientes[i].nome);
           		for(j = 0; j < lista_clientes[i].indice_consumo; j++)
@@ -723,21 +721,26 @@ void remover_consumos() {
 	
 }
 
-/*
+
 void listar_consumos() {
 int i, op, a;
+int codigo_cliente;
 
 do {
 
 		  printf("_________________________________________________________________\n");
           printf("\n     Consumos");
           printf("\n_________________________________________________________________\n");
-          printf("\n_________________________________________________________________\n");
-          for(i = 0; i< lista_clientes[i].indice_consumo ; i++)
+          
+          printf("\n Introduza o codigo do cliente: ");
+          scanf("%d", &codigo_cliente);
+          fflush(stdin);
+          a = pesquisar_clientes(codigo_cliente);
+          
+          for(i = 0; i< lista_clientes[a].indice_consumo ; i++)
           {
           	   
-                printf("\nCodigo: %d   Consumo: %d   Estado: %s\n",lista_clientes[i].consumo[a].cod_consumo, lista_clientes[i].consumo[a].consumo, lista_clientes[i].consumo[a].estado);
-                
+                printf("\nCodigo: %d   \nConsumo: %d \nAno: %d \nMes: %d  \nEstado: %d\n",lista_clientes[a].consumo[i].cod_consumo, lista_clientes[a].consumo[i].consumo, lista_clientes[a].consumo[i].ano, lista_clientes[a].consumo[i].mes, lista_clientes[a].consumo[i].estado);
                 printf("\n_________________________________________________________________\n");
           }
           printf("\n\n para sair prima a tecla 5.\n");
@@ -745,7 +748,7 @@ do {
     }
     while(op!=5);
 }
-*/
+
 
 void editar_consumos() {
 	
@@ -1072,7 +1075,7 @@ do
 		break;
 	case 3:
 		system("cls");
-		//listar_consumos();
+		listar_consumos();
 		break;
 	case 4:
 		system("cls");
