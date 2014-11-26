@@ -41,6 +41,7 @@
 /* run this program using the console pauser or add your own getch, system("pause") or input loop */
 FILE *fp;
 //Funcoes declaradas no topo 
+
 void ler_ficheiro() {
      
      fp = fopen("dados.bin","r"); // Abre o ficheiro binário dados.bin em modo de leitura
