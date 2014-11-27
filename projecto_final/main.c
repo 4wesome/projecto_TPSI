@@ -797,7 +797,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
           
           		}
           printf("\n_________________________________________________________________\n");
-          
+      
 		  printf("\n\n \t para editar prima a tecla 5.\n");
           scanf("%d", &op);
           fflush(stdin);
@@ -1132,7 +1132,7 @@ void remover_clientes() {
                 printf("\n Codigo:%d     Numero BI:%d      Nome:%s", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
           }
           printf("\n_________________________________________________________________\n");
-          printf("\n Introduza o codigo do docente: ");
+          printf("\nIntroduza o codigo do cliente: ");
           scanf("%d", &codigo_cliente);
           fflush(stdin);
           i = pesquisar_clientes(codigo_cliente);
@@ -1355,7 +1355,15 @@ void listar_clientes() {
 int i, op;
 
 do {
-
+		if(indice_cliente == 0)
+		{
+		printf("\n NAO EXISTEM CLIENTES NA BASE DE DADOS!!!\n\n ");
+         system("pause");
+         system("cls");	
+		}
+		else
+		{
+		
 		  printf("_________________________________________________________________\n");
           printf("\n     CLIENTES");
           printf("\n_________________________________________________________________\n");
@@ -1365,14 +1373,17 @@ do {
           	 /*
                 printf("\n Codigo:%d     Numero BI:%d      Nome:%s      Morada:%s      Email:%s      Telemovel:%d      Data Nascimento:%d      Num Fiscal:%d      Estado:%d", lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome, lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel, lista_clientes[i].data_nascimento, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
             */  
-                printf("\nCodigo: %d   Numero BI: %d   Nome:%s\n",lista_clientes[i].codigo, lista_clientes[i].bi, lista_clientes[i].nome);
-                printf("\nMorada: %s   Email: %s Telemovel: %d\n",lista_clientes[i].morada, lista_clientes[i].email, lista_clientes[i].telemovel);
-                printf("\nData Nascimento: %d/%d/%d   Num Fiscal: %d   Estado: %d\n",lista_clientes[i].data_nascimento.dia, lista_clientes[i].data_nascimento.mes, lista_clientes[i].data_nascimento.ano, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
+                printf("\nCODIGO: %d   NOME: %s   BI:%d\n",lista_clientes[i].codigo, lista_clientes[i].nome, lista_clientes[i].bi);
+                printf("\nMORADA: %s\n",lista_clientes[i].morada);
+                printf("\nEMAIL: %s     TELEMOVEL: %d\n",lista_clientes[i].email, lista_clientes[i].telemovel);
+                printf("\nDATA NASCIMENTO: %d/%d/%d   NIF: %d   ESTADO: %d\n",lista_clientes[i].data_nascimento.dia, lista_clientes[i].data_nascimento.mes, lista_clientes[i].data_nascimento.ano, lista_clientes[i].num_fiscal, lista_clientes[i].estado);
                 printf("\n_________________________________________________________________\n");
           }
+    }
           printf("\n\n para sair prima a tecla 5.\n");
           scanf("%d", &op);
           fflush(stdin);
+      
     }
     while(op!=5);
 }
