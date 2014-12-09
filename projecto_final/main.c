@@ -1324,7 +1324,7 @@ void inserir_clientes(){
               
               do{
 			
-              printf("\n Introduza o seu estado: ");
+              printf("\n Introduza o estado do cliente: ");
               scanf("%d", &lista_clientes[indice_cliente].estado);
               fflush(stdin);
               	if(lista_clientes[indice_cliente].estado<0 || lista_clientes[indice_cliente].estado>1) {
