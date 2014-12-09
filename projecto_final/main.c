@@ -1195,17 +1195,14 @@ void inserir_clientes(){
 				
 
           if (i != -1) // Verifico se o código do cliente já existe
-          do {
 		  {
              system("cls");
              printf("\n O CODIGO DO CLIENTE JA EXISTE!!!\n\n Tente novamente.\n\n ");
              system("pause");
              system("cls");
+             fflush(stdin);
              
           }		
-          
-      		}
-      		while (i != -1);
           else
           {
               lista_clientes[indice_cliente].codigo = codigo_cliente;
