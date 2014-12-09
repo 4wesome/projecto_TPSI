@@ -440,7 +440,7 @@ while (escolha != 5);
 void consulta_consumos(){
 
 int x, i, n=1, soma_consumos; // soma_consumos é a soma de todos os consumos de um cliente
-float tab_cliente_totconsumo[30][2]; //tabela temporaria com os valores <codigo cliente> e <soma de consumos>
+float tab_cliente_totconsumo[30][2]; // tabela temporaria com os valores <codigo cliente> e <soma de consumos>
 float swap_consulta;
 float swap_cod_cliente;
 int h;
@@ -492,7 +492,7 @@ for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clien
 	printf("Codigo Cliente | Consumos \n");
 	printf("\n");	
 
-		for (x = 0; x < indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por consumo.
+		for (x = 0; x < indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por tottal de consumos.
 		{
 				printf("%f | %f \n", tab_cliente_totconsumo[x][0],tab_cliente_totconsumo[x][1]);
 		}
