@@ -801,6 +801,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 		  printf("\n\n \t para editar prima a tecla 5.\n");
           scanf("%d", &op);
           fflush(stdin);
+          
     	  }while(op!=5);
 
           
