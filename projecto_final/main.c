@@ -494,7 +494,7 @@ for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clien
 
 		for (x = 0; x < indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por tottal de consumos.
 		{
-				printf("%f | %f \n", tab_cliente_totconsumo[x][0],tab_cliente_totconsumo[x][1]);
+				printf("%.0f | %f \n", tab_cliente_totconsumo[x][0],tab_cliente_totconsumo[x][1]);
 		}
 
 	system("pause");
@@ -801,6 +801,7 @@ int op, i, a, m, cod_consumo, codigo_cliente, existe = 0, j;
 		  printf("\n\n \t para editar prima a tecla 5.\n");
           scanf("%d", &op);
           fflush(stdin);
+          
     	  }while(op!=5);
 
           
@@ -985,7 +986,7 @@ void inserir_consumos(){
 						existe = 0;
 						for(m=0; m < lista_clientes[i].indice_consumo; m++)
 							{
-								if(lista_clientes[i].consumo[m].mes == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].mes && lista_clientes[i].consumo[m].ano == lista_clientes[m].consumo[lista_clientes[m].indice_consumo].ano ){
+								if(lista_clientes[i].consumo[m].mes == lista_clientes[i].consumo[lista_clientes[i].indice_consumo].mes && lista_clientes[i].consumo[m].ano == lista_clientes[i].consumo[lista_clientes[i].indice_consumo].ano ){
 									
 									printf("\n Ja foi inserido um consumo para o mes e ano selecionados ");
 									existe = 1;
