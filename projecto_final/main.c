@@ -116,6 +116,7 @@ int pesquisar_clientes(int codigo_cliente) {
 }
 
 int pesquisar_consumos(int codigo_consumo, int indiceCliente) {
+			
 			int l,u,i;
 		      l = 0;
 		      u = indice_cliente - 1;
@@ -238,7 +239,9 @@ while (escolha != 3);
 
 void pesquisa_codigo(){ 
 
-int x,cod_cliente_procura,i;
+int x,cod_cliente_procura,i,null=0; // Pesquisa de cliente atraves da inserção de um codigo de cliente 
+//A variavel null é um verificador: se o ciclo FOR chegar ao fim e não tiver encontrado nada, null permanece a 0 eativa mensagem de erro
+
 printf("_________________________________________________________________\n");
           printf("\n     Pesquisa por codigo");
           printf("\n_________________________________________________________________\n");
@@ -250,6 +253,9 @@ printf("_________________________________________________________________\n");
 	{
        if (cod_cliente_procura == lista_clientes[x].codigo)
        {
+       	null=1;
+       	       		printf("\n - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+
                                printf("Nome:%s \n",lista_clientes[x].nome);
                                printf("Codigo de cliente: %d\n",lista_clientes[x].codigo);
                                printf("Morada: %s \n",lista_clientes[x].morada);
@@ -258,21 +264,27 @@ printf("_________________________________________________________________\n");
                                printf("Data de nascimento: %d/%d/%d \n",lista_clientes[x].data_nascimento.dia,lista_clientes[x].data_nascimento.mes,lista_clientes[x].data_nascimento.ano);
                                printf("Cartao de cidadao: %d \n",lista_clientes[x].bi);
                                printf("Nif: %d \n",lista_clientes[x].num_fiscal);
-                               printf("Consumos");
+                               printf("\nConsumos:\n");
+                                      		printf(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
+
                                printf("Codigo de consumos   Mes    Ano     Consumo\n");
                                for(i=0;i<lista_clientes[x].indice_consumo;i++){
-                               printf("%d              %d      %d       %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo);
+                               printf("%d              %d      %d       %f\n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo);
                                                              }
-                                }                                                
-                               }
-                               system("pause");
-                               }
+        }                                                
+    }
+    if (null == 0)
+        {
+        	printf("O Nome que pesquisou não existe na base de dados ou foi mal inserido.");
+		}
+    system("pause");
+}
 
 
 
-void pesquisa_nome(){ 
+void pesquisa_nome(){ // Pesquisa de cliente atraves da inserção de um nome de cliente 
 
-int x,a,i;
+int x,a,i,null=0;
 char nome_cliente_procura[100];
 
 printf("_________________________________________________________________\n");
@@ -288,6 +300,8 @@ printf("_________________________________________________________________\n");
 
        if (a == 0)
        {
+       		null = 1;
+       		printf(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
                                printf("Nome:%s \n",lista_clientes[x].nome);
                                printf("Codigo de Cliente: %d\n",lista_clientes[x].codigo);
                                printf("Morada: %s \n",lista_clientes[x].morada);
@@ -296,19 +310,24 @@ printf("_________________________________________________________________\n");
                                printf("Data de nascimento: %d/%d/%d \n",lista_clientes[x].data_nascimento.dia,lista_clientes[x].data_nascimento.mes,lista_clientes[x].data_nascimento.ano);
                                printf("Cartao de cidadao: %d \n",lista_clientes[x].bi);
                                printf("Nif: %d \n",lista_clientes[x].num_fiscal);
-                               printf("Consumos:\n");
+                               printf("\nConsumos:\n");
+            printf(" - - - - - - - - - - - - - - - - - - - - - - - - - - - - -\n");
                                printf("Codigo de consumos   Mes    Ano     Consumo\n");
-                               for(i=0;i<lista_clientes[x].indice_consumo;i++){
-                               printf("%d              %d      %d      %f",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
-                                
-                                }             
-                                }
-                                                   else {
-                                     printf("Nome de cliente nao existe ou nome de cliente mal escrito");
-                                     }                                   
-                               }
-                                                              system("pause"); 
-                               }
+                               
+                    for(i=0;i<lista_clientes[x].indice_consumo;i++)
+							   	{
+                               	printf("%d              %d      %d      %f \n",lista_clientes[x].consumo[i].cod_consumo, lista_clientes[x].consumo[i].mes,lista_clientes[x].consumo[i].ano,lista_clientes[x].consumo[i].consumo); 
+                                }    	         	
+		}
+                                   
+    }
+        if (null == 0)
+        {
+        	printf("O Nome que pesquisou não existe na base de dados ou foi mal inserido.");
+		}
+		
+		system("pause"); 
+}
                                
 
 
@@ -382,12 +401,10 @@ do
         printf("%c 1 - Pesquisar Cliente por Codigo                     %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
         printf("%c 2 - Pesquisar Cliente por Nome                       %c\n",186,186);
+        printf("%c                                                      %c\n",186,186); 
+        printf("%c 3 - Pesquisar Consumo por Codigo de Consumo          %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
-        printf("%c 3 - Pesquisar Consumo por Nome de Cliente            %c\n",186,186);
-        printf("%c                                                      %c\n",186,186);
-        printf("%c 4 - Pesquisar Consumo por Codigo de Consumo          %c\n",186,186);
-        printf("%c                                                      %c\n",186,186);
-        printf("%c 5 - Voltar Atras                                     %c\n",186,186);
+        printf("%c 4 - Voltar Atras                                     %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
         printf("%c                                                      %c\n",186,186);
@@ -411,19 +428,15 @@ do
 		break;
 	case 3:
 		system("cls");
-		pesquisa_nome();
+		pesquisa_consumo_por_codigo();
 		break;
 	case 4:
 		system("cls");
-		pesquisa_consumo_por_codigo();
 		break;
-	case 5:
-		system("cls");
 
-		break;
 	default:
 		system("cls");
-		printf(" O Valor introduzido nao e valido! Devera introduzir um valor entre 1 e 5");
+		printf(" O numero introduzido nao e valido! Devera introduzir um numero entre 1 e 4");
 		break;
 	}
 }
@@ -440,62 +453,70 @@ while (escolha != 5);
 void consulta_consumos(){
 
 int x, i, n=1, soma_consumos; // soma_consumos é a soma de todos os consumos de um cliente
-float tab_cliente_totconsumo[30][2]; // tabela temporaria com os valores <codigo cliente> e <soma de consumos>
+
+int tab_clientes_cod[29];
+float tab_clientes_consumos[29];
+// estes 2 arrays vão servir para guardar temporariamente os totais de consumos e os codigos de cliente, e vão ser organizados,
+
 float swap_consulta;
-float swap_cod_cliente;
+int swap_cod_cliente;
 int h;
-for (x = 0;x <= indice_cliente; x++) // Esta funcao vai percorrer todos os clientes, desde 0 ate ao número actual de clientes na base de dados
+for (x = 0;x < indice_cliente; x++) // Esta funcao vai percorrer todos os clientes, desde 0 ate ao número actual de clientes na base de dados
 	{
 		
-	soma_consumos = 0;	
-		
-	tab_cliente_totconsumo[x][0] = (float)lista_clientes[x].codigo;
-	
+	soma_consumos = 0;
 
+	tab_clientes_cod[x] = lista_clientes[x].codigo;
+	
 	for (i=0; i <= lista_clientes[x].indice_consumo; i++) // Esta funcao vai calcular a soma de todos os consumos de um cliente especifico (x)
 		{
-			for(h=0;h<=lista_clientes[x].indice_consumo;h++);
-			{
 			
-			soma_consumos = soma_consumos + lista_clientes[x].consumo[i].consumo;
-        }
-		}
+		for(h=0;h<=lista_clientes[x].indice_consumo;h++);
 		
-	tab_cliente_totconsumo[x][1] = soma_consumos;
+			{
+			soma_consumos = soma_consumos + lista_clientes[x].consumo[i].consumo;
+        	}
+		}
+
+	tab_clientes_consumos[x] = soma_consumos;
 	
-	} // no final deste FOR, o ARRAY tab_cliente_totconsumo[30][2] vai estar totalmente preenchido, com a primeira coluna mostrando o código de cliente e a segunda o somatório de todos os consumos.
+	} 
 	
 	//////////////////////////////////////
 	
-	for(x = 0; x < indice_cliente - 2 ; x++) // função para ordenar os valores do ARRAY tab_cliente_totconsumo[30][2], de forma decrescente.
+	for(x = 0; x < indice_cliente - 2 ; x++) // função para ordenar os valores do ARRAYS tab_cliente_consumos e tab_clentes_cod, de forma decrescente.
 		{
 			for(i = 0; i < indice_cliente - 2 - i; i--)
-				{		
-					if (tab_cliente_totconsumo[0][1] < tab_cliente_totconsumo[x+1][1])
+				{			
+					
+					if (tab_clientes_consumos[x] < tab_clientes_consumos[x+1])
 						{
-							swap_consulta = tab_cliente_totconsumo[0][1];
-							swap_cod_cliente = tab_cliente_totconsumo[0][0];
 							
-							tab_cliente_totconsumo[0][1] = tab_cliente_totconsumo[x+1][1];
-							tab_cliente_totconsumo[0][0] = tab_cliente_totconsumo[x+1][0];
+							swap_consulta = tab_clientes_consumos[x];
+							swap_cod_cliente = tab_clientes_cod[x];
 							
-							tab_cliente_totconsumo[x+1][1] = swap_consulta;
-							tab_cliente_totconsumo[x+1][0] = swap_cod_cliente;
+							tab_clientes_cod[x] = tab_clientes_cod[x+1];
+							tab_clientes_consumos[x] = tab_clientes_consumos[x+1];
 							
+							tab_clientes_cod[x+1] = swap_cod_cliente;
+							tab_clientes_consumos[x+1] = swap_consulta;
 							
-					}
+						}
 				}
 		}
 
 	//////////////////////////////
-
+	
+	printf("_________________________________________________________________\n");
+    printf("\n     TOTAL DE CONSUMOS");
+    printf("\n_______________________________________________________________\n");
 	printf("Codigo Cliente | Consumos \n");
 	printf("\n");	
 
-		for (x = 0; x < indice_cliente; x++) // Imprime tab_cliente_totconsumo - lista de clientes por tottal de consumos.
-		{
-				printf("%.0f | %f \n", tab_cliente_totconsumo[x][0],tab_cliente_totconsumo[x][1]);
-		}
+		for (x = 0; x < indice_cliente; x++) // lista  clientes por total de consumos.
+			{
+			printf("%d     | %f \n", tab_clientes_cod[x],tab_clientes_consumos[x]);
+			}
 
 	system("pause");
 }
